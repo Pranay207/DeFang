@@ -192,7 +192,7 @@ def aggregate_scan_result(contract_text: str, raw_clauses: List[Dict[str, Any]],
         "dual_engine_metrics": {
             "stage_1_agent": {
                 "name": "Strands AI Agent",
-                "model": "Google Gemini Pro API",
+                "model": "Google Gemini 2.5 Flash API",
                 "status": "COMPLETED",
                 "duration_ms": 1420,
                 "clauses_extracted": len(analyzed_clauses)
@@ -215,7 +215,7 @@ def health_check():
         "app": "DeFang — Indian Contract Red-Flag Scanner",
         "cedar_engine": "active",
         "loaded_cedar_policies": list(cedar_engine.individual_policies.keys()),
-        "agent": "Strands Agents SDK + Gemini Pro" if agent_service.api_key else "Intelligent Indian Legal Rule Parser"
+        "agent": "Strands Agents SDK + Gemini 2.5 Flash" if agent_service.api_key else "Intelligent Indian Legal Rule Parser"
     }
 
 @app.get("/api/presets")

@@ -35,7 +35,7 @@ class DeFangAgent:
                     "adhering to Indian statutory frameworks (Model Tenancy Act 2021, Indian Contract Act 1872, Usurious Loans Act)."
                 )
             )
-            print("[DeFangAgent] Strands Agent initialized with Google Gemini Pro API.")
+            print("[DeFangAgent] Strands Agent initialized with Google Gemini 2.5 Flash API.")
         except Exception as e:
             print(f"[DeFangAgent] Failed to init Strands Agent: {e}. Falling back to rule engine.")
             self.strands_agent = None

@@ -1,11 +1,11 @@
-{
+﻿{
   "presets": [
     {
       "id": "preset_rental_bangalore",
       "title": "Bengaluru 11-Month Rental Agreement",
       "category": "Residential Tenancy",
       "jurisdiction": "Karnataka / Model Tenancy Act 2021",
-      "badge": "High Risk — 5 Red Flags",
+      "badge": "High Risk â€” 5 Red Flags",
       "description": "Standard Indiranagar 2BHK rental agreement containing notorious Bengaluru landlord clauses: 10-month deposit, mandatory painting deduction, and early exit forfeiture."
     },
     {
@@ -13,15 +13,15 @@
       "title": "Tech Startup Internship & Employment Agreement",
       "category": "Employment & IP",
       "jurisdiction": "Indian Contract Act 1872 & Labour Law",
-      "badge": "Severe Restraints — 3 Red Flags",
-      "description": "High-growth Bengaluru startup offer letter containing void 24-month non-compete, ₹2.5L training bond forfeiture, and sweeping 24/7 personal IP assignment."
+      "badge": "Severe Restraints â€” 3 Red Flags",
+      "description": "High-growth Bengaluru startup offer letter containing void 24-month non-compete, â‚¹2.5L training bond forfeiture, and sweeping 24/7 personal IP assignment."
     },
     {
       "id": "preset_freelance_contract",
       "title": "Freelance Senior React Developer Agreement",
       "category": "Independent Contractor",
       "jurisdiction": "Indian Contract Act 1872 & Commercial Law",
-      "badge": "Predatory Penalties — 2 Red Flags",
+      "badge": "Predatory Penalties â€” 2 Red Flags",
       "description": "Standard client services contract with asymmetric late penalties (4% daily on developer, 0% on client) and indefinite IP indemnification."
     }
   ],
@@ -107,12 +107,12 @@
             }
           ],
           "eli5": "The landlord is asking for 10 months rent as deposit (Rs. 3.5 Lakhs). Under the Model Tenancy Act 2021, landlords cannot take more than 2-3 months rent as deposit for residential premises.",
-          "eli5_hi": "मकान मालिक 10 महीने का किराया (₹3.5 लाख) सिक्योरिटी डिपॉजिट मांग रहा है। मॉडल टेनेंसी एक्ट 2021 के तहत आवासीय फ्लैट के लिए 2-3 महीने से अधिक का डिपॉजिट गैर-कानूनी है।",
-          "eli5_te": "ఇంటి యజమాని 10 నెలల అద్దెను (రూ. 3.5 లక్షలు) డిపాజిట్‌గా అడుగుతున్నారు. మోడల్ టెనెన్సీ యాక్ట్ 2021 ప్రకారం 2-3 నెలల అద్దెకు మించి డిపాజిట్ తీసుకోవడం చట్టవిరుద్ధం.",
+          "eli5_hi": "à¤®à¤•à¤¾à¤¨ à¤®à¤¾à¤²à¤¿à¤• 10 à¤®à¤¹à¥€à¤¨à¥‡ à¤•à¤¾ à¤•à¤¿à¤°à¤¾à¤¯à¤¾ (â‚¹3.5 à¤²à¤¾à¤–) à¤¸à¤¿à¤•à¥à¤¯à¥‹à¤°à¤¿à¤Ÿà¥€ à¤¡à¤¿à¤ªà¥‰à¤œà¤¿à¤Ÿ à¤®à¤¾à¤‚à¤— à¤°à¤¹à¤¾ à¤¹à¥ˆà¥¤ à¤®à¥‰à¤¡à¤² à¤Ÿà¥‡à¤¨à¥‡à¤‚à¤¸à¥€ à¤à¤•à¥à¤Ÿ 2021 à¤•à¥‡ à¤¤à¤¹à¤¤ à¤†à¤µà¤¾à¤¸à¥€à¤¯ à¤«à¥à¤²à¥ˆà¤Ÿ à¤•à¥‡ à¤²à¤¿à¤ 2-3 à¤®à¤¹à¥€à¤¨à¥‡ à¤¸à¥‡ à¤…à¤§à¤¿à¤• à¤•à¤¾ à¤¡à¤¿à¤ªà¥‰à¤œà¤¿à¤Ÿ à¤—à¥ˆà¤°-à¤•à¤¾à¤¨à¥‚à¤¨à¥€ à¤¹à¥ˆà¥¤",
+          "eli5_te": "à°‡à°‚à°Ÿà°¿ à°¯à°œà°®à°¾à°¨à°¿ 10 à°¨à±†à°²à°² à°…à°¦à±à°¦à±†à°¨à± (à°°à±‚. 3.5 à°²à°•à±à°·à°²à±) à°¡à°¿à°ªà°¾à°œà°¿à°Ÿà±â€Œà°—à°¾ à°…à°¡à±à°—à±à°¤à±à°¨à±à°¨à°¾à°°à±. à°®à±‹à°¡à°²à± à°Ÿà±†à°¨à±†à°¨à±à°¸à±€ à°¯à°¾à°•à±à°Ÿà± 2021 à°ªà±à°°à°•à°¾à°°à°‚ 2-3 à°¨à±†à°²à°² à°…à°¦à±à°¦à±†à°•à± à°®à°¿à°‚à°šà°¿ à°¡à°¿à°ªà°¾à°œà°¿à°Ÿà± à°¤à±€à°¸à±à°•à±‹à°µà°¡à°‚ à°šà°Ÿà±à°Ÿà°µà°¿à°°à±à°¦à±à°§à°‚.",
           "rewritten_fair_text": "The Lessee shall pay a sum of Rs. 70,000/- (Rupees Seventy Thousand only), equivalent to two (2) months' rent, as interest-free refundable Security Deposit, to be refunded within 14 days of handover per Model Tenancy Act 2021 guidelines.",
           "whatsapp": {
-            "polite": "Namaste Uncle, regarding Clause 2 of the agreement: As per the Model Tenancy Act 2021, the maximum residential security deposit is capped at 2 months' rent (₹70,000). Could we kindly update the deposit to ₹70,000 so both of us remain compliant with the latest tenancy framework?",
-            "firm": "Hello Sharma ji, reviewing the draft agreement: Clause 2 specifies a 10-month deposit of ₹3.5L. Under Section 9 of the Model Tenancy Act 2021, residential security deposits cannot exceed 2 months' rent (₹70,000). Please issue an amended draft reflecting ₹70,000 deposit before signing.",
+            "polite": "Namaste Uncle, regarding Clause 2 of the agreement: As per the Model Tenancy Act 2021, the maximum residential security deposit is capped at 2 months' rent (â‚¹70,000). Could we kindly update the deposit to â‚¹70,000 so both of us remain compliant with the latest tenancy framework?",
+            "firm": "Hello Sharma ji, reviewing the draft agreement: Clause 2 specifies a 10-month deposit of â‚¹3.5L. Under Section 9 of the Model Tenancy Act 2021, residential security deposits cannot exceed 2 months' rent (â‚¹70,000). Please issue an amended draft reflecting â‚¹70,000 deposit before signing.",
             "legal": "Dear Lessor, Notice is hereby given that Clause 2 demanding Rs. 3,50,000/- security deposit directly violates Section 9 of the Model Tenancy Act, 2021, which statutorily caps residential tenancy deposits at a maximum of 2 months rent. Kindly amend Clause 2 to Rs. 70,000/- to prevent invalidation under tenancy tribunal jurisprudence."
           }
         },
@@ -149,12 +149,12 @@
             }
           ],
           "eli5": "Automatic deduction of 1 month rent (Rs. 35,000) for painting without proving damages is unfair. Tenancy law requires landlords to absorb normal wear and tear.",
-          "eli5_hi": "दीवारों की स्थिति देखे बिना पेंटिंग के नाम पर सीधे 1 महीने का किराया (₹35,000) काटना गलत है। सामान्य घिसावट (wear & tear) मकान मालिक को वहन करनी होती है।",
-          "eli5_te": "గోడల పరిస్థితిని చూడకుండా పెయింటింగ్ పేరిట నేరుగా ఒక నెల అద్దె (రూ. 35,000) కట్ చేయడం చట్టవిరుద్ధం. సాధారణ ఉపయోగం వల్ల వచ్చే మార్పులకు యజమానే బాధ్యత వహించాలి.",
+          "eli5_hi": "à¤¦à¥€à¤µà¤¾à¤°à¥‹à¤‚ à¤•à¥€ à¤¸à¥à¤¥à¤¿à¤¤à¤¿ à¤¦à¥‡à¤–à¥‡ à¤¬à¤¿à¤¨à¤¾ à¤ªà¥‡à¤‚à¤Ÿà¤¿à¤‚à¤— à¤•à¥‡ à¤¨à¤¾à¤® à¤ªà¤° à¤¸à¥€à¤§à¥‡ 1 à¤®à¤¹à¥€à¤¨à¥‡ à¤•à¤¾ à¤•à¤¿à¤°à¤¾à¤¯à¤¾ (â‚¹35,000) à¤•à¤¾à¤Ÿà¤¨à¤¾ à¤—à¤²à¤¤ à¤¹à¥ˆà¥¤ à¤¸à¤¾à¤®à¤¾à¤¨à¥à¤¯ à¤˜à¤¿à¤¸à¤¾à¤µà¤Ÿ (wear & tear) à¤®à¤•à¤¾à¤¨ à¤®à¤¾à¤²à¤¿à¤• à¤•à¥‹ à¤µà¤¹à¤¨ à¤•à¤°à¤¨à¥€ à¤¹à¥‹à¤¤à¥€ à¤¹à¥ˆà¥¤",
+          "eli5_te": "à°—à±‹à°¡à°² à°ªà°°à°¿à°¸à±à°¥à°¿à°¤à°¿à°¨à°¿ à°šà±‚à°¡à°•à±à°‚à°¡à°¾ à°ªà±†à°¯à°¿à°‚à°Ÿà°¿à°‚à°—à± à°ªà±‡à°°à°¿à°Ÿ à°¨à±‡à°°à±à°—à°¾ à°’à°• à°¨à±†à°² à°…à°¦à±à°¦à±† (à°°à±‚. 35,000) à°•à°Ÿà± à°šà±‡à°¯à°¡à°‚ à°šà°Ÿà±à°Ÿà°µà°¿à°°à±à°¦à±à°§à°‚. à°¸à°¾à°§à°¾à°°à°£ à°‰à°ªà°¯à±‹à°—à°‚ à°µà°²à±à°² à°µà°šà±à°šà±‡ à°®à°¾à°°à±à°ªà±à°²à°•à± à°¯à°œà°®à°¾à°¨à±‡ à°¬à°¾à°§à±à°¯à°¤ à°µà°¹à°¿à°‚à°šà°¾à°²à°¿.",
           "rewritten_fair_text": "Normal wear and tear shall be accepted without deduction. Repainting deductions shall only occur if structural damage or defacement is documented jointly at move-out, backed by actual contractor tax invoices.",
           "whatsapp": {
             "polite": "Hello Uncle, about the mandatory painting deduction: Since normal wear and tear is legally expected over 11 months, could we agree that deductions only apply if there is actual physical damage beyond standard usage, supported by repair bills?",
-            "firm": "Hi Sharma ji, Clause 3 mandates a blanket ₹35,000 deduction for painting. Per Section 15 of the Model Tenancy Act, tenants are not liable for normal wear and tear. Deductions must be limited to actual damage documented in a joint exit inspection with verified receipts.",
+            "firm": "Hi Sharma ji, Clause 3 mandates a blanket â‚¹35,000 deduction for painting. Per Section 15 of the Model Tenancy Act, tenants are not liable for normal wear and tear. Deductions must be limited to actual damage documented in a joint exit inspection with verified receipts.",
             "legal": "RE: Clause 3 (Mandatory Painting Deduction). Take notice that statutory tenancy jurisprudence (Sec 15, Model Tenancy Act 2021) protects lessees from liabilities arising out of reasonable wear and tear. Mandatory arbitrary deductions constitute an unfair trade practice. Deductions must be strictly condition-contingent and backed by GST-compliant invoices."
           }
         },
@@ -191,8 +191,8 @@
             }
           ],
           "eli5": "Tenant must give 90 days notice, but landlord can evict you in just 15 days! This 6x imbalance violates principles of natural justice.",
-          "eli5_hi": "किराएदार को 3 महीने (90 दिन) का नोटिस देना होगा, जबकि मकान मालिक सिर्फ 15 दिन में निकाल सकता है! यह भारी असंतुलन पूरी तरह अनुचित है।",
-          "eli5_te": "అద్దెదారు ఖాళీ చేయడానికి 90 రోజుల నోటీసు ఇవ్వాలి, కానీ యజమాని కేవలం 15 రోజుల్లో ఖాళీ చేయించవచ్చు! ఇది తీవ్రమైన ఏకపక్ష వివక్ష.",
+          "eli5_hi": "à¤•à¤¿à¤°à¤¾à¤à¤¦à¤¾à¤° à¤•à¥‹ 3 à¤®à¤¹à¥€à¤¨à¥‡ (90 à¤¦à¤¿à¤¨) à¤•à¤¾ à¤¨à¥‹à¤Ÿà¤¿à¤¸ à¤¦à¥‡à¤¨à¤¾ à¤¹à¥‹à¤—à¤¾, à¤œà¤¬à¤•à¤¿ à¤®à¤•à¤¾à¤¨ à¤®à¤¾à¤²à¤¿à¤• à¤¸à¤¿à¤°à¥à¤« 15 à¤¦à¤¿à¤¨ à¤®à¥‡à¤‚ à¤¨à¤¿à¤•à¤¾à¤² à¤¸à¤•à¤¤à¤¾ à¤¹à¥ˆ! à¤¯à¤¹ à¤­à¤¾à¤°à¥€ à¤…à¤¸à¤‚à¤¤à¥à¤²à¤¨ à¤ªà¥‚à¤°à¥€ à¤¤à¤°à¤¹ à¤…à¤¨à¥à¤šà¤¿à¤¤ à¤¹à¥ˆà¥¤",
+          "eli5_te": "à°…à°¦à±à°¦à±†à°¦à°¾à°°à± à°–à°¾à°³à±€ à°šà±‡à°¯à°¡à°¾à°¨à°¿à°•à°¿ 90 à°°à±‹à°œà±à°² à°¨à±‹à°Ÿà±€à°¸à± à°‡à°µà±à°µà°¾à°²à°¿, à°•à°¾à°¨à±€ à°¯à°œà°®à°¾à°¨à°¿ à°•à±‡à°µà°²à°‚ 15 à°°à±‹à°œà±à°²à±à°²à±‹ à°–à°¾à°³à±€ à°šà±‡à°¯à°¿à°‚à°šà°µà°šà±à°šà±! à°‡à°¦à°¿ à°¤à±€à°µà±à°°à°®à±ˆà°¨ à°à°•à°ªà°•à±à°· à°µà°¿à°µà°•à±à°·.",
           "rewritten_fair_text": "Either party may terminate this agreement by providing one (1) month (30 days) prior written notice, or payment of one month's rent in lieu of notice, ensuring reciprocal and mutual fairness.",
           "whatsapp": {
             "polite": "Uncle, in Clause 4, the notice period is 90 days for me but only 15 days for you. Could we make this mutual and balanced at 30 days for both parties? That gives fair time to both of us.",
@@ -233,11 +233,11 @@
             }
           ],
           "eli5": "3% per day late fee equals 1,095% annual interest rate! The Usurious Loans Act and Indian Courts strike down interest rates over 2% per day as predatory extortion.",
-          "eli5_hi": "रोजाना 3% का जुर्माना यानी साल का 1095% ब्याज! कोर्ट ऐसे अत्यधिक ब्याज को गैर-कानूनी और वसूली मानकर खारिज कर देता है।",
-          "eli5_te": "రోజుకు 3% ఆలస్య రుసుము అంటే ఏడాదికి 1095% వడ్డీ! ఇది తీవ్రమైన దోపిడీ మరియు కోర్టుల ప్రకారం చట్టవిరుద్ధం.",
+          "eli5_hi": "à¤°à¥‹à¤œà¤¾à¤¨à¤¾ 3% à¤•à¤¾ à¤œà¥à¤°à¥à¤®à¤¾à¤¨à¤¾ à¤¯à¤¾à¤¨à¥€ à¤¸à¤¾à¤² à¤•à¤¾ 1095% à¤¬à¥à¤¯à¤¾à¤œ! à¤•à¥‹à¤°à¥à¤Ÿ à¤à¤¸à¥‡ à¤…à¤¤à¥à¤¯à¤§à¤¿à¤• à¤¬à¥à¤¯à¤¾à¤œ à¤•à¥‹ à¤—à¥ˆà¤°-à¤•à¤¾à¤¨à¥‚à¤¨à¥€ à¤”à¤° à¤µà¤¸à¥‚à¤²à¥€ à¤®à¤¾à¤¨à¤•à¤° à¤–à¤¾à¤°à¤¿à¤œ à¤•à¤° à¤¦à¥‡à¤¤à¤¾ à¤¹à¥ˆà¥¤",
+          "eli5_te": "à°°à±‹à°œà±à°•à± 3% à°†à°²à°¸à±à°¯ à°°à±à°¸à±à°®à± à°…à°‚à°Ÿà±‡ à°à°¡à°¾à°¦à°¿à°•à°¿ 1095% à°µà°¡à±à°¡à±€! à°‡à°¦à°¿ à°¤à±€à°µà±à°°à°®à±ˆà°¨ à°¦à±‹à°ªà°¿à°¡à±€ à°®à°°à°¿à°¯à± à°•à±‹à°°à±à°Ÿà±à°² à°ªà±à°°à°•à°¾à°°à°‚ à°šà°Ÿà±à°Ÿà°µà°¿à°°à±à°¦à±à°§à°‚.",
           "rewritten_fair_text": "In the event of delay in rent payment exceeding a 7-day grace period, a standard one-time late fee of Rs. 500 or simple interest at 1% per month shall apply.",
           "whatsapp": {
-            "polite": "Uncle, 3% per day late penalty works out to over 1000% annual rate if delayed by a few days due to banking issues. Could we replace this with a standard reasonable flat fee of ₹500 after a 5-day grace period?",
+            "polite": "Uncle, 3% per day late penalty works out to over 1000% annual rate if delayed by a few days due to banking issues. Could we replace this with a standard reasonable flat fee of â‚¹500 after a 5-day grace period?",
             "firm": "Regarding Clause 5: The 3% daily penalty is legally usurious under Indian contract law (Section 74). Please amend to standard market terms: 5 days grace period followed by simple 12% per annum pro-rata interest.",
             "legal": "Clause 5 Stipulation Notice: Imposition of 3% per-diem penal interest constitutes an illegal in-terrorem penalty under Section 74 of the Indian Contract Act 1872 and is struck down under the Usurious Loans Act 1918. Liquidated damages must reflect genuine pre-estimated losses."
           }
@@ -275,12 +275,12 @@
             }
           ],
           "eli5": "Forfeiting your full Rs. 3.5 Lakh deposit if you have to move for a job transfer is strictly illegal under Indian Contract Act Section 74.",
-          "eli5_hi": "समय से पहले फ्लैट खाली करने पर पूरा ₹3.5 लाख का डिपॉजिट जब्त कर लेना भारतीय अनुबंध अधिनियम की धारा 74 के तहत गैर-कानूनी है।",
-          "eli5_te": "సమయం కంటే ముందే ఖాళీ చేస్తే మొత్తం రూ. 3.5 లక్షల డిపాజిట్ జప్తు చేస్తామనడం ఇండియన్ కాంట్రాక్ట్ యాక్ట్ సెక్షన్ 74 ప్రకారం పూర్తిగా చెల్లదు.",
+          "eli5_hi": "à¤¸à¤®à¤¯ à¤¸à¥‡ à¤ªà¤¹à¤²à¥‡ à¤«à¥à¤²à¥ˆà¤Ÿ à¤–à¤¾à¤²à¥€ à¤•à¤°à¤¨à¥‡ à¤ªà¤° à¤ªà¥‚à¤°à¤¾ â‚¹3.5 à¤²à¤¾à¤– à¤•à¤¾ à¤¡à¤¿à¤ªà¥‰à¤œà¤¿à¤Ÿ à¤œà¤¬à¥à¤¤ à¤•à¤° à¤²à¥‡à¤¨à¤¾ à¤­à¤¾à¤°à¤¤à¥€à¤¯ à¤…à¤¨à¥à¤¬à¤‚à¤§ à¤…à¤§à¤¿à¤¨à¤¿à¤¯à¤® à¤•à¥€ à¤§à¤¾à¤°à¤¾ 74 à¤•à¥‡ à¤¤à¤¹à¤¤ à¤—à¥ˆà¤°-à¤•à¤¾à¤¨à¥‚à¤¨à¥€ à¤¹à¥ˆà¥¤",
+          "eli5_te": "à°¸à°®à°¯à°‚ à°•à°‚à°Ÿà±‡ à°®à±à°‚à°¦à±‡ à°–à°¾à°³à±€ à°šà±‡à°¸à±à°¤à±‡ à°®à±Šà°¤à±à°¤à°‚ à°°à±‚. 3.5 à°²à°•à±à°·à°² à°¡à°¿à°ªà°¾à°œà°¿à°Ÿà± à°œà°ªà±à°¤à± à°šà±‡à°¸à±à°¤à°¾à°®à°¨à°¡à°‚ à°‡à°‚à°¡à°¿à°¯à°¨à± à°•à°¾à°‚à°Ÿà±à°°à°¾à°•à±à°Ÿà± à°¯à°¾à°•à±à°Ÿà± à°¸à±†à°•à±à°·à°¨à± 74 à°ªà±à°°à°•à°¾à°°à°‚ à°ªà±‚à°°à±à°¤à°¿à°—à°¾ à°šà±†à°²à±à°²à°¦à±.",
           "rewritten_fair_text": "If the Lessee terminates during the lock-in period, the Lessee shall give 30 days notice or pay 1 month rent in lieu of notice, and the balance Security Deposit shall be refunded in full.",
           "whatsapp": {
-            "polite": "Uncle, life circumstances or job transfers can happen unexpectedly. Forfeiting the entire ₹3.5L deposit is very harsh. Could we agree on 1 month rent deduction if early exit happens?",
-            "firm": "Sharma ji, Clause 6 stipulates total forfeiture of ₹3,50,000 on early exit. Under Section 74 of the Indian Contract Act, penalties cannot exceed actual financial loss proved. We request substituting this with 1 month rent compensation.",
+            "polite": "Uncle, life circumstances or job transfers can happen unexpectedly. Forfeiting the entire â‚¹3.5L deposit is very harsh. Could we agree on 1 month rent deduction if early exit happens?",
+            "firm": "Sharma ji, Clause 6 stipulates total forfeiture of â‚¹3,50,000 on early exit. Under Section 74 of the Indian Contract Act, penalties cannot exceed actual financial loss proved. We request substituting this with 1 month rent compensation.",
             "legal": "Legal Notice regarding Clause 6: Total forfeiture of Rs. 3,50,000/- deposit upon early exit constitutes an unenforceable penalty clause under Kailash Nath Associates v. DDA (Supreme Court of India) and Section 74 Indian Contract Act 1872. Landlord is only entitled to reasonable compensation for actual vacant period."
           }
         }
@@ -288,7 +288,7 @@
       "dual_engine_metrics": {
         "stage_1_agent": {
           "name": "Strands AI Agent",
-          "model": "Google Gemini Pro API",
+          "model": "Google Gemini 2.5 Flash API",
           "status": "COMPLETED",
           "duration_ms": 1420,
           "clauses_extracted": 5
@@ -364,8 +364,8 @@
             }
           ],
           "eli5": "Under Section 27 of the Indian Contract Act 1872, all post-employment non-compete restrictions are 100% void ab initio. Companies cannot legally block you from taking another engineering job.",
-          "eli5_hi": "भारतीय अनुबंध अधिनियम की धारा 27 के तहत नौकरी छोड़ने के बाद किसी दूसरी कंपनी में काम करने पर रोक लगाना पूरी तरह गैर-कानूनी (Void) है।",
-          "eli5_te": "ఇండియన్ కాంట్రాక్ట్ యాక్ట్ సెక్షన్ 27 ప్రకారం ఉద్యోగం మారిన తర్వాత పోటీ సంస్థల్లో పనిచేయకుండా నిరోధించడం 100% చెల్లదు.",
+          "eli5_hi": "à¤­à¤¾à¤°à¤¤à¥€à¤¯ à¤…à¤¨à¥à¤¬à¤‚à¤§ à¤…à¤§à¤¿à¤¨à¤¿à¤¯à¤® à¤•à¥€ à¤§à¤¾à¤°à¤¾ 27 à¤•à¥‡ à¤¤à¤¹à¤¤ à¤¨à¥Œà¤•à¤°à¥€ à¤›à¥‹à¤¡à¤¼à¤¨à¥‡ à¤•à¥‡ à¤¬à¤¾à¤¦ à¤•à¤¿à¤¸à¥€ à¤¦à¥‚à¤¸à¤°à¥€ à¤•à¤‚à¤ªà¤¨à¥€ à¤®à¥‡à¤‚ à¤•à¤¾à¤® à¤•à¤°à¤¨à¥‡ à¤ªà¤° à¤°à¥‹à¤• à¤²à¤—à¤¾à¤¨à¤¾ à¤ªà¥‚à¤°à¥€ à¤¤à¤°à¤¹ à¤—à¥ˆà¤°-à¤•à¤¾à¤¨à¥‚à¤¨à¥€ (Void) à¤¹à¥ˆà¥¤",
+          "eli5_te": "à°‡à°‚à°¡à°¿à°¯à°¨à± à°•à°¾à°‚à°Ÿà±à°°à°¾à°•à±à°Ÿà± à°¯à°¾à°•à±à°Ÿà± à°¸à±†à°•à±à°·à°¨à± 27 à°ªà±à°°à°•à°¾à°°à°‚ à°‰à°¦à±à°¯à±‹à°—à°‚ à°®à°¾à°°à°¿à°¨ à°¤à°°à±à°µà°¾à°¤ à°ªà±‹à°Ÿà±€ à°¸à°‚à°¸à±à°¥à°²à±à°²à±‹ à°ªà°¨à°¿à°šà±‡à°¯à°•à±à°‚à°¡à°¾ à°¨à°¿à°°à±‹à°§à°¿à°‚à°šà°¡à°‚ 100% à°šà±†à°²à±à°²à°¦à±.",
           "rewritten_fair_text": "During the term of employment, Employee shall not engage in competing commercial ventures. Following departure, Employee shall be free to seek lawful employment subject only to non-disclosure of proprietary trade secrets.",
           "whatsapp": {
             "polite": "Hi Team, regarding Clause 1: As per Section 27 of the Indian Contract Act 1872, post-employment non-compete restrictions are void under Indian law. Could we amend this clause to focus on confidentiality and NDA protection instead?",
@@ -406,12 +406,12 @@
             }
           ],
           "eli5": "Employment bonds demanding arbitrary amounts (Rs. 2.5L) without proving actual specialized training expenses, and withholding certificates, violate fundamental rights and Section 74.",
-          "eli5_hi": "बिना वास्तविक ट्रेनिंग खर्च साबित किए ₹2.5 लाख का बॉन्ड मांगना और ओरिजिनल सर्टिफिकेट जब्त करना अवैध और असंवैधानिक है।",
-          "eli5_te": "నిజమైన ఖర్చులను చూపించకుండా రూ. 2.5 లక్షల బాండ్ అడగడం, ఒరిజినల్ సర్టిఫికెట్లను ఉంచుకోవడం చట్టవిరుద్ధం.",
+          "eli5_hi": "à¤¬à¤¿à¤¨à¤¾ à¤µà¤¾à¤¸à¥à¤¤à¤µà¤¿à¤• à¤Ÿà¥à¤°à¥‡à¤¨à¤¿à¤‚à¤— à¤–à¤°à¥à¤š à¤¸à¤¾à¤¬à¤¿à¤¤ à¤•à¤¿à¤ â‚¹2.5 à¤²à¤¾à¤– à¤•à¤¾ à¤¬à¥‰à¤¨à¥à¤¡ à¤®à¤¾à¤‚à¤—à¤¨à¤¾ à¤”à¤° à¤“à¤°à¤¿à¤œà¤¿à¤¨à¤² à¤¸à¤°à¥à¤Ÿà¤¿à¤«à¤¿à¤•à¥‡à¤Ÿ à¤œà¤¬à¥à¤¤ à¤•à¤°à¤¨à¤¾ à¤…à¤µà¥ˆà¤§ à¤”à¤° à¤…à¤¸à¤‚à¤µà¥ˆà¤§à¤¾à¤¨à¤¿à¤• à¤¹à¥ˆà¥¤",
+          "eli5_te": "à°¨à°¿à°œà°®à±ˆà°¨ à°–à°°à±à°šà±à°²à°¨à± à°šà±‚à°ªà°¿à°‚à°šà°•à±à°‚à°¡à°¾ à°°à±‚. 2.5 à°²à°•à±à°·à°² à°¬à°¾à°‚à°¡à± à°…à°¡à°—à°¡à°‚, à°’à°°à°¿à°œà°¿à°¨à°²à± à°¸à°°à±à°Ÿà°¿à°«à°¿à°•à±†à°Ÿà±à°²à°¨à± à°‰à°‚à°šà±à°•à±‹à°µà°¡à°‚ à°šà°Ÿà±à°Ÿà°µà°¿à°°à±à°¦à±à°§à°‚.",
           "rewritten_fair_text": "In the event of verifiable external specialized certifications funded by the Company, the Employee shall reimburse pro-rata documented costs if leaving within 6 months, with zero retention of certificates.",
           "whatsapp": {
             "polite": "Hi HR, regarding the training bond: I am fully committed to the role, but arbitrary financial penalties and certificate retention cause serious concern. Could we link reimbursement strictly to actual external training receipts on a pro-rata basis?",
-            "firm": "Hello HR, Clause 2 specifies an arbitrary ₹2.5 Lakh penalty and retention of educational degrees. Withholding certificates violates UGC guidelines and Ministry directives. We require removal of certificate retention and replacement with pro-rata documented training recovery.",
+            "firm": "Hello HR, Clause 2 specifies an arbitrary â‚¹2.5 Lakh penalty and retention of educational degrees. Withholding certificates violates UGC guidelines and Ministry directives. We require removal of certificate retention and replacement with pro-rata documented training recovery.",
             "legal": "RE: Employment Bond & Certificate Retention. Retention of original academic certificates violates Ministry of Labour directives and constitutes unlawful restraint under Art 21 of the Constitution. Furthermore, penal bonds violate Section 74 of the Contract Act without proof of actual pecuniary loss."
           }
         },
@@ -448,8 +448,8 @@
             }
           ],
           "eli5": "You are locked into 90 days notice, but the company can fire you instantly with 0 days notice and zero severance pay! This violates natural justice.",
-          "eli5_hi": "कर्मचारी को 90 दिन का नोटिस देना होगा, जबकि कंपनी तुरंत 0 दिन के नोटिस पर बिना किसी पैसे के निकाल सकती है! यह एकतरफा शोषण है।",
-          "eli5_te": "ఉద్యోగి 90 రోజుల నోటీసు ఇవ్వాలి, కానీ కంపెనీ ఎటువంటి నోటీసు లేదా పరిహారం లేకుండా తక్షణమే తొలగించవచ్చు! ఇది తీవ్రమైన అన్యాయం.",
+          "eli5_hi": "à¤•à¤°à¥à¤®à¤šà¤¾à¤°à¥€ à¤•à¥‹ 90 à¤¦à¤¿à¤¨ à¤•à¤¾ à¤¨à¥‹à¤Ÿà¤¿à¤¸ à¤¦à¥‡à¤¨à¤¾ à¤¹à¥‹à¤—à¤¾, à¤œà¤¬à¤•à¤¿ à¤•à¤‚à¤ªà¤¨à¥€ à¤¤à¥à¤°à¤‚à¤¤ 0 à¤¦à¤¿à¤¨ à¤•à¥‡ à¤¨à¥‹à¤Ÿà¤¿à¤¸ à¤ªà¤° à¤¬à¤¿à¤¨à¤¾ à¤•à¤¿à¤¸à¥€ à¤ªà¥ˆà¤¸à¥‡ à¤•à¥‡ à¤¨à¤¿à¤•à¤¾à¤² à¤¸à¤•à¤¤à¥€ à¤¹à¥ˆ! à¤¯à¤¹ à¤à¤•à¤¤à¤°à¤«à¤¾ à¤¶à¥‹à¤·à¤£ à¤¹à¥ˆà¥¤",
+          "eli5_te": "à°‰à°¦à±à°¯à±‹à°—à°¿ 90 à°°à±‹à°œà±à°² à°¨à±‹à°Ÿà±€à°¸à± à°‡à°µà±à°µà°¾à°²à°¿, à°•à°¾à°¨à±€ à°•à°‚à°ªà±†à°¨à±€ à°Žà°Ÿà±à°µà°‚à°Ÿà°¿ à°¨à±‹à°Ÿà±€à°¸à± à°²à±‡à°¦à°¾ à°ªà°°à°¿à°¹à°¾à°°à°‚ à°²à±‡à°•à±à°‚à°¡à°¾ à°¤à°•à±à°·à°£à°®à±‡ à°¤à±Šà°²à°—à°¿à°‚à°šà°µà°šà±à°šà±! à°‡à°¦à°¿ à°¤à±€à°µà±à°°à°®à±ˆà°¨ à°…à°¨à±à°¯à°¾à°¯à°‚.",
           "rewritten_fair_text": "Either party may terminate the employment relationship by providing thirty (30) days written notice or payment of salary in lieu thereof, ensuring equal reciprocal protection.",
           "whatsapp": {
             "polite": "Hi, in Clause 4 the notice requirement is 90 days for the employee vs 0 days for the company. Could we standardize this to a reciprocal 30 days for both parties?",
@@ -461,7 +461,7 @@
       "dual_engine_metrics": {
         "stage_1_agent": {
           "name": "Strands AI Agent",
-          "model": "Google Gemini Pro API",
+          "model": "Google Gemini 2.5 Flash API",
           "status": "COMPLETED",
           "duration_ms": 1420,
           "clauses_extracted": 3
@@ -544,8 +544,8 @@
             }
           ],
           "eli5": "4% daily penalty equals 1,460% yearly interest! Indian courts consider anything over 2% per day as predatory and an invalid penalty under Section 74.",
-          "eli5_hi": "सॉफ्टवेयर डिलीवरी में देरी पर रोजाना 4% जुर्माना (सालाना 1460%!) पूरी तरह अवैध है। कोर्ट ऐसे अत्यधिक जुर्माने को खारिज कर देता है।",
-          "eli5_te": "డెలివరీ ఆలస్యమైతే రోజుకు 4% జరిమానా విధించడం దోపిడీ. చట్టం ప్రకారం ఇది చెల్లని జరిమానా.",
+          "eli5_hi": "à¤¸à¥‰à¤«à¥à¤Ÿà¤µà¥‡à¤¯à¤° à¤¡à¤¿à¤²à¥€à¤µà¤°à¥€ à¤®à¥‡à¤‚ à¤¦à¥‡à¤°à¥€ à¤ªà¤° à¤°à¥‹à¤œà¤¾à¤¨à¤¾ 4% à¤œà¥à¤°à¥à¤®à¤¾à¤¨à¤¾ (à¤¸à¤¾à¤²à¤¾à¤¨à¤¾ 1460%!) à¤ªà¥‚à¤°à¥€ à¤¤à¤°à¤¹ à¤…à¤µà¥ˆà¤§ à¤¹à¥ˆà¥¤ à¤•à¥‹à¤°à¥à¤Ÿ à¤à¤¸à¥‡ à¤…à¤¤à¥à¤¯à¤§à¤¿à¤• à¤œà¥à¤°à¥à¤®à¤¾à¤¨à¥‡ à¤•à¥‹ à¤–à¤¾à¤°à¤¿à¤œ à¤•à¤° à¤¦à¥‡à¤¤à¤¾ à¤¹à¥ˆà¥¤",
+          "eli5_te": "à°¡à±†à°²à°¿à°µà°°à±€ à°†à°²à°¸à±à°¯à°®à±ˆà°¤à±‡ à°°à±‹à°œà±à°•à± 4% à°œà°°à°¿à°®à°¾à°¨à°¾ à°µà°¿à°§à°¿à°‚à°šà°¡à°‚ à°¦à±‹à°ªà°¿à°¡à±€. à°šà°Ÿà±à°Ÿà°‚ à°ªà±à°°à°•à°¾à°°à°‚ à°‡à°¦à°¿ à°šà±†à°²à±à°²à°¨à°¿ à°œà°°à°¿à°®à°¾à°¨à°¾.",
           "rewritten_fair_text": "Milestone delivery dates are good-faith estimates. In case of unexcused delays exceeding 7 business days, liquidated damages capped at a maximum of 5% of the delayed milestone shall apply.",
           "whatsapp": {
             "polite": "Hi team, regarding the 4% per day milestone penalty: Software scope frequently evolves. Could we replace the daily penalty with mutually agreed sprint grace periods and a sensible 5% overall cap?",
@@ -586,8 +586,8 @@
             }
           ],
           "eli5": "The client wants the power to cancel the project at any moment and refuse to pay for work you already completed! Quantum Meruit (Section 70) guarantees pay for work done.",
-          "eli5_hi": "क्लाइंट कभी भी प्रोजेक्ट रद्द कर सकता है और पहले से किए गए काम का पैसा भी नहीं देगा! धारा 70 (Quantum Meruit) के तहत किए गए काम का भुगतान अनिवार्य है।",
-          "eli5_te": "క్లయింట్ ఎప్పుడైనా ప్రాజెక్ట్‌ను రద్దు చేయవచ్చు మరియు మీరు ఇప్పటికే పూర్తి చేసిన పనికి డబ్బులు ఇవ్వకుండా జప్తు చేయలేరు. చట్టం ప్రకారం చేసిన పనికి వేతనం చెల్లించాల్సిందే.",
+          "eli5_hi": "à¤•à¥à¤²à¤¾à¤‡à¤‚à¤Ÿ à¤•à¤­à¥€ à¤­à¥€ à¤ªà¥à¤°à¥‹à¤œà¥‡à¤•à¥à¤Ÿ à¤°à¤¦à¥à¤¦ à¤•à¤° à¤¸à¤•à¤¤à¤¾ à¤¹à¥ˆ à¤”à¤° à¤ªà¤¹à¤²à¥‡ à¤¸à¥‡ à¤•à¤¿à¤ à¤—à¤ à¤•à¤¾à¤® à¤•à¤¾ à¤ªà¥ˆà¤¸à¤¾ à¤­à¥€ à¤¨à¤¹à¥€à¤‚ à¤¦à¥‡à¤—à¤¾! à¤§à¤¾à¤°à¤¾ 70 (Quantum Meruit) à¤•à¥‡ à¤¤à¤¹à¤¤ à¤•à¤¿à¤ à¤—à¤ à¤•à¤¾à¤® à¤•à¤¾ à¤­à¥à¤—à¤¤à¤¾à¤¨ à¤…à¤¨à¤¿à¤µà¤¾à¤°à¥à¤¯ à¤¹à¥ˆà¥¤",
+          "eli5_te": "à°•à±à°²à°¯à°¿à°‚à°Ÿà± à°Žà°ªà±à°ªà±à°¡à±ˆà°¨à°¾ à°ªà±à°°à°¾à°œà±†à°•à±à°Ÿà±â€Œà°¨à± à°°à°¦à±à°¦à± à°šà±‡à°¯à°µà°šà±à°šà± à°®à°°à°¿à°¯à± à°®à±€à°°à± à°‡à°ªà±à°ªà°Ÿà°¿à°•à±‡ à°ªà±‚à°°à±à°¤à°¿ à°šà±‡à°¸à°¿à°¨ à°ªà°¨à°¿à°•à°¿ à°¡à°¬à±à°¬à±à°²à± à°‡à°µà±à°µà°•à±à°‚à°¡à°¾ à°œà°ªà±à°¤à± à°šà±‡à°¯à°²à±‡à°°à±. à°šà°Ÿà±à°Ÿà°‚ à°ªà±à°°à°•à°¾à°°à°‚ à°šà±‡à°¸à°¿à°¨ à°ªà°¨à°¿à°•à°¿ à°µà±‡à°¤à°¨à°‚ à°šà±†à°²à±à°²à°¿à°‚à°šà°¾à°²à±à°¸à°¿à°‚à°¦à±‡.",
           "rewritten_fair_text": "In the event of termination for convenience by Client, Contractor shall be compensated in full on a pro-rata basis for all billable hours and deliverables completed up to the date of termination.",
           "whatsapp": {
             "polite": "Hi, Clause 3 allows cancellation with forfeiture of fees for work already done. Could we update this to ensure payment for all completed milestones and approved hours up to the termination date?",
@@ -599,7 +599,7 @@
       "dual_engine_metrics": {
         "stage_1_agent": {
           "name": "Strands AI Agent",
-          "model": "Google Gemini Pro API",
+          "model": "Google Gemini 2.5 Flash API",
           "status": "COMPLETED",
           "duration_ms": 1420,
           "clauses_extracted": 2

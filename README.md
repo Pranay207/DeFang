@@ -203,7 +203,7 @@ npm run dev
 > *Web App opens at `http://localhost:5173`*
 
 ### Zero-Config Offline Mode
-DeFang includes an **intelligent local rule-based extractor and pre-cached client fallback**. The app works **100% offline without any API keys or cloud configurations**. If you wish to enable Gemini Pro for optional enhanced extraction on arbitrary custom PDFs:
+DeFang includes an **intelligent local rule-based extractor and pre-cached client fallback**. The app works **100% offline without any API keys or cloud configurations**. If you wish to enable Gemini 2.5 Flash for optional enhanced extraction on arbitrary custom PDFs:
 ```env
 # backend/.env (OPTIONAL)
 GEMINI_API_KEY="your-google-ai-api-key"

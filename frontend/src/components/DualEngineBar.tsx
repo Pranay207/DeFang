@@ -136,7 +136,7 @@ export const DualEngineBar: React.FC<DualEngineBarProps> = ({
                 <div className="flex items-center space-x-2">
                   <h4 className="text-sm font-semibold text-white">Strands Agent</h4>
                   <span className="text-[10px] px-1.5 py-0.5 rounded bg-sky-500/20 text-sky-300 font-mono">
-                    Gemini Pro
+                    Gemini 2.5 Flash
                   </span>
                 </div>
                 <p className="text-xs text-slate-400 mt-0.5">
