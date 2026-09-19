@@ -25,6 +25,17 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+@app.get("/")
+def root():
+    return {
+        "app": "DeFang — Indian Contract Red-Flag Scanner & Cedar Policy Engine",
+        "status": "online",
+        "frontend_url": "http://localhost:5173",
+        "interactive_docs": "http://127.0.0.1:8000/docs",
+        "health": "/api/health",
+        "presets": "/api/presets"
+    }
+
 class ScanTextRequest(BaseModel):
     text: str
     preset_id: Optional[str] = None
