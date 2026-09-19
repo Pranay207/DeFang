@@ -229,9 +229,11 @@ Contract Text:
 
             # Check Lock-in / Early exit forfeiture
             elif "lock-in" in lower or "forfeit" in lower or "premature" in lower or "early exit" in lower:
-                category = "termination"
+                category = "lock_in" if "lock-in" in lower else "termination"
                 favors = "landlord"
                 val["full_deposit_forfeited_on_early_exit"] = True
+                if "entire" in lower or "balance" in lower or "remainder" in lower or "remaining" in lower:
+                    val["demands_entire_lock_in_rent"] = True
                 amt_match = re.search(r'(?:rs\.?|inr|₹)\s*([\d,]+)', p, re.IGNORECASE)
                 if amt_match:
                     try:
@@ -240,6 +242,16 @@ Contract Text:
                         pass
                 elif val["amount_inr"] == 0:
                     val["amount_inr"] = monthly_rent * 10 if monthly_rent else 250000
+
+            # Check Rent Escalation / Annual Increase
+            elif ("escalat" in lower or "increment" in lower or "increase" in lower or "enhance" in lower) and ("rent" in lower or "%" in p):
+                category = "rent_escalation"
+                favors = "landlord"
+                pct_match = re.search(r'(\d+(?:\.\d+)?)\s*%', p)
+                if pct_match:
+                    val["annual_escalation_pct"] = float(pct_match.group(1))
+                else:
+                    val["annual_escalation_pct"] = 15.0
 
             if category != "other" or len(p) > 50:
                 extracted.append({

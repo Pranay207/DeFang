@@ -38,6 +38,8 @@ export interface TranslationDictionary {
     backBtn: string;
     shareBtn: string;
     printBtn: string;
+    downloadBtn: string;
+    downloadedToast: string;
     sharedToast: string;
     cedarExecuted: string;
     clauseAuditTitle: string;
@@ -94,6 +96,7 @@ export interface TranslationDictionary {
     toneLegal: string;
     copyBtn: string;
     copiedBtn: string;
+    sendWhatsAppBtn: string;
     favorsLabel: string;
     favorsLandlord: string;
     favorsTenant: string;
@@ -138,26 +141,28 @@ export const translations: Record<Language, TranslationDictionary> = {
       internshipTitle: "Toxic Startup Offer Letter",
       internshipDesc: "2-year non-compete, ₹2.5L training bond, 90-day employee notice vs 0-day employer termination.",
       freelanceTitle: "Predatory Tech MSA",
-      freelanceDesc: "Perpetual non-compete, 4% daily delay penalty, unilateral IP assignment with zero kill-fee.",
+      freelanceDesc: "Unlimited indemnity, 0% client late fee penalty, 180-day non-solicit, IP forfeiture before payment.",
     },
     input: {
-      title: "Paste Contract Text or Upload PDF",
-      subtitle: "Supports Indian Rental Agreements, Offer Letters, Employment Bonds, and Freelance MSAs",
-      placeholder: "Paste any Indian tenancy, employment, or service contract here... (e.g. Indiranagar 11-month rent agreement, 2-year startup bond, or 4% daily late fee clause)",
-      chars: "chars",
-      uploadBtn: "Upload PDF or Text File",
-      readyPdf: "Ready for PDF clause extraction with pdfplumber",
-      scanBtn: "Run DeFang Dual-Engine Scan",
-      scanningBtn: "Scanning with Strands + Cedar...",
+      title: "Or Paste Custom Contract Text",
+      subtitle: "Full audit for Indian rental agreements, offer letters, employment bonds, and freelance MSAs",
+      placeholder: "Paste your rental agreement, employment contract, or freelance MSA here... (e.g. 11-month Bangalore rental contract with 10-month deposit, or offer letter with lock-in bond)",
+      chars: "characters",
+      uploadBtn: "Upload PDF or Document",
+      readyPdf: "PDF loaded via pdfplumber ready for clause extraction",
+      scanBtn: "Scan with DeFang Cedar Engine",
+      scanningBtn: "Verifying with Strands + Cedar...",
       engineInfo: "Engine: Local Rule Parser (or Gemini if API key set) + AWS Cedar Engine",
       offlineBadge: "*Presets above run 100% offline on-device",
     },
     results: {
       backBtn: "Scan Another Agreement",
       shareBtn: "Share Audit",
-      printBtn: "Download / Print Report",
+      printBtn: "Print / PDF",
+      downloadBtn: "Download Report",
+      downloadedToast: "📋 Full Legal Audit Report downloaded successfully!",
       sharedToast: "📋 Full Legal Audit Summary copied to clipboard!",
-      cedarExecuted: "Cedar Engine: 6/6 Policies Executed",
+      cedarExecuted: "Cedar Engine: 8/8 Policies Executed",
       clauseAuditTitle: "Clause-by-Clause Policy Audit",
       clauseAuditSubtitle: "Inspect statutory violations, view GitHub PR diffs, or copy calibrated WhatsApp replies",
       filterAll: "All",
@@ -212,6 +217,7 @@ export const translations: Record<Language, TranslationDictionary> = {
       toneLegal: "3. Legal Shield (Statutory Cite)",
       copyBtn: "Copy Text",
       copiedBtn: "Copied!",
+      sendWhatsAppBtn: "Send on WhatsApp",
       favorsLabel: "Favors:",
       favorsLandlord: "Landlord / Employer",
       favorsTenant: "Tenant / Candidate",
@@ -229,7 +235,7 @@ export const translations: Record<Language, TranslationDictionary> = {
       stage1Done: "Clause structuring & intent extraction complete",
       stage2Title: "AWS Cedar Policy Engine",
       stage2Verifying: "Verifying each clause against Indian statutory rules...",
-      stage2Done: "All 6 .cedar statutory policies executed",
+      stage2Done: "All 8 .cedar statutory policies executed",
       modelLabel: "Model: gemini-2.5-flash",
       durationLabel: "Duration: ~1.4s",
     },
@@ -241,25 +247,25 @@ export const translations: Record<Language, TranslationDictionary> = {
       newScan: "नया स्कैन",
     },
     hero: {
-      enginePill: "AI एजेंट विश्लेषण + AWS Cedar वैधानिक सत्यापन",
-      titleLine1: "अनुचित व एकतरफा भारतीय अनुबंधों पर हस्ताक्षर बंद करें।",
-      titleLine2: "स्कैन करें, सुरक्षित करें, और सही बातचीत करें।",
-      subtext: "मॉडल टेनेंसी एक्ट 2021, भारतीय अनुबंध अधिनियम 1872 (धारा 27 एवं 74), तथा सूदखोरी ऋण अधिनियम के तहत कानूनी नियमों की तत्काल निष्पक्ष जांच।",
+      enginePill: "AI एजेंट निष्कर्षण + AWS Cedar औपचारिक नीति इंजन",
+      titleLine1: "अनुचित भारतीय अनुबंधों पर हस्ताक्षर करना बंद करें।",
+      titleLine2: "स्कैन करें, DeFang करें, और बराबरी से बात करें।",
+      subtext: "मॉडल टेनेंसी एक्ट 2021, भारतीय अनुबंध अधिनियम 1872 (धारा 27 एवं 74), और सूदखोरी कानून के तहत स्वचालित कानूनी सत्यापन।",
     },
     presets: {
-      header: "एक-क्लिक डेमो उदाहरण (100% ऑफलाइन कैश)",
+      header: "एक-क्लिक डेमो अनुबंध (त्वरित ऑफलाइन कैश)",
       loadPreset: "अनुबंध लोड करें",
-      rentalTitle: "बैंगलोर रेंटल ट्रैप (किराया अनुबंध)",
-      rentalDesc: "10 महीने की अत्यधिक अग्रिम राशि, 1 महीने की अनिवार्य पेंटिंग कटौती, 90 दिन का एकतरफा नोटिस, और 3% दैनिक जुर्माना।",
-      internshipTitle: "स्टार्टअप जॉब बॉन्ड (रोजगार अनुबंध)",
-      internshipDesc: "2 साल का गैर-प्रतिस्पर्धा प्रतिबंध (Non-Compete), ₹2.5 लाख का प्रशिक्षण बॉन्ड, कर्मचारी के लिए 90 दिन नोटिस बनाम कंपनी का 0 दिन।",
-      freelanceTitle: "टेक फ्रीलांस शोषण अनुबंध",
-      freelanceDesc: "अनंत काल तक काम पर रोक, डिलीवरी में देरी पर 4% दैनिक जुर्माना, और बिना भुगतान के अनुबंध रद्दीकरण।",
+      rentalTitle: "बेंगलुरु रेंटल ट्रैप",
+      rentalDesc: "10 महीने का डिपॉजिट, 1 महीने का अनिवार्य पेंटिंग चार्ज, 90 दिन का एकतरफा नोटिस, 3% दैनिक ब्याज।",
+      internshipTitle: "स्टार्टअप ऑफर लेटर (बॉन्ड ट्रैप)",
+      internshipDesc: "2 साल का नॉन-कंपीट प्रतिबंध, ₹2.5 लाख का ट्रेनिंग बॉन्ड, कर्मचारी के लिए 90 दिन का नोटिस।",
+      freelanceTitle: "फ्रीलांस टेक एग्रीमेंट (MSA)",
+      freelanceDesc: "असीमित क्षतिपूर्ति (Indemnity), क्लाइंट के लिए शून्य ब्याज, 180 दिन का गैर-प्रतिस्पर्धा प्रतिबंध।",
     },
     input: {
-      title: "अनुबंध का पाठ (Text) पेस्ट करें या PDF अपलोड करें",
-      subtitle: "किराया समझौता, ऑफर लेटर, एम्प्लॉयमेंट बॉन्ड, और फ्रीलांस अनुबंधों की संपूर्ण जांच",
-      placeholder: "अपना किराया समझौता, जॉब बॉन्ड या सेवा अनुबंध यहाँ पेस्ट करें... (उदा. 11 महीने का रेंटल एग्रीमेंट, 2 साल का जॉब बॉन्ड, या अत्यधिक ब्याज का नियम)",
+      title: "या अपना अनुबंध पेस्ट / अपलोड करें",
+      subtitle: "भारतीय रेंटल एग्रीमेंट, ऑफर लेटर, एम्प्लॉयमेंट बॉन्ड और फ्रीलांस अनुबंधों की संपूर्ण जांच",
+      placeholder: "अपना रेंटल एग्रीमेंट या नौकरी का अनुबंध यहां पेस्ट करें... (उदा. 11 महीने का रेंट एग्रीमेंट, 10 महीने का डिपॉजिट, या अत्यधिक पेनल्टी वाले क्लॉज)",
       chars: "अक्षर",
       uploadBtn: "PDF या टेक्स्ट दस्तावेज़ अपलोड करें",
       readyPdf: "pdfplumber द्वारा PDF से क्लॉज निकालने के लिए तैयार",
@@ -271,9 +277,11 @@ export const translations: Record<Language, TranslationDictionary> = {
     results: {
       backBtn: "दूसरा अनुबंध जांचें",
       shareBtn: "ऑडिट रिपोर्ट शेयर करें",
-      printBtn: "प्रमाणित रिपोर्ट डाउनलोड / प्रिंट करें",
+      printBtn: "प्रिंट / PDF",
+      downloadBtn: "रिपोर्ट डाउनलोड करें",
+      downloadedToast: "📋 कानूनी ऑडिट रिपोर्ट सफलतापूर्वक डाउनलोड हुई!",
       sharedToast: "📋 कानूनी ऑडिट सारांश क्लिपबोर्ड पर कॉपी हो गया!",
-      cedarExecuted: "Cedar इंजन: सभी 6/6 वैधानिक नीतियां जांची गईं",
+      cedarExecuted: "Cedar इंजन: सभी 8/8 वैधानिक नीतियां जांची गईं",
       clauseAuditTitle: "क्लॉज-दर-क्लॉज कानूनी ऑडिट",
       clauseAuditSubtitle: "वैधानिक उल्लंघनों की जांच करें, संतुलित बदलाव देखें, या बातचीत के लिए व्हाट्सएप संदेश कॉपी करें",
       filterAll: "सभी",
@@ -328,6 +336,7 @@ export const translations: Record<Language, TranslationDictionary> = {
       toneLegal: "3. कानूनी ढाल (अधिनियम व धारा संदर्भ)",
       copyBtn: "संदेश कॉपी करें",
       copiedBtn: "कॉपी हो गया!",
+      sendWhatsAppBtn: "WhatsApp पर भेजें",
       favorsLabel: "झुकाव:",
       favorsLandlord: "मकान मालिक / कंपनी के पक्ष में",
       favorsTenant: "किराएदार / उम्मीदवार के पक्ष में",
@@ -345,7 +354,7 @@ export const translations: Record<Language, TranslationDictionary> = {
       stage1Done: "क्लॉज संरचना और कानूनी आशय का विश्लेषण पूर्ण",
       stage2Title: "AWS Cedar नीति इंजन",
       stage2Verifying: "भारतीय कानूनों (MTA, ICA) के विरुद्ध जांच जारी...",
-      stage2Done: "सभी 6 .cedar वैधानिक नीतियां सफलतापूर्वक निष्पादित",
+      stage2Done: "सभी 8 .cedar वैधानिक नीतियां सफलतापूर्वक निष्पादित",
       modelLabel: "मॉडल: gemini-2.5-flash",
       durationLabel: "समय: ~1.4s",
     },
@@ -358,19 +367,19 @@ export const translations: Record<Language, TranslationDictionary> = {
     },
     hero: {
       enginePill: "AI ఏజెంట్ గుర్తింపు + AWS Cedar చట్టబద్ధమైన ధృవీకరణ",
-      titleLine1: "అన్యాయమైన భారతీయ ఒప్పందాలపై సంతకం చేయడం ఆపండి.",
-      titleLine2: "స్కాన్ చేయండి, రక్షణ పొందండి, ధైర్యంగా చర్చించండి.",
-      subtext: "మోడల్ టెనెన్సీ చట్టం 2021, భారతీయ కాంట్రాక్ట్ చట్టం 1872 (సెక్షన్ 27 & 74), మరియు వడ్డీ నియంత్రణ చట్టాల ప్రకారం ఖచ్చితమైన విశ్లేషణ.",
+      titleLine1: "అన్యాయమైన భారతీయ ఒప్పందాలపై సంతకాలు చేయకండి.",
+      titleLine2: "స్కాన్ చేయండి, DeFang చేయండి, సమానంగా చర్చించండి.",
+      subtext: "మోడల్ టెనెన్సీ యాక్ట్ 2021, భారతీయ కాంట్రాక్ట్ చట్టం 1872 (సెక్షన్ 27 & 74), మరియు వడ్డీ నియంత్రణ చట్టాల ప్రకారం స్వయంచాలక చట్టపరమైన ధృవీకరణ.",
     },
     presets: {
-      header: "ఒక్క క్లిక్ డెమో ఉదాహరణలు (100% ఆఫ్‌లైన్ క్యాష్)",
-      loadPreset: "ఒప్పందం తెరవండి",
-      rentalTitle: "బెంగళూరు అద్దె ఒప్పందం (రెంటల్ ట్రాప్)",
-      rentalDesc: "10 నెలల అడ్వాన్స్ డిపాజిట్, 1 నెల తప్పనిసరి పెయింటింగ్ కోత, 90 రోజుల ఏకపక్ష నోటీసు, మరియు రోజుకు 3% ఆలస్య రుసుము.",
-      internshipTitle: "స్టార్టప్ జాబ్ బాండ్ (ఉద్యోగ ఒప్పందం)",
-      internshipDesc: "2 సంవత్సరాల నాన్-కాంపీట్ ఆంక్షలు, ₹2.5 లక్షల శిక్షణ బాండ్, ఉద్యోగికి 90 రోజుల నోటీసు వర్సెస్ కంపెనీకి 0 రోజుల తొలగింపు.",
-      freelanceTitle: "టెక్ ఫ్రీలాన్స్ దోపిడీ ఒప్పందం",
-      freelanceDesc: "శాశ్వత పని ఆంక్షలు, డెలివరీ ఆలస్యానికి రోజుకు 4% జరిమానా, మరియు ఎలాంటి పరిహారం లేకుండా ప్రాజెక్ట్ రద్దు.",
+      header: "ఒక్క క్లిక్ డెమో ఒప్పందాలు (ఆఫ్‌లైన్ క్యాష్)",
+      loadPreset: "డెమో ఎంచుకోండి",
+      rentalTitle: "బెంగళూరు అద్దె ఒప్పందం ట్రాప్",
+      rentalDesc: "10 నెలల డిపాజిట్, 1 నెల తప్పనిసరి పెయింటింగ్ చార్జ్, 90 రోజుల ఏకపక్ష నోటీసు, రోజుకు 3% ఆలస్య రుసుము.",
+      internshipTitle: "స్టార్టప్ ఆఫర్ లెటర్ (జాబ్ బాండ్)",
+      internshipDesc: "2 సంవత్సరాల నాన్-కాంపీట్ ఆంక్షలు, ₹2.5 లక్షల ట్రైనింగ్ బాండ్, ఉద్యోగికి 90 రోజుల నోటీసు పీరియడ్.",
+      freelanceTitle: "ఫ్రీలాన్స్ టెక్ కాంట్రాక్ట్ (MSA)",
+      freelanceDesc: "అపరిమిత నష్టపరిహారం (Indemnity), క్లయింట్‌కు సున్నా జరిమానా, చెల్లింపుల కంటే ముందే IP హక్కుల జప్తు.",
     },
     input: {
       title: "కాంట్రాక్ట్ టెక్స్ట్ పేస్ట్ చేయండి లేదా PDF అప్‌లోడ్ చేయండి",
@@ -387,9 +396,11 @@ export const translations: Record<Language, TranslationDictionary> = {
     results: {
       backBtn: "మరొక ఒప్పందాన్ని తనిఖీ చేయండి",
       shareBtn: "ఆడిట్ నివేదికను షేర్ చేయండి",
-      printBtn: "నివేదికను డౌన్‌లోడ్ / ప్రింట్ చేయండి",
+      printBtn: "ప్రింట్ / PDF",
+      downloadBtn: "రిపోర్ట్ డౌన్‌లోడ్",
+      downloadedToast: "📋 చట్టపరమైన ఆడిట్ నివేదిక విజయవంతంగా డౌన్‌లోడ్ చేయబడింది!",
       sharedToast: "📋 చట్టపరమైన ఆడిట్ సారాంశం క్లిప్‌బోర్డ్‌కు కాపీ చేయబడింది!",
-      cedarExecuted: "Cedar ఇంజిన్: మొత్తం 6/6 చట్టబద్ధమైన పాలసీలు అమలు చేయబడ్డాయి",
+      cedarExecuted: "Cedar ఇంజిన్: మొత్తం 8/8 చట్టబద్ధమైన పాలసీలు అమలు చేయబడ్డాయి",
       clauseAuditTitle: "నిబంధనల వారీగా చట్టపరమైన ఆడిట్",
       clauseAuditSubtitle: "చట్ట ఉల్లంఘనలను పరిశీలించండి, సరైన నిబంధనలను సరిపోల్చండి, లేదా వాట్సాప్ సందేశాలను కాపీ చేయండి",
       filterAll: "అన్నీ",
@@ -444,6 +455,7 @@ export const translations: Record<Language, TranslationDictionary> = {
       toneLegal: "3. చట్టపరమైన హెచ్చరిక (చట్టం & సెక్షన్)",
       copyBtn: "సందేశాన్ని కాపీ చేయండి",
       copiedBtn: "కాపీ చేయబడింది!",
+      sendWhatsAppBtn: "WhatsApp లో పంపండి",
       favorsLabel: "మొగ్గు:",
       favorsLandlord: "యజమాని / కంపెనీ అనుకూలం",
       favorsTenant: "అద్దెదారు / అభ్యర్థి అనుకూలం",
@@ -461,9 +473,128 @@ export const translations: Record<Language, TranslationDictionary> = {
       stage1Done: "నిబంధనల నిర్మాణం మరియు ఉద్దేశాల గుర్తింపు పూర్తయింది",
       stage2Title: "AWS Cedar పాలసీ ఇంజిన్",
       stage2Verifying: "భారతీయ చట్టాల ప్రకారం ప్రతి నిబంధన ధృవీకరణ...",
-      stage2Done: "అన్ని 6 .cedar చట్టబద్ధమైన పాలసీలు అమలు చేయబడ్డాయి",
+      stage2Done: "అన్ని 8 .cedar చట్టబద్ధమైన పాలసీలు అమలు చేయబడ్డాయి",
       modelLabel: "మోడల్: gemini-2.5-flash",
       durationLabel: "సమయం: ~1.4s",
+    },
+  },
+  kn: {
+    navbar: {
+      brandSubtitle: "AI ಭಾರತೀಯ ಒಪ್ಪಂದಗಳ ಅಪಾಯ ಶೋಧಕ ಮತ್ತು ಪಾಲಿಸಿ ಪರೀಕ್ಷಕ",
+      engineBadge: "Strands + Cedar ಪಾಲಿಸಿ ಎಂಜಿನ್",
+      newScan: "ಹೊಸ ಸ್ಕ್ಯಾನ್",
+    },
+    hero: {
+      enginePill: "AI ಏಜೆಂಟ್ ಹೊರತೆಗೆಯುವಿಕೆ + ಔಪಚಾರಿಕ Cedar ಪಾಲಿಸಿ ಎಂಜಿನ್",
+      titleLine1: "ಅನ್ಯಾಯದ ಭಾರತೀಯ ಒಪ್ಪಂದಗಳಿಗೆ ಸಹಿ ಮಾಡಬೇಡಿ.",
+      titleLine2: "ಸ್ಕ್ಯಾನ್ ಮಾಡಿ, DeFang ಮಾಡಿ, ಮಾತುಕತೆ ನಡೆಸಿ.",
+      subtext: "ಮಾದರಿ ಬಾಡಿಗೆ ಕಾಯ್ದೆ 2021 (Model Tenancy Act 2021), ಭಾರತೀಯ ಒಪ್ಪಂದ ಕಾಯ್ದೆ 1872 (ಕಲಂ 27 ಮತ್ತು 74) ಮತ್ತು ಲೇವಾದೇವಿ ಕಾಯ್ದೆಯ ಅಡಿಯಲ್ಲಿ ಸ್ವಯಂಚಾಲಿತ ಶಾಸನಬದ್ಧ ಪರೀಕ್ಷೆ.",
+    },
+    presets: {
+      header: "ಒಂದು ಕ್ಲಿಕ್ ಡೆಮೊ ಪ್ರಿಸೆಟ್‌ಗಳು (ತ್ವರಿತ ಆಫ್‌ಲೈನ್ ಸಂಗ್ರಹ)",
+      loadPreset: "ಪ್ರಿಸೆಟ್ ಆಯ್ಕೆಮಾಡಿ",
+      rentalTitle: "ಬೆಂಗಳೂರು ಬಾಡಿಗೆ ಒಪ್ಪಂದದ ಬಲೆ",
+      rentalDesc: "10 ತಿಂಗಳ ಠೇವಣಿ, 1 ತಿಂಗಳ ಕಡ್ಡಾಯ ಬಣ್ಣದ ಶುಲ್ಕ, 90 ದಿನಗಳ ಏಕಮುಖ ನೋಟಿಸ್, ದಿನಕ್ಕೆ 3% ದಂಡ.",
+      internshipTitle: "ವಿಷಕಾರಿ ಸ್ಟಾರ್ಟ್‌ಅಪ್ ಆಫರ್ ಲೆಟರ್",
+      internshipDesc: "2 ವರ್ಷಗಳ ಸ್ಪರ್ಧಾತ್ಮಕ ನಿರ್ಬಂಧ, ₹2.5L ತರಬೇತಿ ಬಾಂಡ್, ಉದ್ಯೋಗಿಗೆ 90 ದಿನಗಳ ನೋಟಿಸ್.",
+      freelanceTitle: "ಅನ್ಯಾಯದ ಟೆಕ್ MSA ಒಪ್ಪಂದ",
+      freelanceDesc: "ಅನಿಯಮಿತ ನಷ್ಟ ಪರಿಹಾರ, ಪಾವತಿ ವಿಳಂಬಕ್ಕೆ ಶೂನ್ಯ ದಂಡ, ಕೆಲಸಗಾರನಿಗೆ 180 ದಿನಗಳ ನಿರ್ಬಂಧ.",
+    },
+    input: {
+      title: "ಅಥವಾ ನಿಮ್ಮ ಸ್ವಂತ ಒಪ್ಪಂದವನ್ನು ಪರೀಕ್ಷಿಸಿ",
+      subtitle: "ಕಾನೂನು ಪಠ್ಯವನ್ನು ಅಂಟಿಸಿ ಅಥವಾ PDF ಒಪ್ಪಂದವನ್ನು ಅಪ್‌ಲೋಡ್ ಮಾಡಿ",
+      placeholder: "ಬಾಡಿಗೆ ಒಪ್ಪಂದ, ಉದ್ಯೋಗ ಆಫರ್ ಅಥವಾ ಫ್ರೀಲ್ಯಾನ್ಸ್ ಒಪ್ಪಂದದ ಪಠ್ಯವನ್ನು ಇಲ್ಲಿ ಅಂಟಿಸಿ... (ಉದಾ: 11 ತಿಂಗಳ ಬೆಂಗಳೂರು ಬಾಡಿಗೆ ಒಪ್ಪಂದ, 10 ತಿಂಗಳ ಠೇವಣಿ, ಅಥವಾ ಕಠಿಣ ಉದ್ಯೋಗ ನಿಯಮಗಳು)",
+      chars: "ಅಕ್ಷರಗಳು",
+      uploadBtn: "PDF ಅಥವಾ ಪಠ್ಯ ಫೈಲ್ ಅಪ್‌ಲೋಡ್ ಮಾಡಿ",
+      readyPdf: "pdfplumber ಮೂಲಕ PDF ಪರಿಶೀಲನೆಗೆ ಸಿದ್ಧವಾಗಿದೆ",
+      scanBtn: "DeFang Cedar ಎಂಜಿನ್‌ನೊಂದಿಗೆ ಸ್ಕ್ಯಾನ್ ಮಾಡಿ",
+      scanningBtn: "Strands + Cedar ಮೂಲಕ ಪರಿಶೀಲನೆ ಪ್ರಕ್ರಿಯೆಯಲ್ಲಿದೆ...",
+      engineInfo: "ಎಂಜಿನ್: ಸ್ಥಳೀಯ ನಿಯಮ ಪರೀಕ್ಷಕ + AWS Cedar ಪಾಲಿಸಿ ಎಂಜಿನ್",
+      offlineBadge: "*ಮೇಲಿನ ಎಲ್ಲಾ ಡೆಮೊಗಳು ನಿಮ್ಮ ಸಾಧನದಲ್ಲಿ 100% ಆಫ್‌ಲೈನ್‌ನಲ್ಲಿ ರನ್ ಆಗುತ್ತವೆ",
+    },
+    results: {
+      backBtn: "ಇನ್ನೊಂದು ಒಪ್ಪಂದ ಸ್ಕ್ಯಾನ್ ಮಾಡಿ",
+      shareBtn: "ಆಡಿಟ್ ವರದಿ ಹಂಚಿಕೊಳ್ಳಿ",
+      printBtn: "ಪ್ರಿಂಟ್ / PDF",
+      downloadBtn: "ವರದಿ ಡೌನ್‌ಲೋಡ್",
+      downloadedToast: "📋 ಕಾನೂನು ಆಡಿಟ್ ವರದಿ ಯಶಸ್ವಿಯಾಗಿ ಡೌನ್‌ಲೋಡ್ ಆಗಿದೆ!",
+      sharedToast: "📋 ಆಡಿಟ್ ಸಾರಾಂಶವನ್ನು ಕ್ಲಿಪ್‌ಬೋರ್ಡ್‌ಗೆ ಕಾಪಿ ಮಾಡಲಾಗಿದೆ!",
+      cedarExecuted: "Cedar ಎಂಜಿನ್: ಎಲ್ಲಾ 8/8 ಶಾಸನಬದ್ಧ ಪಾಲಿಸಿಗಳು ಜಾರಿಯಾಗಿವೆ",
+      clauseAuditTitle: "ಕಲಂ-ವಾರು ಶಾಸನಬದ್ಧ ತಪಾಸಣೆ",
+      clauseAuditSubtitle: "ಶಾಸನ ಉಲ್ಲಂಘನೆಗಳನ್ನು ಪರಿಶೀಲಿಸಿ, ನ್ಯಾಯಯುತ ತಿದ್ದುಪಡಿ ನೋಡಿ, ಅಥವಾ WhatsApp ಮಾತುಕತೆ ಸಂದೇಶಗಳನ್ನು ಬಳಸಿ",
+      filterAll: "ಎಲ್ಲಾ",
+      filterDeny: "ಅಪಾಯಕಾರಿ (Red Flags)",
+      filterAllow: "ಕಾನೂನುಬದ್ಧ",
+      noClauses: "ಆಯ್ದ ಫಿಲ್ಟರ್‌ಗೆ ಯಾವುದೇ ಕಲಂಗಳು ಕಂಡುಬಂದಿಲ್ಲ.",
+    },
+    riskHero: {
+      scoreLabel: "DeFang ಅಪಾಯ ಸ್ಕೋರ್",
+      redFlags: "ಗಂಭೀರ ಉಲ್ಲಂಘನೆಗಳು",
+      compliant: "ಕಾನೂನುಬದ್ಧ",
+      totalClauses: "ಒಟ್ಟು ಕಲಂಗಳು",
+      cedarDeny: "Cedar DENY",
+      cedarAllow: "Cedar ALLOW",
+      statusCritical: "ಅತ್ಯಂತ ಗಂಭೀರ ಅಪಾಯ (CRITICAL)",
+      statusSevere: "ಹೆಚ್ಚಿನ ಅಪಾಯ (SEVERE)",
+      statusModerate: "ಮಧ್ಯಮ ಅಪಾಯ (MODERATE)",
+      statusLow: "ಸುರಕ್ಷಿತ (LOW RISK)",
+    },
+    rupeeTrap: {
+      title: "ಗುಪ್ತ ಆರ್ಥಿಕ ಬಲೆ ಸಿಮ್ಯುಲೇಟರ್ (Rupee Trap)",
+      subtitle: "ಅನ್ಯಾಯದ ಠೇವಣಿ ಕಡಿತ ಮತ್ತು ದಂಡಗಳಿಂದ ನಿಮಗೆ ಸಂಭವಿಸಬಹುದಾದ ನಷ್ಟ",
+      trapCount: "ಆರ್ಥಿಕ ಬಲೆಗಳು",
+      alertBanner: "ಮಾದರಿ ಬಾಡಿಗೆ ಕಾಯ್ದೆ ಮತ್ತು ಒಪ್ಪಂದ ಕಾಯ್ದೆ ಸೆಕ್ಷನ್ 74 ರ ಅಡಿಯಲ್ಲಿ ಅಸಿಂಧು ಹಣಕಾಸು ಕಡಿತಗಳು",
+      breakdownToggle: "ವಿವರವಾದ ನಷ್ಟ ವಿಶ್ಲೇಷಣೆ",
+      atRisk: "ಅಪಾಯದಲ್ಲಿರುವ ಮೊತ್ತ",
+    },
+    powerImbalance: {
+      title: "ಅಧಿಕಾರದ ಅಸಮತೋಲನ ಮೀಟರ್ (Power Imbalance)",
+      subtitle: "ಒಪ್ಪಂದದಲ್ಲಿ ಇನ್ನೊಂದು ಪಕ್ಷದ ಪರವಾಗಿರುವ ಏಕಮುಖ ಷರತ್ತುಗಳ ವಿಶ್ಲೇಷಣೆ",
+      biasStatus: (landlord, tenant) => `${landlord}% ಮಾಲೀಕರ ಪರ | ${tenant}% ರಕ್ಷಿತ`,
+      counterparty: (pct) => `ಮಾಲೀಕರು / ಸಂಸ್ಥೆಯ ಪರ (${pct}%)`,
+      user: (pct) => `ನೀವು / ಬಾಡಿಗೆದಾರರ ಪರ (${pct}%)`,
+      scaleOneSided: "0% (ತೀವ್ರ ಏಕಮುಖ)",
+      scaleEquitable: "50% (ಸಮತೋಲಿತ)",
+      scaleProtected: "100% (ಸಂಪೂರ್ಣ ರಕ್ಷಿತ)",
+      hypocrisyTitle: "ಒಪ್ಪಂದದಲ್ಲಿ ಏಕಮುಖ ಕಪಟತನ ಕಂಡುಬಂದಿದೆ",
+    },
+    clauseCard: {
+      plainLabel: "ಸರಳ ವಿವರಣೆ:",
+      ruleLabel: "ಔಪಚಾರಿಕ Cedar ಶಾಸನಬದ್ಧ ನಿಯಮ:",
+      diffOpen: "ನ್ಯಾಯಯುತ ತಿದ್ದುಪಡಿ ಹೋಲಿಕೆ",
+      diffClose: "ಹೋಲಿಕೆ ಮುಚ್ಚಿ",
+      diffOriginal: "ಮೂಲ ಅನ್ಯಾಯದ ಕಲಂ (DENY)",
+      diffFair: "ಶಾಸನಬದ್ಧ ನ್ಯಾಯಯುತ ಕಲಂ (Model Tenancy / Contract Act)",
+      diplomatOpen: "3-ಹಂತದ WhatsApp ಸಂಧಾನ",
+      diplomatClose: "WhatsApp ಮುಚ್ಚಿ",
+      diplomatTitle: "WhatsApp ಸಂಧಾನ ಸಹಾಯಕ",
+      diplomatSubtitle: "ಮಾಲೀಕರು ಅಥವಾ ಎಚ್‌ಆರ್ ಜೊತೆ ಮಾತನಾಡಲು ಸಿದ್ಧ ಸಂದೇಶಗಳು",
+      tonePolite: "1. ವಿನಮ್ರ / ಗೌರವಯುತ (ಹಿರಿಯರಿಗೆ)",
+      toneFirm: "2. ವೃತ್ತಿಪರ / ಸ್ಪಷ್ಟ (HR & ಕ್ಲೈಂಟ್ಸ್‌ಗೆ)",
+      toneLegal: "3. ಕಾನೂನು ರಕ್ಷಣೆ (ಕಾಯ್ದೆ ಮತ್ತು ಸೆಕ್ಷನ್)",
+      copyBtn: "ಕಾಪಿ ಮಾಡಿ",
+      copiedBtn: "ಕಾಪಿ ಆಯಿತು!",
+      sendWhatsAppBtn: "WhatsApp ನಲ್ಲಿ ಕಳುಹಿಸಿ",
+      favorsLabel: "ಪರವಾಗಿರುವುದು:",
+      favorsLandlord: "ಮಾಲೀಕರು / ಕಂಪನಿ ಪರ",
+      favorsTenant: "ಬಾಡಿಗೆದಾರ / ಉದ್ಯೋಗಿ ಪರ",
+      favorsNeutral: "ತಟಸ್ಥ",
+      statuteLabel: "ಕಾನೂನು:",
+      severityLabel: "ತೀವ್ರತೆ:",
+    },
+    dualEngine: {
+      title: "ಉಭಯ-ಎಂಜಿನ್ ಶಾಸನಬದ್ಧ ವಾಸ್ತುಶಿಲ್ಪ",
+      subtitle: "Strands AI ಏಜೆಂಟ್ ಹೊರತೆಗೆಯುವಿಕೆ + AWS Cedar ಔಪಚಾರಿಕ ಪಾಲಿಸಿ ದೃಢೀಕರಣ",
+      stage1Badge: "ಹಂತ 1: AI ಏಜೆಂಟ್ ಹೊರತೆಗೆಯುವಿಕೆ",
+      stage2Badge: "ಹಂತ 2: Cedar ಪಾಲಿಸಿ ಪರಿಶೀಲನೆ",
+      stage1Title: "Strands AI ಏಜೆಂಟ್",
+      stage1Extracting: "ಕಲಂಗಳು ಮತ್ತು ಕಾನೂನು ನಿಯತಾಂಕಗಳ ವಿಶ್ಲೇಷಣೆ ನಡೆಯುತ್ತಿದೆ...",
+      stage1Done: "ಕಲಂಗಳ ರಚನೆ ಮತ್ತು ವಿಶ್ಲೇಷಣೆ ಪೂರ್ಣಗೊಂಡಿದೆ",
+      stage2Title: "AWS Cedar ಪಾಲಿಸಿ ಎಂಜಿನ್",
+      stage2Verifying: "ಭಾರತೀಯ ಕಾನೂನುಗಳ ಪ್ರಕಾರ ಪ್ರತಿ ಕಲಂ ಪರೀಕ್ಷಿಸಲಾಗುತ್ತಿದೆ...",
+      stage2Done: "ಎಲ್ಲಾ 8 .cedar ಶಾಸನಬದ್ಧ ಪಾಲಿಸಿಗಳು ಜಾರಿಯಾಗಿವೆ",
+      modelLabel: "ಮಾದರಿ: gemini-2.5-flash",
+      durationLabel: "ತೆಗೆದುಕೊಂಡ ಸಮಯ: ~1.4s",
     },
   },
 };
@@ -483,9 +614,9 @@ export const getLocalizedWhatsApp = (
   if (lang === 'hi') {
     if (policyId === 'deposit_cap') {
       return {
-        polite: "नमस्ते जी, अनुबंध के क्लॉज 2 (सिक्योरिटी डिपॉजिट) के संबंध में: मॉडल टेनेंसी एक्ट 2021 के अनुसार रिहायशी परिसर के लिए अधिकतम 2 महीने की सुरक्षा जमा ही मान्य है। क्या हम इसे 2 महीने (₹70,000) कर सकते हैं ताकि दोनों पक्ष नए नियमों के अनुरूप रहें? धन्यवाद।",
-        firm: "नमस्कार, अनुबंध ड्राफ्ट की समीक्षा करने पर पाया गया कि क्लॉज 2 में 10 महीने का डिपॉजिट मांगा गया है। मॉडल टेनेंसी एक्ट 2021 की धारा 9 के तहत 2 महीने से अधिक का डिपॉजिट गैर-कानूनी है। कृपया हस्ताक्षर से पहले इसे संशोधित करें।",
-        legal: "सादर सूचित किया जाता है कि क्लॉज 2 में ₹3,50,000/- डिपॉजिट की मांग मॉडल टेनेंसी एक्ट 2021 (धारा 9) का सीधा उल्लंघन है, जो अधिकतम 2 महीने तक सीमित करती है। कृपया कानूनी विवाद से बचने के लिए इसे ₹70,000/- करें।"
+        polite: "नमस्ते जी, अनुबंध में सुरक्षा जमा (सिक्योरिटी डिपॉजिट) के संबंध में: मॉडल टेनेंसी एक्ट 2021 के अनुसार आवासीय किराए के लिए अधिकतम 2 महीने का किराया ही जमा लिया जा सकता है। क्या हम आपसी सहमति से इसे ₹70,000 कर सकते हैं? धन्यवाद।",
+        firm: "नमस्कार, अनुबंध के ड्राफ्ट में क्लॉज 2 के तहत 10 महीने का किराया (₹3,50,000) बतौर सिक्योरिटी डिपॉजिट मांगा गया है, जो मॉडल टेनेंसी एक्ट 2021 की धारा 9 का खुला उल्लंघन है। कृपया हस्ताक्षर से पूर्व इसे 2 महीने के किराए तक सीमित कर संशोधित ड्राफ्ट साझा करें।",
+        legal: "ध्यातव्य है कि क्लॉज 2 में 10 महीने का सुरक्षा जमा मांगना मॉडल टेनेंसी एक्ट 2021 की धारा 9 के प्रावधानों के विरुद्ध है। वैधानिक अनुपालन हेतु इसे तुरंत 2 महीने के किराए (₹70,000/-) पर संशोधित करें।"
       };
     }
     if (policyId === 'painting_deduction') {
@@ -538,6 +669,37 @@ export const getLocalizedWhatsApp = (
         polite: "నమస్కారం, జాబ్ ఆఫర్‌లోని నాన్-కాంపీట్ క్లాజ్ గురించి: ఇండియన్ కాంట్రాక్ట్ యాక్ట్ 1872 సెక్షన్ 27 ప్రకారం ఉద్యోగం మారిన తర్వాత పోటీ సంస్థల్లో పనిచేయకుండా నిరోధించడం చట్టరీత్యా చెల్లదు. దీనిని సాధారణ గోప్యతా నిబంధనగా సవరించగలరా?",
         firm: "నమస్కారం, 2 ఏళ్ల నాన్-కాంపీట్ షరతు భారతీయ కాంట్రాక్ట్ చట్టం సెక్షన్ 27 కి విరుద్ధం. దయచేసి దీనిని పరిశ్రమ ప్రమాణాల ప్రకారం నాన్-సాలిసిటేషన్ క్లాజ్‌గా మార్చండి.",
         legal: "సుప్రీం కోర్టు తీర్పుల ప్రకారం (Niranjan Golikari కేసు) సెక్షన్ 27 కాంట్రాక్ట్ చట్టం కింద ఉద్యోగానంతర ఆంక్షలు పూర్తిగా చెల్లవు (Void ab initio). దీనిని వెంటనే సవరించండి."
+      };
+    }
+  }
+
+  if (lang === 'kn') {
+    if (policyId === 'deposit_cap') {
+      return {
+        polite: "ನಮಸ್ಕಾರ, ಒಪ್ಪಂದದಲ್ಲಿನ ಸೆಕ್ಯುರಿಟಿ ಠೇವಣಿ ಷರತ್ತಿನ ಬಗ್ಗೆ: ಮಾದರಿ ಬಾಡಿಗೆ ಕಾಯ್ದೆ 2021 (Model Tenancy Act) ರ ಪ್ರಕಾರ ವಸತಿಗಾಗಿ ಗರಿಷ್ಠ 2 ತಿಂಗಳ ಬಾಡಿಗೆಯನ್ನು ಮಾತ್ರ ಠೇವಣಿಯಾಗಿ ಪಡೆಯಲು ಅವಕಾಶವಿದೆ. ದಯವಿಟ್ಟು ಠೇವಣಿಯನ್ನು ₹70,000 ಕ್ಕೆ ಸರಿಹೊಂದಿಸಬಹುದೇ? ಧನ್ಯವಾದಗಳು.",
+        firm: "ನಮಸ್ಕಾರ, ಒಪ್ಪಂದದ ಕರಡನ್ನು ಪರಿಶೀಲಿಸಿದ್ದೇವೆ: ಕಲಂ 2 ರಲ್ಲಿ 10 ತಿಂಗಳ ಠೇವಣಿ ಕೇಳಿರುವುದು ಮಾದರಿ ಬಾಡಿಗೆ ಕಾಯ್ದೆ 2021 ರ ಕಲಂ 9 ರ ಪ್ರಕಾರ ಕಾನೂನುಬಾಹಿರವಾಗಿದೆ. ದಯವಿಟ್ಟು ಸಹಿ ಮಾಡುವ ಮುನ್ನ 2 ತಿಂಗಳ ಮೊತ್ತಕ್ಕೆ ಸರಿಪಡಿಸಿದ ಕರಡನ್ನು ನೀಡಿ.",
+        legal: "ಸೂಚನೆ: ಕಲಂ 2 ರ ಅಡಿಯಲ್ಲಿ ₹3,50,000/- ಠೇವಣಿ ಕೇಳಿರುವುದು ಮಾದರಿ ಬಾಡಿಗೆ ಕಾಯ್ದೆ 2021 ರ ಸೆಕ್ಷನ್ 9 ರ ಸ್ಪಷ್ಟ ಉಲ್ಲಂಘನೆಯಾಗಿದೆ. ಕಾನೂನುಬದ್ಧ ಸಿಂಧುತ್ವಕ್ಕಾಗಿ ಇದನ್ನು ತಕ್ಷಣವೇ ₹70,000/- ಕ್ಕೆ ಸರಿಪಡಿಸಬೇಕಾಗಿದೆ."
+      };
+    }
+    if (policyId === 'painting_deduction') {
+      return {
+        polite: "ನಮಸ್ಕಾರ, ಪೇಂಟಿಂಗ್ ಶುಲ್ಕದ ಬಗ್ಗೆ: ಬಾಡಿಗೆ ಕಾಯ್ದೆಯ ಪ್ರಕಾರ ಸಾಮಾನ್ಯ ಬಳಕೆಯ ಸವೆತಕ್ಕೆ (Normal wear and tear) ಪೂರ್ಣ ಕಡಿತ ಅನ್ವಯಿಸುವುದಿಲ್ಲ. ನೈಜ ದುರಸ್ತಿ ಬಿಲ್‌ಗಳ ಆಧಾರದ ಮೇಲೆ ಮಾತ್ರ ಲೆಕ್ಕ ಹಾಕುವಂತೆ ಪರಿಷ್ಕರಿಸಲು ವಿನಂತಿ.",
+        firm: "ನಮಸ್ಕಾರ, ಮನೆ ಖಾಲಿ ಮಾಡುವಾಗ ನೇರವಾಗಿ ಒಂದು ತಿಂಗಳ ಬಾಡಿಗೆಯನ್ನು ಬಣ್ಣದ ಶುಲ್ಕವಾಗಿ ಕಡಿತಗೊಳಿಸುವುದು ಕಾನೂನಿಗೆ ವಿರುದ್ಧವಾಗಿದೆ. ಸೆಕ್ಷನ್ 15 ರ ಪ್ರಕಾರ ಸಾಮಾನ್ಯ ಸವೆತಕ್ಕೆ ಬಾಡಿಗೆದಾರರು ಹೊಣೆಯಲ್ಲ. ಕೇವಲ ನೈಜ ಬಿಲ್‌ಗಳಿಗೆ ಸೀಮಿತಗೊಳಿಸಿ.",
+        legal: "ಮಾದರಿ ಬಾಡಿಗೆ ಕಾಯ್ದೆ ಸೆಕ್ಷನ್ 15 ರ ಅಡಿಯಲ್ಲಿ ಕಡ್ಡಾಯ ಪೇಂಟಿಂಗ್ ಕಡಿತ ಅಸಿಂಧುವಾಗಿದೆ. ಮನೆ ಖಾಲಿ ಮಾಡುವಾಗ ಜಂಟಿ ತಪಾಸಣೆ ಮತ್ತು ಜಿಎಸ್‌ಟಿ ಬಿಲ್‌ಗಳ ಆಧಾರದ ಮೇಲೆ ಮಾತ್ರ ಹೊಂದಾಣಿಕೆ ಮಾಡಬೇಕು."
+      };
+    }
+    if (policyId === 'notice_asymmetry') {
+      return {
+        polite: "ನಮಸ್ಕಾರ, ನೋಟಿಸ್ ಅವಧಿಯ ಷರತ್ತಿನ ಬಗ್ಗೆ: ಕರಡಿನಲ್ಲಿ ನನಗೆ 90 ದಿನಗಳು ಮತ್ತು ನಿಮಗೆ 15 ದಿನಗಳು ಇದೆ. ಇಬ್ಬರಿಗೂ ಸಮಾನವಾಗಿ 30 ದಿನಗಳ ನೋಟಿಸ್ ಎಂದು ನಿಗದಿಪಡಿಸಬಹುದೇ?",
+        firm: "ನಮಸ್ಕಾರ, ನೋಟಿಸ್ ಅವಧಿಯ ಈ ಅಸಮತೋಲನ ನ್ಯಾಯಸಮ್ಮತವಲ್ಲ. ಕಾನೂನಿನ ಪ್ರಕಾರ ಎರಡೂ ಕಡೆಯವರಿಗೆ ಸಮಾನ ನೋಟಿಸ್ ಇರಬೇಕು. ದಯವಿಟ್ಟು ಎರಡೂ ಕಡೆಯವರಿಗೆ 30 ದಿನಗಳ ನೋಟಿಸ್ ಎಂದು ಬದಲಾಯಿಸಿ.",
+        legal: "ಭಾರತೀಯ ಒಪ್ಪಂದ ಕಾಯ್ದೆಯ ಕಲಂ 23 ರ ಅಡಿಯಲ್ಲಿ ಈ ಏಕಮುಖ ನೋಟಿಸ್ ಷರತ್ತು ಅಸಿಂಧುವಾಗಿದೆ. ಎರಡೂ ಕಡೆಯವರಿಗೆ 30 ದಿನಗಳ ಸಮಾನ ಪರಸ್ಪರ ನೋಟಿಸ್ ಕಡ್ಡಾಯವಾಗಿದೆ."
+      };
+    }
+    if (policyId === 'non_compete_duration') {
+      return {
+        polite: "ನಮಸ್ಕಾರ, ಜಾಬ್ ಆಫರ್‌ನಲ್ಲಿನ ನಾನ್-ಕಾಂಪೀಟ್ ಷರತ್ತಿನ ಬಗ್ಗೆ: ಭಾರತೀಯ ಒಪ್ಪಂದ ಕಾಯ್ದೆ 1872 ರ ಕಲಂ 27 ರ ಪ್ರಕಾರ ಉದ್ಯೋಗ ಬಿಟ್ಟ ನಂತರ ಬೇರೆಡೆ ಕೆಲಸ ಮಾಡುವುದನ್ನು ನಿರ್ಬಂಧಿಸುವುದು ಕಾನೂನುಬಾಹಿರ (Void). ಇದನ್ನು ಸಾಮಾನ್ಯ ಗೌಪ್ಯತಾ ಷರತ್ತಿಗೆ ಸೀಮಿತಗೊಳಿಸಬಹುದೇ?",
+        firm: "ನಮಸ್ಕಾರ, 2 ವರ್ಷಗಳ ನಾನ್-ಕಾಂಪೀಟ್ ನಿರ್ಬಂಧವು ಭಾರತೀಯ ಒಪ್ಪಂದ ಕಾಯ್ದೆ ಕಲಂ 27 ರ ಉಲ್ಲಂಘನೆಯಾಗಿದೆ. ದಯವಿಟ್ಟು ಇದನ್ನು ಉದ್ಯಮದ ಮಾನದಂಡದ ಪ್ರಕಾರ ಗೌಪ್ಯತಾ ಷರತ್ತಾಗಿ ಬದಲಾಯಿಸಿ.",
+        legal: "ಸುಪ್ರೀಂ ಕೋರ್ಟ್ ತೀರ್ಪುಗಳ (Niranjan Golikari ಪ್ರಕರಣ) ಪ್ರಕಾರ ಕಲಂ 27 ರ ಅಡಿಯಲ್ಲಿ ಉದ್ಯೋಗ ನಂತರದ ನಿರ್ಬಂಧಗಳು ಸಂಪೂರ್ಣ ಅಸಿಂಧು (Void ab initio). ಇದನ್ನು ತಕ್ಷಣ ತಿದ್ದುಪಡಿ ಮಾಡಿ."
       };
     }
   }

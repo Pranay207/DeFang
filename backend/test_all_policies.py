@@ -55,6 +55,24 @@ when {
     resource.full_deposit_forfeited_on_early_exit == true
 };
 
+// arbitrary_rent_escalation.cedar
+// cite: Model Tenancy Act 2021 & Rent Control Norms
+@id("arbitrary_rent_escalation")
+forbid(principal, action == Action::"enforce_clause", resource)
+when {
+    resource.category == "rent_escalation" &&
+    resource.annual_escalation_pct > 10
+};
+
+// lock_in_period_penalty.cedar
+// cite: Indian Contract Act 1872, Sec 74
+@id("lock_in_period_penalty")
+forbid(principal, action == Action::"enforce_clause", resource)
+when {
+    resource.category == "lock_in" &&
+    resource.demands_entire_lock_in_rent == true
+};
+
 permit(principal, action == Action::"enforce_clause", resource);
 """
 
@@ -70,7 +88,9 @@ entities = [
             "daily_interest_pct": 5,
             "duration_months": 24,
             "painting_deduction_mandatory": True,
-            "full_deposit_forfeited_on_early_exit": True
+            "full_deposit_forfeited_on_early_exit": True,
+            "annual_escalation_pct": 15,
+            "demands_entire_lock_in_rent": True
         },
         "parents": []
     }

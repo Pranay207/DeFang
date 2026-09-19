@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import confetti from 'canvas-confetti';
-import { ArrowLeft, Printer, Share2 } from 'lucide-react';
+import { ArrowLeft, Printer, Share2, Download, History } from 'lucide-react';
 import fallbackData from './presetsFallback.json';
 
 import { Navbar } from './components/Navbar';
@@ -28,7 +28,7 @@ export function App() {
   const [currentLang, setCurrentLang] = useState<Language>(() => {
     try {
       const saved = localStorage.getItem('defang_language');
-      if (saved === 'hi' || saved === 'te' || saved === 'en') {
+      if (saved === 'hi' || saved === 'te' || saved === 'en' || saved === 'kn') {
         return saved;
       }
     } catch {
@@ -38,6 +38,14 @@ export function App() {
   });
   const [toastMessage, setToastMessage] = useState<string | null>(null);
   const [clauseFilter, setClauseFilter] = useState<'all' | 'deny' | 'allow'>('all');
+  const [recentAudits, setRecentAudits] = useState<ScanResult[]>(() => {
+    try {
+      const saved = localStorage.getItem('defang_recent_audits');
+      return saved ? JSON.parse(saved) : [];
+    } catch {
+      return [];
+    }
+  });
 
   const t = getTranslation(currentLang);
 
@@ -96,6 +104,67 @@ export function App() {
     window.print();
   };
 
+  const saveToRecentAudits = (result: ScanResult) => {
+    try {
+      const existingStr = localStorage.getItem('defang_recent_audits');
+      const existing: ScanResult[] = existingStr ? JSON.parse(existingStr) : [];
+      const filtered = existing.filter(item => item.contract_title !== result.contract_title);
+      const updated = [result, ...filtered].slice(0, 5);
+      setRecentAudits(updated);
+      localStorage.setItem('defang_recent_audits', JSON.stringify(updated));
+    } catch (e) {
+      console.warn('Failed to save audit history:', e);
+    }
+  };
+
+  // Download comprehensive statutory audit report as clean text file
+  const handleDownloadReport = () => {
+    if (!scanResult) return;
+    const deniedClauses = scanResult.clauses.filter((c) => c.verdict === 'DENY');
+    const summaryText = [
+      `=============================================================`,
+      `       DEFANG — INDIAN CONTRACT STATUTORY AUDIT REPORT       `,
+      `=============================================================`,
+      `Generated on: ${new Date().toLocaleString('en-IN')}`,
+      `Document Title: ${scanResult.contract_title || 'Custom Indian Agreement'}`,
+      `Jurisdiction: ${scanResult.jurisdiction || 'Indian Contract Law'}`,
+      `Overall Risk Score: ${scanResult.overall_risk_score}/100 [${scanResult.risk_level}]`,
+      `Total Rupee Trap Exposure: ₹${scanResult.total_rupee_trap.toLocaleString('en-IN')}`,
+      `Contract Imbalance: ${scanResult.power_imbalance.landlord_pct}% Counterparty Bias`,
+      `Red Flags Found: ${scanResult.deny_count} of ${scanResult.clauses.length} clauses analyzed`,
+      `Verification Engine: AWS Cedar (8 Statutory Policies Executed)`,
+      ``,
+      `-------------------------------------------------------------`,
+      `STATUTORY VIOLATIONS & UNLAWFUL COVENANTS:`,
+      `-------------------------------------------------------------`,
+      ...deniedClauses.map((c, i) => [
+        `[#${i + 1}] ${c.title || c.category.toUpperCase()}`,
+        `Statute: ${c.citation}`,
+        `Cedar Policy: ${c.rule_text}`,
+        `Severity: ${c.severity}/100`,
+        `Original Clause: "${c.clause_text}"`,
+        `Plain Explanation: ${c.eli5}`,
+        `Proposed Fair Revision: "${c.rewritten_fair_text}"`,
+        ``
+      ].join('\n')),
+      `-------------------------------------------------------------`,
+      `Report certified by DeFang Open-Source Legal Intelligence Engine`,
+      `https://github.com/Pranay207/DeFang`,
+      `=============================================================`
+    ].join('\n');
+
+    const blob = new Blob([summaryText], { type: 'text/plain;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `DeFang_Audit_${(scanResult.contract_title || 'Contract').replace(/[^a-zA-Z0-9]/g, '_')}.txt`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+    triggerToast(t.results.downloadedToast);
+  };
+
   // Load preset with instant pre-cached response
   const handleSelectPreset = async (presetId: string) => {
     setSelectedPresetId(presetId);
@@ -116,6 +185,7 @@ export function App() {
       // Allow dual-engine animation to play for dramatic judge demo effect
       setTimeout(() => {
         setScanResult(data);
+        saveToRecentAudits(data);
         if (data.raw_text) setInputText(data.raw_text);
         setIsLoading(false);
         triggerToast(`Loaded preset: ${data.contract_title}`);
@@ -158,6 +228,7 @@ export function App() {
       // Complete scanning state
       setTimeout(() => {
         setScanResult(data);
+        saveToRecentAudits(data);
         setIsLoading(false);
         triggerToast('Scan complete! Dual-engine verified.');
         if (data.overall_risk_score < 40) {
@@ -265,6 +336,63 @@ export function App() {
               currentLang={currentLang}
             />
 
+            {/* Recent Audits Shelf (Persisted in localStorage) */}
+            {recentAudits.length > 0 && (
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="p-4 rounded-xl bg-slate-900/60 border border-white/10 space-y-3"
+              >
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center space-x-2 text-xs font-bold text-slate-300">
+                    <History className="w-3.5 h-3.5 text-sky-400" />
+                    <span>Recent Audits ({recentAudits.length})</span>
+                  </div>
+                  <button
+                    onClick={() => {
+                      setRecentAudits([]);
+                      localStorage.removeItem('defang_recent_audits');
+                    }}
+                    className="text-[11px] text-slate-500 hover:text-red-400 font-mono transition-colors"
+                  >
+                    Clear History
+                  </button>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2.5">
+                  {recentAudits.map((item, idx) => (
+                    <button
+                      key={idx}
+                      onClick={() => {
+                        setScanResult(item);
+                        if (item.raw_text) setInputText(item.raw_text);
+                        triggerToast(`Restored: ${item.contract_title}`);
+                      }}
+                      className="p-3 text-left rounded-lg bg-slate-950/80 hover:bg-slate-800/80 border border-white/5 hover:border-sky-500/40 transition-all flex items-center justify-between group"
+                    >
+                      <div className="truncate pr-2">
+                        <div className="text-xs font-semibold text-white group-hover:text-sky-300 truncate">
+                          {item.contract_title}
+                        </div>
+                        <div className="text-[10px] text-slate-400 font-mono">
+                          {item.deny_count} red flags • ₹{item.total_rupee_trap.toLocaleString('en-IN')}
+                        </div>
+                      </div>
+                      <span className={`text-[11px] font-mono font-bold px-2 py-0.5 rounded border ${
+                        item.overall_risk_score >= 70
+                          ? 'text-red-400 bg-red-500/10 border-red-500/30'
+                          : item.overall_risk_score >= 40
+                          ? 'text-amber-400 bg-amber-500/10 border-amber-500/30'
+                          : 'text-emerald-400 bg-emerald-500/10 border-emerald-500/30'
+                      }`}>
+                        {item.overall_risk_score}
+                      </span>
+                    </button>
+                  ))}
+                </div>
+              </motion.div>
+            )}
+
             {/* Divider */}
             <motion.div
               initial={{ opacity: 0, y: 12 }}
@@ -351,6 +479,15 @@ export function App() {
                 >
                   <Share2 className="w-3.5 h-3.5 text-sky-400" />
                   <span>{t.results.shareBtn}</span>
+                </button>
+
+                <button
+                  onClick={handleDownloadReport}
+                  className="flex items-center space-x-1.5 px-3 py-1.5 rounded-lg bg-slate-900 border border-white/10 hover:border-emerald-500/40 text-xs font-semibold text-emerald-300 hover:text-white transition-all shadow-sm"
+                  title="Download clean statutory text audit report"
+                >
+                  <Download className="w-3.5 h-3.5 text-emerald-400" />
+                  <span>{t.results.downloadBtn}</span>
                 </button>
 
                 <button

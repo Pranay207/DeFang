@@ -53,6 +53,22 @@ POLICY_METADATA = {
         "severity": 95,
         "description": "Section 74 restricts liquidated damages to reasonable compensation for actual loss proved, prohibiting unconditional deposit forfeiture.",
         "financial": True
+    },
+    "arbitrary_rent_escalation": {
+        "title": "Uncapped / Predatory Annual Rent Escalation",
+        "citation": "Model Tenancy Act 2021 & Urban Rent Norms",
+        "rule_text": "forbid when annual_escalation_pct > 10",
+        "severity": 80,
+        "description": "Annual rent escalation exceeds 10% (standard statutory guideline caps annual increments at 5% to 10% maximum).",
+        "financial": True
+    },
+    "lock_in_period_penalty": {
+        "title": "Excessive Lock-in Period Rent Penalty",
+        "citation": "Indian Contract Act 1872, Sec 74 (Penal Damages)",
+        "rule_text": "forbid when demands_entire_lock_in_rent == true",
+        "severity": 90,
+        "description": "Demanding rent for the full remainder of a lock-in period upon early exit constitutes an unlawful penal clause under Section 74.",
+        "financial": True
     }
 }
 
@@ -68,7 +84,9 @@ class CedarEngine:
             "interest_rate_cap.cedar",
             "non_compete_duration.cedar",
             "painting_deduction.cedar",
-            "premature_exit_forfeiture.cedar"
+            "premature_exit_forfeiture.cedar",
+            "arbitrary_rent_escalation.cedar",
+            "lock_in_period_penalty.cedar"
         ]
         for pf in policy_files:
             policy_id = pf.replace(".cedar", "")
@@ -96,7 +114,9 @@ class CedarEngine:
             "daily_interest_pct": int(val.get("daily_interest_pct") or 0),
             "duration_months": int(val.get("duration_months") or 0),
             "painting_deduction_mandatory": bool(val.get("painting_deduction_mandatory", False)),
-            "full_deposit_forfeited_on_early_exit": bool(val.get("full_deposit_forfeited_on_early_exit", False))
+            "full_deposit_forfeited_on_early_exit": bool(val.get("full_deposit_forfeited_on_early_exit", False)),
+            "annual_escalation_pct": int(val.get("annual_escalation_pct") or 0),
+            "demands_entire_lock_in_rent": bool(val.get("demands_entire_lock_in_rent", False))
         }
 
         entities = [

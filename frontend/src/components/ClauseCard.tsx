@@ -10,7 +10,8 @@ import {
   ChevronDown, 
   ChevronUp, 
   Scale, 
-  Info
+  Info,
+  Send
 } from 'lucide-react';
 import type { Clause, Language } from '../types';
 import { getTranslation, getLocalizedWhatsApp } from '../i18n';
@@ -37,6 +38,7 @@ export const ClauseCard: React.FC<ClauseCardProps> = ({
   const getEli5 = () => {
     if (currentLang === 'hi' && clause.eli5_hi) return clause.eli5_hi;
     if (currentLang === 'te' && clause.eli5_te) return clause.eli5_te;
+    if (currentLang === 'kn' && (clause as any).eli5_kn) return (clause as any).eli5_kn;
     return clause.eli5;
   };
 
@@ -47,6 +49,12 @@ export const ClauseCard: React.FC<ClauseCardProps> = ({
     setTimeout(() => {
       setCopiedTab(null);
     }, 2000);
+  };
+
+  const handleSendWhatsApp = (text: string) => {
+    const url = `https://api.whatsapp.com/send?text=${encodeURIComponent(text)}`;
+    window.open(url, '_blank', 'noopener,noreferrer');
+    onCopyToast('Opening WhatsApp...');
   };
 
   // Custom dark theme styles for react-diff-viewer to mirror GitHub PR diff
@@ -316,14 +324,14 @@ export const ClauseCard: React.FC<ClauseCardProps> = ({
               </div>
             </div>
 
-            {/* Copy Button */}
-            <div className="mt-3 flex justify-end">
+            {/* Action Buttons: Copy and Direct WhatsApp */}
+            <div className="mt-3 flex items-center justify-end space-x-2">
               <button
                 onClick={() => handleCopyWhatsApp(
                   localizedWhatsApp[activeTab] || clause.whatsapp[activeTab],
                   activeTab === 'polite' ? 'Polite' : activeTab === 'firm' ? 'Professional' : 'Legal Shield'
                 )}
-                className="flex items-center space-x-1.5 px-3 py-1.5 rounded-lg bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-300 border border-emerald-500/40 text-xs font-semibold transition-all shadow"
+                className="flex items-center space-x-1.5 px-3 py-1.5 rounded-lg bg-slate-800/80 hover:bg-slate-700/80 text-slate-300 hover:text-white border border-white/10 text-xs font-semibold transition-all shadow"
               >
                 {copiedTab ? (
                   <>
@@ -336,6 +344,16 @@ export const ClauseCard: React.FC<ClauseCardProps> = ({
                     <span>{t.clauseCard.copyBtn}</span>
                   </>
                 )}
+              </button>
+
+              <button
+                onClick={() => handleSendWhatsApp(
+                  localizedWhatsApp[activeTab] || clause.whatsapp[activeTab]
+                )}
+                className="flex items-center space-x-1.5 px-3.5 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-xs shadow-md shadow-emerald-500/20 transition-all border border-emerald-400/40"
+              >
+                <Send className="w-3.5 h-3.5" />
+                <span>{t.clauseCard.sendWhatsAppBtn}</span>
               </button>
             </div>
           </div>

@@ -201,7 +201,7 @@ def aggregate_scan_result(contract_text: str, raw_clauses: List[Dict[str, Any]],
                 "name": "AWS Cedar Policy Engine",
                 "status": "COMPLETED",
                 "duration_ms": 1560,
-                "policies_checked": 6,
+                "policies_checked": len(cedar_engine.individual_policies),
                 "policies_denied": deny_count,
                 "policies_allowed": allow_count
             }
