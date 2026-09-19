@@ -1,19 +1,24 @@
 import React, { useState, useRef } from 'react';
 import { UploadCloud, FileText, Sparkles, ArrowRight } from 'lucide-react';
+import type { Language } from '../types';
+import { getTranslation } from '../i18n';
 
 interface ContractInputProps {
   inputText: string;
   onTextChange: (text: string) => void;
   onScan: (file?: File) => void;
   isLoading: boolean;
+  currentLang?: Language;
 }
 
 export const ContractInput: React.FC<ContractInputProps> = ({
   inputText,
   onTextChange,
   onScan,
-  isLoading
+  isLoading,
+  currentLang = 'en'
 }) => {
+  const t = getTranslation(currentLang);
   const [dragActive, setDragActive] = useState(false);
   const [selectedFileName, setSelectedFileName] = useState<string | null>(null);
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
@@ -61,11 +66,11 @@ export const ContractInput: React.FC<ContractInputProps> = ({
         <div className="flex items-center justify-between mb-4">
           <div>
             <h3 className="text-sm font-bold uppercase tracking-wider text-white flex items-center space-x-2">
-              <span>Paste Contract Text or Upload PDF</span>
+              <span>{t.input.title}</span>
               <span className="w-1.5 h-1.5 rounded-full bg-sky-400" />
             </h3>
             <p className="text-xs text-slate-400 mt-0.5">
-              Supports Indian Rental Agreements, Offer Letters, Employment Bonds, and Freelance MSAs
+              {t.input.subtitle}
             </p>
           </div>
 
@@ -92,11 +97,11 @@ export const ContractInput: React.FC<ContractInputProps> = ({
                 rows={8}
                 value={inputText}
                 onChange={(e) => onTextChange(e.target.value)}
-                placeholder="Paste any Indian tenancy, employment, or service contract here... (e.g. Indiranagar 11-month rent agreement, 2-year startup bond, or 4% daily late fee clause)"
+                placeholder={t.input.placeholder}
                 className="w-full bg-slate-950/80 border border-white/10 rounded-xl p-4 text-xs font-mono text-slate-200 placeholder-slate-500 focus:outline-none focus:border-sky-500/60 focus:ring-1 focus:ring-sky-500/30 transition-all resize-y leading-relaxed"
               />
               <div className="absolute bottom-3 right-3 text-[10px] font-mono text-slate-500 bg-slate-900/80 px-2 py-0.5 rounded">
-                {inputText.length} chars
+                {inputText.length} {t.input.chars}
               </div>
             </div>
           ) : (
@@ -105,7 +110,7 @@ export const ContractInput: React.FC<ContractInputProps> = ({
                 <FileText className="w-6 h-6" />
               </div>
               <h4 className="text-sm font-bold text-white font-mono">{selectedFileName}</h4>
-              <p className="text-xs text-slate-400 mt-1">Ready for PDF clause extraction with pdfplumber</p>
+              <p className="text-xs text-slate-400 mt-1">{t.input.readyPdf}</p>
             </div>
           )}
 
@@ -123,7 +128,7 @@ export const ContractInput: React.FC<ContractInputProps> = ({
               }`}
             >
               <UploadCloud className="w-4 h-4 text-sky-400" />
-              <span>Upload PDF or Text File</span>
+              <span>{t.input.uploadBtn}</span>
               <input 
                 type="file" 
                 ref={fileInputRef} 
@@ -142,7 +147,7 @@ export const ContractInput: React.FC<ContractInputProps> = ({
               }`}
             >
               <Sparkles className="w-4 h-4 fill-slate-950" />
-              <span>{isLoading ? 'Scanning with Strands + Cedar...' : 'Run DeFang Dual-Engine Scan'}</span>
+              <span>{isLoading ? t.input.scanningBtn : t.input.scanBtn}</span>
               <ArrowRight className="w-4 h-4" />
             </button>
           </div>
@@ -152,11 +157,11 @@ export const ContractInput: React.FC<ContractInputProps> = ({
             <div className="flex items-center space-x-2">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
               <span>
-                Engine: <strong className="text-slate-300">Local Rule Parser</strong> (or Gemini if API key set) + <strong className="text-slate-300">AWS Cedar Engine</strong>
+                {t.input.engineInfo}
               </span>
             </div>
             <span className="text-slate-500 text-[10px]">
-              *Presets above run 100% offline on-device
+              {t.input.offlineBadge}
             </span>
           </div>
         </div>

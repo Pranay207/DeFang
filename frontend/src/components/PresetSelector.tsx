@@ -1,25 +1,43 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Home, Briefcase, Code, Sparkles, ArrowRight } from 'lucide-react';
-import type { PresetSummary } from '../types';
+import type { PresetSummary, Language } from '../types';
+import { getTranslation } from '../i18n';
 
 interface PresetSelectorProps {
   presets: PresetSummary[];
   selectedPresetId: string | null;
   onSelectPreset: (presetId: string) => void;
   isLoading: boolean;
+  currentLang?: Language;
 }
 
 export const PresetSelector: React.FC<PresetSelectorProps> = ({
   presets,
   selectedPresetId,
   onSelectPreset,
-  isLoading
+  isLoading,
+  currentLang = 'en'
 }) => {
+  const t = getTranslation(currentLang);
+
   const getIcon = (id: string) => {
     if (id.includes('rental')) return <Home className="w-5 h-5 text-red-400" />;
     if (id.includes('internship')) return <Briefcase className="w-5 h-5 text-amber-400" />;
     return <Code className="w-5 h-5 text-sky-400" />;
+  };
+
+  const getLocalizedContent = (preset: PresetSummary) => {
+    if (preset.id.includes('rental')) {
+      return { title: t.presets.rentalTitle, description: t.presets.rentalDesc };
+    }
+    if (preset.id.includes('internship')) {
+      return { title: t.presets.internshipTitle, description: t.presets.internshipDesc };
+    }
+    if (preset.id.includes('freelance')) {
+      return { title: t.presets.freelanceTitle, description: t.presets.freelanceDesc };
+    }
+    return { title: preset.title, description: preset.description };
   };
 
   const getSeverityStyle = (badge: string) => {
@@ -46,7 +64,7 @@ export const PresetSelector: React.FC<PresetSelectorProps> = ({
       <div className="flex items-center space-x-2 mb-3">
         <Sparkles className="w-4 h-4 text-amber-400 animate-pulse" />
         <h3 className="text-xs font-bold uppercase tracking-wider text-slate-300">
-          One-Click Demo Presets (Instant Offline Cache)
+          {t.presets.header}
         </h3>
       </div>
 
@@ -54,6 +72,7 @@ export const PresetSelector: React.FC<PresetSelectorProps> = ({
         {presets.map((preset, index) => {
           const isSelected = selectedPresetId === preset.id;
           const severity = getSeverityStyle(preset.badge);
+          const localized = getLocalizedContent(preset);
 
           return (
             <motion.button
@@ -84,17 +103,17 @@ export const PresetSelector: React.FC<PresetSelectorProps> = ({
               </div>
 
               <h4 className="text-sm font-bold text-white group-hover:text-sky-300 transition-colors duration-200">
-                {preset.title}
+                {localized.title}
               </h4>
               <p className="text-[11px] text-slate-400 mt-1 line-clamp-2 leading-relaxed">
-                {preset.description}
+                {localized.description}
               </p>
 
               <div className="mt-3 pt-2.5 border-t border-white/5 flex items-center justify-between text-[10px] text-slate-400 font-mono">
                 <span>{preset.category}</span>
                 <span className="flex items-center space-x-1.5 text-sky-400 font-semibold group-hover:text-sky-300 transition-colors">
                   <span className="relative pb-0.5 inline-block">
-                    Load Preset
+                    {t.presets.loadPreset}
                     <span className="absolute bottom-0 left-0 w-0 h-[1.5px] bg-sky-400 group-hover:w-full transition-all duration-300 ease-out" />
                   </span>
                   <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform duration-200" />

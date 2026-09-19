@@ -3,13 +3,16 @@ import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import { useSpring } from 'framer-motion';
 import { AlertOctagon, CheckCircle2, ShieldAlert, FileText, Landmark } from 'lucide-react';
-import type { ScanResult } from '../types';
+import type { ScanResult, Language } from '../types';
+import { getTranslation } from '../i18n';
 
 interface RiskHeroProps {
   result: ScanResult;
+  currentLang?: Language;
 }
 
-export const RiskHero: React.FC<RiskHeroProps> = ({ result }) => {
+export const RiskHero: React.FC<RiskHeroProps> = ({ result, currentLang = 'en' }) => {
+  const t = getTranslation(currentLang);
   const [displayScore, setDisplayScore] = useState(0);
 
   // Framer motion animated counter
@@ -28,6 +31,13 @@ export const RiskHero: React.FC<RiskHeroProps> = ({ result }) => {
   
   const scoreColor = isDanger ? '#ef4444' : isWarn ? '#f59e0b' : '#10b981';
   const glowClass = isDanger ? 'shadow-neon-red' : isWarn ? 'shadow-neon-amber' : 'shadow-neon-green';
+
+  const getLocalizedRiskStatus = () => {
+    if (result.overall_risk_score >= 80) return t.riskHero.statusCritical;
+    if (result.overall_risk_score >= 60) return t.riskHero.statusSevere;
+    if (result.overall_risk_score >= 40) return t.riskHero.statusModerate;
+    return t.riskHero.statusLow;
+  };
 
   return (
     <div className={`glass-panel rounded-2xl p-6 border border-white/10 ${glowClass} relative overflow-hidden transition-all`}>
@@ -63,10 +73,10 @@ export const RiskHero: React.FC<RiskHeroProps> = ({ result }) => {
                   ? 'bg-amber-500/20 text-amber-400 border border-amber-500/40'
                   : 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/40'
               }`}>
-                {result.risk_level}
+                {getLocalizedRiskStatus()}
               </span>
               <span className="text-xs text-slate-400 font-mono">
-                DeFang Risk Score
+                {t.riskHero.scoreLabel}
               </span>
             </div>
 
@@ -94,36 +104,36 @@ export const RiskHero: React.FC<RiskHeroProps> = ({ result }) => {
           <div className="p-3.5 rounded-xl bg-red-950/30 border border-red-500/20 flex flex-col items-center justify-center text-center">
             <div className="flex items-center space-x-1 text-red-400 mb-1">
               <AlertOctagon className="w-4 h-4" />
-              <span className="text-[11px] font-bold uppercase">Red Flags</span>
+              <span className="text-[11px] font-bold uppercase">{t.riskHero.redFlags}</span>
             </div>
             <span className="text-2xl font-extrabold text-red-400 font-mono">
               {result.deny_count}
             </span>
-            <span className="text-[10px] text-slate-400">Cedar DENY</span>
+            <span className="text-[10px] text-slate-400">{t.riskHero.cedarDeny}</span>
           </div>
 
           {/* ALLOW Card */}
           <div className="p-3.5 rounded-xl bg-emerald-950/30 border border-emerald-500/20 flex flex-col items-center justify-center text-center">
             <div className="flex items-center space-x-1 text-emerald-400 mb-1">
               <CheckCircle2 className="w-4 h-4" />
-              <span className="text-[11px] font-bold uppercase">Compliant</span>
+              <span className="text-[11px] font-bold uppercase">{t.riskHero.compliant}</span>
             </div>
             <span className="text-2xl font-extrabold text-emerald-400 font-mono">
               {result.allow_count}
             </span>
-            <span className="text-[10px] text-slate-400">Cedar ALLOW</span>
+            <span className="text-[10px] text-slate-400">{t.riskHero.cedarAllow}</span>
           </div>
 
           {/* Total Clauses */}
           <div className="p-3.5 rounded-xl bg-slate-900/60 border border-white/10 flex flex-col items-center justify-center text-center">
             <div className="flex items-center space-x-1 text-slate-400 mb-1">
               <ShieldAlert className="w-4 h-4 text-sky-400" />
-              <span className="text-[11px] font-bold uppercase">Analyzed</span>
+              <span className="text-[11px] font-bold uppercase">{t.riskHero.totalClauses}</span>
             </div>
             <span className="text-2xl font-extrabold text-white font-mono">
               {result.total_clauses}
             </span>
-            <span className="text-[10px] text-slate-400">Total Clauses</span>
+            <span className="text-[10px] text-slate-400">{t.riskHero.totalClauses}</span>
           </div>
         </div>
       </div>

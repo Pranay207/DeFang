@@ -15,6 +15,7 @@ import { ContractInput } from './components/ContractInput';
 import { Toast } from './components/Toast';
 
 import type { ScanResult, PresetSummary, Language } from './types';
+import { getTranslation } from './i18n';
 
 const API_BASE = 'http://127.0.0.1:8000';
 
@@ -24,9 +25,30 @@ export function App() {
   const [inputText, setInputText] = useState<string>('');
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [scanResult, setScanResult] = useState<ScanResult | null>(null);
-  const [currentLang, setCurrentLang] = useState<Language>('en');
+  const [currentLang, setCurrentLang] = useState<Language>(() => {
+    try {
+      const saved = localStorage.getItem('defang_language');
+      if (saved === 'hi' || saved === 'te' || saved === 'en') {
+        return saved;
+      }
+    } catch {
+      // fallback
+    }
+    return 'en';
+  });
   const [toastMessage, setToastMessage] = useState<string | null>(null);
   const [clauseFilter, setClauseFilter] = useState<'all' | 'deny' | 'allow'>('all');
+
+  const t = getTranslation(currentLang);
+
+  const handleLanguageChange = (lang: Language) => {
+    setCurrentLang(lang);
+    try {
+      localStorage.setItem('defang_language', lang);
+    } catch {
+      // fallback
+    }
+  };
 
   // Load presets on mount (with automatic offline fallback)
   useEffect(() => {
@@ -67,7 +89,7 @@ export function App() {
     ].join('\n');
 
     navigator.clipboard.writeText(summaryText);
-    triggerToast('📋 Full Legal Audit Summary copied to clipboard!');
+    triggerToast(t.results.sharedToast);
   };
 
   const handlePrintReport = () => {
@@ -170,7 +192,7 @@ export function App() {
       {/* Top Navbar */}
       <Navbar
         currentLang={currentLang}
-        onLanguageChange={setCurrentLang}
+        onLanguageChange={handleLanguageChange}
         onReset={handleReset}
         hasResult={!!scanResult}
       />
@@ -202,7 +224,7 @@ export function App() {
                 className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-slate-900/90 border border-white/10 text-xs font-semibold text-slate-300 shadow-inner"
               >
                 <span className="w-2 h-2 rounded-full bg-red-400 animate-ping" />
-                <span>AI Agent Extraction + Formal Cedar Policy Engine</span>
+                <span>{t.hero.enginePill}</span>
               </motion.div>
 
               <h1 className="text-4xl sm:text-5xl lg:text-[3.25rem] font-black tracking-tight text-white leading-[1.14]">
@@ -212,7 +234,7 @@ export function App() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
                 >
-                  Stop Signing Toxic Indian Agreements.
+                  {t.hero.titleLine1}
                 </motion.span>
                 <motion.span
                   className="block bg-gradient-to-r from-red-400 via-orange-400 to-amber-300 bg-clip-text text-transparent drop-shadow-[0_4px_24px_rgba(239,68,68,0.3)]"
@@ -220,7 +242,7 @@ export function App() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.28, ease: [0.16, 1, 0.3, 1] }}
                 >
-                  Scan, DeFang, and Negotiate.
+                  {t.hero.titleLine2}
                 </motion.span>
               </h1>
 
@@ -230,7 +252,7 @@ export function App() {
                 transition={{ duration: 0.5, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
                 className="text-sm md:text-base text-slate-400 leading-relaxed max-w-2xl mx-auto"
               >
-                Automatic statutory policy verification against the <strong className="text-slate-200">Model Tenancy Act 2021</strong>, <strong className="text-slate-200">Indian Contract Act 1872 (Sec 27 & 74)</strong>, and <strong className="text-slate-200">Usurious Loans Act</strong>.
+                {t.hero.subtext}
               </motion.p>
             </div>
 
@@ -240,6 +262,7 @@ export function App() {
               selectedPresetId={selectedPresetId}
               onSelectPreset={handleSelectPreset}
               isLoading={isLoading}
+              currentLang={currentLang}
             />
 
             {/* Divider */}
@@ -251,7 +274,7 @@ export function App() {
             >
               <div className="flex-1 h-px bg-white/10" />
               <span className="text-xs uppercase font-mono tracking-widest text-slate-500">
-                Or Scan Custom Contract
+                {t.input.title}
               </span>
               <div className="flex-1 h-px bg-white/10" />
             </motion.div>
@@ -267,6 +290,7 @@ export function App() {
                 onTextChange={setInputText}
                 onScan={handleScan}
                 isLoading={isLoading}
+                currentLang={currentLang}
               />
             </motion.div>
           </div>
@@ -316,7 +340,7 @@ export function App() {
                 className="flex items-center space-x-2 text-xs font-semibold text-slate-400 hover:text-white transition-colors px-3 py-1.5 rounded-lg bg-slate-900/70 border border-white/10 hover:border-white/20"
               >
                 <ArrowLeft className="w-4 h-4" />
-                <span>Back to Presets & Scanner</span>
+                <span>{t.results.backBtn}</span>
               </button>
 
               <div className="flex flex-wrap items-center gap-2">
@@ -326,7 +350,7 @@ export function App() {
                   title="Copy formatted text audit summary"
                 >
                   <Share2 className="w-3.5 h-3.5 text-sky-400" />
-                  <span>Share Audit</span>
+                  <span>{t.results.shareBtn}</span>
                 </button>
 
                 <button
@@ -335,12 +359,12 @@ export function App() {
                   title="Download or Print PDF Report"
                 >
                   <Printer className="w-3.5 h-3.5 text-red-400" />
-                  <span>Download / Print Report</span>
+                  <span>{t.results.printBtn}</span>
                 </button>
 
                 <div className="hidden lg:flex items-center space-x-2 text-xs font-mono text-slate-400 pl-2 border-l border-white/10">
                   <span>Cedar Engine:</span>
-                  <span className="text-emerald-400 font-bold">6/6 Policies Executed</span>
+                  <span className="text-emerald-400 font-bold">{t.results.cedarExecuted}</span>
                 </div>
               </div>
             </div>
@@ -352,7 +376,7 @@ export function App() {
             />
 
             {/* Risk Hero with Circular Gauge & Scores */}
-            <RiskHero result={scanResult} />
+            <RiskHero result={scanResult} currentLang={currentLang} />
 
             {/* 2-Column Grid: Feature 2 (Rupee Simulator) + Feature 3 (Power Imbalance) */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
@@ -360,11 +384,13 @@ export function App() {
               <RupeeTrapSimulator
                 totalRupeeTrap={scanResult.total_rupee_trap}
                 breakdown={scanResult.rupee_breakdown}
+                currentLang={currentLang}
               />
 
               {/* Feature 3: Power Imbalance Meter */}
               <PowerImbalanceMeter
                 imbalance={scanResult.power_imbalance}
+                currentLang={currentLang}
               />
             </div>
 
@@ -372,10 +398,10 @@ export function App() {
             <div className="flex flex-wrap items-center justify-between gap-4 pt-4 border-t border-white/10">
               <div>
                 <h3 className="text-lg font-bold text-white tracking-tight">
-                  Clause-by-Clause Policy Audit ({scanResult.clauses.length})
+                  {t.results.clauseAuditTitle} ({scanResult.clauses.length})
                 </h3>
                 <p className="text-xs text-slate-400">
-                  Inspect statutory violations, view GitHub PR diffs, or copy calibrated WhatsApp replies
+                  {t.results.clauseAuditSubtitle}
                 </p>
               </div>
 
@@ -388,7 +414,7 @@ export function App() {
                       : 'text-slate-400 hover:text-white'
                   }`}
                 >
-                  All ({scanResult.clauses.length})
+                  {t.results.filterAll} ({scanResult.clauses.length})
                 </button>
                 <button
                   onClick={() => setClauseFilter('deny')}
@@ -398,7 +424,7 @@ export function App() {
                       : 'text-red-400/80 hover:text-red-300'
                   }`}
                 >
-                  <span>Red Flags ({scanResult.deny_count})</span>
+                  <span>{t.results.filterDeny} ({scanResult.deny_count})</span>
                 </button>
                 <button
                   onClick={() => setClauseFilter('allow')}
@@ -408,7 +434,7 @@ export function App() {
                       : 'text-emerald-400/80 hover:text-emerald-300'
                   }`}
                 >
-                  <span>Compliant ({scanResult.allow_count})</span>
+                  <span>{t.results.filterAllow} ({scanResult.allow_count})</span>
                 </button>
               </div>
             </div>
@@ -446,7 +472,7 @@ export function App() {
 
               {filteredClauses.length === 0 && (
                 <div className="p-8 text-center glass-panel rounded-2xl border border-white/10 text-slate-400 text-xs font-mono">
-                  No clauses found for the selected filter.
+                  {t.results.noClauses}
                 </div>
               )}
             </motion.div>

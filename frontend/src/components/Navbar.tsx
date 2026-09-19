@@ -1,6 +1,7 @@
 import { ShieldAlert, Scale, RefreshCw } from 'lucide-react';
 import { LanguageToggle } from './LanguageToggle';
 import type { Language } from '../types';
+import { getTranslation } from '../i18n';
 
 interface NavbarProps {
   currentLang: Language;
@@ -15,6 +16,8 @@ export const Navbar: React.FC<NavbarProps> = ({
   onReset,
   hasResult
 }) => {
+  const t = getTranslation(currentLang);
+
   return (
     <header className="sticky top-0 z-50 border-b border-white/10 bg-slate-950/80 backdrop-blur-xl">
       <div className="max-w-7xl mx-auto px-6 h-18 flex items-center justify-between">
@@ -44,7 +47,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               </span>
             </div>
             <p className="text-[11px] text-slate-400 font-medium">
-              AI Indian Contract Red-Flag Scanner & Policy Verifier
+              {t.navbar.brandSubtitle}
             </p>
           </div>
         </div>
@@ -54,7 +57,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           <div className="flex items-center space-x-2 px-3 py-1.5 rounded-lg bg-slate-900/90 border border-white/10 text-xs">
             <span className="flex items-center text-red-400 font-medium space-x-1.5">
               <Scale className="w-3.5 h-3.5" />
-              <span className="text-slate-200 font-semibold">Strands + Cedar Policy Engine</span>
+              <span className="text-slate-200 font-semibold">{t.navbar.engineBadge}</span>
             </span>
           </div>
         </div>
@@ -69,7 +72,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               className="flex items-center space-x-1.5 px-3 py-1.5 text-xs font-medium text-slate-300 hover:text-white bg-slate-800/80 hover:bg-slate-700/80 border border-white/10 rounded-lg transition-all"
             >
               <RefreshCw className="w-3.5 h-3.5" />
-              <span>New Scan</span>
+              <span>{t.navbar.newScan}</span>
             </button>
           )}
         </div>

@@ -1,13 +1,16 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Scale, AlertCircle } from 'lucide-react';
-import type { PowerImbalance } from '../types';
+import type { PowerImbalance, Language } from '../types';
+import { getTranslation } from '../i18n';
 
 interface PowerImbalanceMeterProps {
   imbalance: PowerImbalance;
+  currentLang?: Language;
 }
 
-export const PowerImbalanceMeter: React.FC<PowerImbalanceMeterProps> = ({ imbalance }) => {
+export const PowerImbalanceMeter: React.FC<PowerImbalanceMeterProps> = ({ imbalance, currentLang = 'en' }) => {
+  const t = getTranslation(currentLang);
   const landlordPct = imbalance.landlord_pct;
   const tenantPct = imbalance.tenant_pct;
 
@@ -20,16 +23,16 @@ export const PowerImbalanceMeter: React.FC<PowerImbalanceMeterProps> = ({ imbala
           </div>
           <div>
             <h3 className="text-sm font-bold uppercase tracking-wider text-slate-300">
-              Power Imbalance Meter
+              {t.powerImbalance.title}
             </h3>
             <p className="text-xs text-slate-400">
-              Contractual leverage distribution & reciprocal fairness evaluation
+              {t.powerImbalance.subtitle}
             </p>
           </div>
         </div>
 
         <span className="text-xs font-mono font-bold text-amber-300 bg-amber-500/15 border border-amber-500/30 px-2.5 py-1 rounded-full">
-          {landlordPct}% Biased | {tenantPct}% Protected
+          {t.powerImbalance.biasStatus(landlordPct, tenantPct)}
         </span>
       </div>
 
@@ -37,10 +40,10 @@ export const PowerImbalanceMeter: React.FC<PowerImbalanceMeterProps> = ({ imbala
       <div className="flex justify-between items-end text-xs font-semibold mb-2">
         <div className="text-red-400 flex items-center space-x-1">
           <span className="w-2 h-2 rounded-full bg-red-400" />
-          <span>Counterparty / Landlord ({landlordPct}%)</span>
+          <span>{t.powerImbalance.counterparty(landlordPct)}</span>
         </div>
         <div className="text-emerald-400 flex items-center space-x-1">
-          <span>You / Tenant ({tenantPct}%)</span>
+          <span>{t.powerImbalance.user(tenantPct)}</span>
           <span className="w-2 h-2 rounded-full bg-emerald-400" />
         </div>
       </div>
@@ -60,9 +63,9 @@ export const PowerImbalanceMeter: React.FC<PowerImbalanceMeterProps> = ({ imbala
 
       {/* Scale Markers */}
       <div className="flex justify-between text-[10px] text-slate-400 font-mono mt-1 px-1">
-        <span>0% (Extreme One-Sided)</span>
-        <span>50% (Equitable Balance)</span>
-        <span>100% (Fully Protected)</span>
+        <span>{t.powerImbalance.scaleOneSided}</span>
+        <span>{t.powerImbalance.scaleEquitable}</span>
+        <span>{t.powerImbalance.scaleProtected}</span>
       </div>
 
       {/* Dynamically Generated Hypocrisy Callout */}
@@ -71,7 +74,7 @@ export const PowerImbalanceMeter: React.FC<PowerImbalanceMeterProps> = ({ imbala
           <AlertCircle className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
           <div>
             <span className="text-[11px] font-bold uppercase tracking-wider text-amber-400 block">
-              Contract Hypocrisy Detected
+              {t.powerImbalance.hypocrisyTitle}
             </span>
             <p className="text-xs text-slate-300 mt-0.5 leading-relaxed">
               "{imbalance.hypocrisy_callout}"

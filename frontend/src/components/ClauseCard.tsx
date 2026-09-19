@@ -13,6 +13,7 @@ import {
   Info
 } from 'lucide-react';
 import type { Clause, Language } from '../types';
+import { getTranslation, getLocalizedWhatsApp } from '../i18n';
 
 interface ClauseCardProps {
   clause: Clause;
@@ -85,65 +86,95 @@ export const ClauseCard: React.FC<ClauseCardProps> = ({
     }
   };
 
+  const t = getTranslation(currentLang);
+  const policyId = clause.violations?.[0]?.policy_id || '';
+  const localizedWhatsApp = getLocalizedWhatsApp(policyId, currentLang, clause.whatsapp);
+
   return (
-    <div className={`glass-panel rounded-2xl p-5 border transition-all duration-200 ${
+    <div className={`glass-panel rounded-2xl p-5 border transition-all duration-200 relative overflow-hidden ${
       isDeny 
-        ? 'border-red-500/30 hover:border-red-500/50 shadow-neon-red/30' 
-        : 'border-emerald-500/20 hover:border-emerald-500/40'
+        ? 'border-red-500/30 hover:border-red-500/50 bg-slate-950/90 shadow-[0_4px_20px_-4px_rgba(239,68,68,0.15)]' 
+        : 'border-emerald-500/20 hover:border-emerald-500/40 bg-slate-950/70'
     }`}>
-      {/* Clause Header & Status Badge */}
+      {/* Top Header: Badge, Category, Verdict */}
       <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
         <div className="flex items-center space-x-2.5">
-          <span className={`w-2.5 h-2.5 rounded-full ${isDeny ? 'bg-red-400 animate-pulse' : 'bg-emerald-400'}`} />
-          <h4 className="text-sm font-bold text-white tracking-wide">
-            Clause {clause.clause_id}: {clause.title}
-          </h4>
-          <span className="text-[10px] uppercase font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-400">
-            {clause.category}
+          <span className="text-xs font-mono font-bold text-slate-400 bg-slate-900 px-2 py-0.5 rounded border border-white/10">
+            Clause #{clause.clause_id}
+          </span>
+          <span className="text-xs font-semibold text-slate-300 capitalize">
+            {clause.category.replace('_', ' ')}
+          </span>
+          <span className="text-[11px] text-slate-500 font-mono">•</span>
+          <span className="text-[11px] text-slate-400 font-mono flex items-center space-x-1">
+            <Scale className="w-3 h-3 text-slate-400" />
+            <span>Favors: <strong className="text-slate-200 capitalize">{clause.favors}</strong></span>
           </span>
         </div>
 
+        {/* Verdict Badge */}
         <div className="flex items-center space-x-2">
-          {/* Statutory Citation Badge */}
-          <div className="flex items-center space-x-1 px-2.5 py-0.5 rounded-md bg-indigo-950/60 border border-indigo-500/30 text-[11px] font-mono text-indigo-300">
-            <Scale className="w-3 h-3 text-indigo-400" />
-            <span className="truncate max-w-[220px]">{clause.citation}</span>
-          </div>
-
-          {/* Verdict Badge */}
-          <span className={`px-2.5 py-0.5 rounded-md text-xs font-bold font-mono uppercase tracking-wider flex items-center space-x-1 ${
-            isDeny 
-              ? 'bg-red-500/20 text-red-400 border border-red-500/40' 
-              : 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/40'
-          }`}>
-            {isDeny ? (
-              <>
-                <AlertOctagon className="w-3.5 h-3.5" />
-                <span>DENY</span>
-              </>
-            ) : (
-              <>
-                <CheckCircle2 className="w-3.5 h-3.5" />
-                <span>ALLOW</span>
-              </>
-            )}
-          </span>
+          {isDeny ? (
+            <span className="flex items-center space-x-1.5 px-3 py-1 rounded-full text-xs font-bold font-mono tracking-wider bg-red-500/20 text-red-400 border border-red-500/40 shadow-sm shadow-red-500/20">
+              <AlertOctagon className="w-3.5 h-3.5" />
+              <span>CEDAR DENY</span>
+            </span>
+          ) : (
+            <span className="flex items-center space-x-1.5 px-3 py-1 rounded-full text-xs font-bold font-mono tracking-wider bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 shadow-sm shadow-emerald-500/20">
+              <CheckCircle2 className="w-3.5 h-3.5" />
+              <span>CEDAR ALLOW</span>
+            </span>
+          )}
         </div>
       </div>
 
-      {/* Original Contract Text Box */}
-      <div className="p-3.5 rounded-xl bg-slate-950/80 border border-white/5 font-mono text-xs text-slate-300 leading-relaxed mb-3">
-        <p className="line-clamp-3 hover:line-clamp-none transition-all">
+      {/* Raw Clause Quote Box */}
+      <div className="p-3.5 rounded-xl bg-slate-900/90 border border-white/10 text-xs font-mono text-slate-200 mb-4 leading-relaxed relative">
+        <p className="italic select-all">
           "{clause.clause_text}"
         </p>
       </div>
+
+      {/* Violation Box (If DENY) */}
+      {isDeny && clause.violations && clause.violations.length > 0 && (
+        <div className="p-3.5 rounded-xl bg-red-950/40 border border-red-500/30 mb-4 space-y-1.5">
+          <div className="flex items-center space-x-2">
+            <AlertOctagon className="w-4 h-4 text-red-400 shrink-0" />
+            <span className="text-xs font-bold text-red-300">
+              {clause.title || clause.violations[0].title}
+            </span>
+            <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-red-500/20 text-red-300 border border-red-500/40 ml-auto">
+              Severity: {clause.severity}/100
+            </span>
+          </div>
+
+          <p className="text-xs text-slate-300 leading-relaxed pl-6">
+            {clause.violations[0].description}
+          </p>
+
+          <div className="pl-6 pt-1 flex items-center space-x-2 text-[11px] font-mono text-red-400">
+            <span>Statute:</span>
+            <strong className="text-red-300 underline underline-offset-2">
+              {clause.citation || clause.violations[0].citation}
+            </strong>
+          </div>
+
+          {/* Cedar Policy Rule */}
+          <div className="pl-6 pt-1 text-[11px] font-mono text-slate-400">
+            <span>{t.clauseCard.ruleLabel} </span>
+            <code className="text-amber-300 bg-slate-900/80 px-1.5 py-0.5 rounded text-[10px]">
+              {clause.rule_text || clause.violations[0].rule_text}
+            </code>
+          </div>
+        </div>
+      )}
 
       {/* ELI5 Plain Explanation (Multilingual) */}
       <div className="p-3 rounded-xl bg-slate-900/60 border border-sky-500/20 flex items-start space-x-2.5 mb-4">
         <Info className="w-4 h-4 text-sky-400 shrink-0 mt-0.5" />
         <div className="text-xs text-slate-300 leading-relaxed">
           <span className="font-bold text-sky-400 mr-1.5 uppercase text-[10px] tracking-wider">
-            {currentLang === 'hi' ? 'सरल भाषा में व्याख्या:' : currentLang === 'te' ? 'సరళ వివరణ:' : 'Plain English Breakdown:'}
+            {t.clauseCard.plainLabel}
           </span>
           {getEli5()}
         </div>
@@ -165,7 +196,7 @@ export const ClauseCard: React.FC<ClauseCardProps> = ({
             }`}
           >
             <GitPullRequest className="w-3.5 h-3.5" />
-            <span>{showDiff ? 'Close Diff View' : 'GitHub PR Diff Mode'}</span>
+            <span>{showDiff ? t.clauseCard.diffClose : t.clauseCard.diffOpen}</span>
             {showDiff ? <ChevronUp className="w-3.5 h-3.5 ml-1" /> : <ChevronDown className="w-3.5 h-3.5 ml-1" />}
           </button>
 
@@ -182,7 +213,7 @@ export const ClauseCard: React.FC<ClauseCardProps> = ({
             }`}
           >
             <MessageSquare className="w-3.5 h-3.5" />
-            <span>{showWhatsApp ? 'Close Diplomat' : '3-Tone WhatsApp Diplomat'}</span>
+            <span>{showWhatsApp ? t.clauseCard.diplomatClose : t.clauseCard.diplomatOpen}</span>
             {showWhatsApp ? <ChevronUp className="w-3.5 h-3.5 ml-1" /> : <ChevronDown className="w-3.5 h-3.5 ml-1" />}
           </button>
         </div>
@@ -210,8 +241,8 @@ export const ClauseCard: React.FC<ClauseCardProps> = ({
               splitView={true}
               useDarkTheme={true}
               styles={diffViewerStyles}
-              leftTitle="Original Unfair Clause (DENY)"
-              rightTitle="Fair Statutory Replacement (Model Tenancy / Contract Act)"
+              leftTitle={t.clauseCard.diffOriginal}
+              rightTitle={t.clauseCard.diffFair}
             />
           </div>
         </div>
@@ -224,11 +255,11 @@ export const ClauseCard: React.FC<ClauseCardProps> = ({
             <div className="flex items-center space-x-2">
               <div className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
               <span className="text-xs font-bold uppercase tracking-wider text-emerald-300">
-                WhatsApp Negotiation Diplomat
+                {t.clauseCard.diplomatTitle}
               </span>
             </div>
             <span className="text-[11px] text-slate-400 font-mono">
-              Ready-to-send calibrated responses
+              {t.clauseCard.diplomatSubtitle}
             </span>
           </div>
 
@@ -242,7 +273,7 @@ export const ClauseCard: React.FC<ClauseCardProps> = ({
                   : 'text-slate-400 hover:text-white'
               }`}
             >
-              1. Polite / Respectful (Elders)
+              {t.clauseCard.tonePolite}
             </button>
             <button
               onClick={() => setActiveTab('firm')}
@@ -252,7 +283,7 @@ export const ClauseCard: React.FC<ClauseCardProps> = ({
                   : 'text-slate-400 hover:text-white'
               }`}
             >
-              2. Professional / Firm (HR & Clients)
+              {t.clauseCard.toneFirm}
             </button>
             <button
               onClick={() => setActiveTab('legal')}
@@ -262,7 +293,7 @@ export const ClauseCard: React.FC<ClauseCardProps> = ({
                   : 'text-slate-400 hover:text-white'
               }`}
             >
-              3. Legal Shield (Statutory Cite)
+              {t.clauseCard.toneLegal}
             </button>
           </div>
 
@@ -271,11 +302,7 @@ export const ClauseCard: React.FC<ClauseCardProps> = ({
             <div className="flex justify-end">
               <div className="max-w-[85%] bg-[#005c4b] text-white p-3.5 rounded-2xl rounded-tr-none shadow-md relative group">
                 <p className="text-xs leading-relaxed font-sans select-all whitespace-pre-line">
-                  {activeTab === 'polite' 
-                    ? clause.whatsapp.polite 
-                    : activeTab === 'firm' 
-                    ? clause.whatsapp.firm 
-                    : clause.whatsapp.legal}
+                  {localizedWhatsApp[activeTab] || clause.whatsapp[activeTab]}
                 </p>
                 <div className="flex items-center justify-end space-x-1 mt-2 text-[10px] text-emerald-200/70">
                   <span>10:42 AM</span>
@@ -288,11 +315,7 @@ export const ClauseCard: React.FC<ClauseCardProps> = ({
             <div className="mt-3 flex justify-end">
               <button
                 onClick={() => handleCopyWhatsApp(
-                  activeTab === 'polite' 
-                    ? clause.whatsapp.polite 
-                    : activeTab === 'firm' 
-                    ? clause.whatsapp.firm 
-                    : clause.whatsapp.legal,
+                  localizedWhatsApp[activeTab] || clause.whatsapp[activeTab],
                   activeTab === 'polite' ? 'Polite' : activeTab === 'firm' ? 'Professional' : 'Legal Shield'
                 )}
                 className="flex items-center space-x-1.5 px-3 py-1.5 rounded-lg bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-300 border border-emerald-500/40 text-xs font-semibold transition-all shadow"
@@ -300,12 +323,12 @@ export const ClauseCard: React.FC<ClauseCardProps> = ({
                 {copiedTab ? (
                   <>
                     <Check className="w-3.5 h-3.5 text-emerald-400" />
-                    <span>Copied!</span>
+                    <span>{t.clauseCard.copiedBtn}</span>
                   </>
                 ) : (
                   <>
                     <Copy className="w-3.5 h-3.5" />
-                    <span>Copy Text</span>
+                    <span>{t.clauseCard.copyBtn}</span>
                   </>
                 )}
               </button>

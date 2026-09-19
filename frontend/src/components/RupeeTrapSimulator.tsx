@@ -1,17 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import { motion, useSpring, AnimatePresence } from 'framer-motion';
 import { IndianRupee, ChevronDown, ChevronUp, AlertTriangle } from 'lucide-react';
-import type { RupeeTrapItem } from '../types';
+import type { RupeeTrapItem, Language } from '../types';
+import { getTranslation } from '../i18n';
 
 interface RupeeTrapSimulatorProps {
   totalRupeeTrap: number;
   breakdown: RupeeTrapItem[];
+  currentLang?: Language;
 }
 
 export const RupeeTrapSimulator: React.FC<RupeeTrapSimulatorProps> = ({
   totalRupeeTrap,
-  breakdown
+  breakdown,
+  currentLang = 'en'
 }) => {
+  const t = getTranslation(currentLang);
   const [displayAmount, setDisplayAmount] = useState(0);
   const [isExpanded, setIsExpanded] = useState(true);
 
@@ -40,16 +44,16 @@ export const RupeeTrapSimulator: React.FC<RupeeTrapSimulatorProps> = ({
             </div>
             <div>
               <h3 className="text-sm font-bold uppercase tracking-wider text-red-300">
-                Hidden Rupee Trap Simulator
+                {t.rupeeTrap.title}
               </h3>
               <p className="text-xs text-slate-400">
-                Total quantified illegal financial exposure & deposit forfeiture risk
+                {t.rupeeTrap.subtitle}
               </p>
             </div>
           </div>
 
           <span className="px-2.5 py-1 rounded-full bg-red-500/20 text-red-300 border border-red-500/30 text-xs font-mono font-bold">
-            {breakdown.length} Financial {breakdown.length === 1 ? 'Trap' : 'Traps'}
+            {breakdown.length} {t.rupeeTrap.trapCount}
           </span>
         </div>
 
@@ -71,7 +75,7 @@ export const RupeeTrapSimulator: React.FC<RupeeTrapSimulatorProps> = ({
           <p className="text-xs text-slate-400 mt-2 flex items-center space-x-1.5">
             <AlertTriangle className="w-3.5 h-3.5 text-amber-400 shrink-0" />
             <span>
-              Unenforceable monetary deductions flagged under Model Tenancy Act & Contract Act Sec 74
+              {t.rupeeTrap.alertBanner}
             </span>
           </p>
         </div>
@@ -83,7 +87,7 @@ export const RupeeTrapSimulator: React.FC<RupeeTrapSimulatorProps> = ({
               onClick={() => setIsExpanded(!isExpanded)}
               className="w-full flex items-center justify-between text-xs font-semibold text-slate-300 hover:text-white py-1 transition-colors"
             >
-              <span>Detailed Violation Breakdown ({breakdown.length})</span>
+              <span>{t.rupeeTrap.breakdownToggle} ({breakdown.length})</span>
               {isExpanded ? (
                 <ChevronUp className="w-4 h-4 text-slate-400" />
               ) : (
@@ -123,7 +127,7 @@ export const RupeeTrapSimulator: React.FC<RupeeTrapSimulatorProps> = ({
                           +₹{item.amount_inr.toLocaleString('en-IN')}
                         </span>
                         <span className="block text-[10px] text-slate-400 uppercase tracking-wider">
-                          At Risk
+                          {t.rupeeTrap.atRisk}
                         </span>
                       </div>
                     </div>
