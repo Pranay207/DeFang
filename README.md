@@ -10,15 +10,16 @@
 <br />
 
 [![Track: Build It](https://img.shields.io/badge/Track-Build_It-FF9900?style=flat-square&logo=amazonaws&logoColor=white)](https://github.com/Pranay207/DeFang)
-[![Policy Engine: AWS Cedar](https://img.shields.io/badge/Policy_Engine-AWS_Cedar-E11D48?style=flat-square)](https://www.cedarpolicy.com/)
+[![Policy Engine: AWS Cedar (8 Policies)](https://img.shields.io/badge/Policy_Engine-AWS_Cedar_(8_Policies)-E11D48?style=flat-square)](https://www.cedarpolicy.com/)
 [![Agent: Strands SDK](https://img.shields.io/badge/Agent-Strands_SDK-0284C7?style=flat-square)](https://github.com/Pranay207/DeFang)
+[![Languages: EN • HI • TE • KN](https://img.shields.io/badge/Languages-EN_•_HI_•_TE_•_KN-8B5CF6?style=flat-square)](frontend/src/i18n.ts)
 [![Backend: FastAPI](https://img.shields.io/badge/Backend-FastAPI-0D9488?style=flat-square&logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com/)
 [![Frontend: React 19](https://img.shields.io/badge/Frontend-React_19-2563EB?style=flat-square&logo=react&logoColor=white)](https://react.dev/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-10B981?style=flat-square)](LICENSE)
 
 <br />
 
-[**Watch 3-Min Demo**](VIDEO_URL) &nbsp;•&nbsp; [**Quick Start (2 Mins)**](#-quick-start) &nbsp;•&nbsp; [**Demo Presets**](#-demo-presets) &nbsp;•&nbsp; [**Architecture**](#-architecture) &nbsp;•&nbsp; [**Cedar Policies**](#-legal-frameworks-referenced)
+[**Watch 3-Min Demo**](VIDEO_URL) &nbsp;•&nbsp; [**Quick Start (2 Mins)**](#-quick-start) &nbsp;•&nbsp; [**Demo Presets**](#-demo-presets) &nbsp;•&nbsp; [**Architecture**](#-architecture) &nbsp;•&nbsp; [**8 Cedar Policies**](#-legal-frameworks-referenced)
 
 <br />
 <br />
@@ -68,7 +69,7 @@ Generic AI contract tools rely on a **single LLM giving subjective, unverifiable
 │    1. INGESTION & OCR    │      2. STRANDS AGENT SDK       │    3. FORMAL AWS CEDAR    │
 │                          │                                 │                           │
 │  Raw Contract (PDF/Text) │  Extracts structured parameters │  Deterministic Evaluation │
-│  - Tenancy agreements    │  - amount_inr: 350000           │  - Evaluates 6 .cedar     │
+│  - Tenancy agreements    │  - amount_inr: 350000           │  - Evaluates 8 .cedar     │
 │  - Employment bonds      │  - monthly_rent_inr: 35000      │    statutory policy files │
 │  - Freelance MSAs        │  - painting_mandatory: true     │  - Verdict: ALLOW / DENY  │
 │                          │  - non_compete_months: 24       │  - Zero Hallucinations    │
@@ -104,14 +105,16 @@ when {
 | Feature | What It Delivers |
 | :--- | :--- |
 | 🛡️ **Dual-Engine Scanning** | Pairs Strands agentic extraction with the AWS Cedar Policy Engine for deterministic statutory verdicts. |
-| ⚖️ **Statutory Policy Verification** | Formally validates agreements against Model Tenancy Act 2021, Indian Contract Act 1872, and Usurious Loans Act 1918. |
+| ⚖️ **8 Formal Cedar Statutory Policies** | Formally validates agreements against Model Tenancy Act 2021, Indian Contract Act 1872, and Usurious Loans Act 1918. |
+| 🌐 **Multilingual Bharat UI** | Native support for English, Hindi (`हिंदी`), Telugu (`తెలుగు`), and Kannada (`ಕನ್ನಡ`) across all metrics, badges, and negotiations. |
 | 💸 **Hidden Rupee Trap Simulator** | Dynamically calculates the exact financial liability (excess deposits, illegal exit deductions, penal interest) buried in clauses. |
 | ⚖️ **Power Imbalance Meter** | Measures contractual asymmetry (such as 90-day tenant notice vs. 15-day landlord notice) with an actionable imbalance index. |
 | 🔍 **Clause-by-Clause Policy Audit** | Explains each violation with plain-language ELI5 summaries, exact legislative citations, and severity scoring. |
 | ⚡ **One-Click Instant Demo Presets** | Zero-latency instant offline cache evaluating 3 notorious real-world Indian contracts in under 5 milliseconds. |
-| 💬 **WhatsApp Counter-Offer Diplomat** | Generates 3 calibrated counter-negotiation tones (Polite, Assertive, Hardball) with statutory backing to paste into WhatsApp. |
+| 💬 **1-Click WhatsApp Negotiation** | Generates 3 calibrated counter-negotiation tones (Polite, Assertive, Hardball) with direct 1-click dispatch into WhatsApp Web/App. |
 | 🔄 **GitHub-Style Contract PR Diff** | Visualizes side-by-side redline diffs comparing predatory original clauses with legally compliant redrafts. |
-| 📄 **Certified Legal Audit Report** | Generates official, high-contrast printable audit certificates and PDF exports at the click of a button. |
+| 📥 **Downloadable Audit Report** | Generates certified statutory text/markdown audit reports and high-contrast printable audit certificates. |
+| 💾 **Offline Recent Audits History** | Persists audit history in browser storage to compare and reload previous scans with zero network latency. |
 
 ---
 
@@ -148,7 +151,7 @@ flowchart TD
         D --> F[Structured Clause Parameters]
         E --> F
         F --> G[AWS Cedar Policy Engine]
-        H[(6 Formal .cedar Policies)] --> G
+        H[(8 Formal .cedar Policies)] --> G
     end
 
     G --> I[Verdict Assembly: ALLOW / DENY + Statutory Citations]
@@ -158,7 +161,7 @@ flowchart TD
         I --> K[Rupee Trap Simulator]
         I --> L[Power Imbalance Meter]
         I --> M[Clause PR Diffs & WhatsApp Diplomat]
-        I --> N[Print / PDF Audit Certificate]
+        I --> N[Download / Print Audit Certificate]
     end
 ```
 
@@ -230,18 +233,22 @@ Every policy file in `backend/policies/` is directly anchored to active Indian j
 
 * **Model Tenancy Act 2021, Section 9**: Restricts residential tenancy deposits to a strict maximum of **2 to 3 months rent**.
 * **Model Tenancy Act 2021, Section 15**: Prohibits mandatory arbitrary painting deductions; tenant is liable only for damage beyond **normal wear and tear**.
+* **Model Tenancy Act 2021 & Urban Rent Control Norms**: Forbids arbitrary unilateral annual rent escalation exceeding **10%** without mutual written agreement (`arbitrary_rent_escalation.cedar`).
 * **Indian Contract Act 1872, Section 27**: Declares **any agreement restraining anyone from exercising a lawful profession, trade, or business void ab initio**.
-* **Indian Contract Act 1872, Section 74**: Restricts liquidated damages and bond penalties strictly to **reasonable compensation for actual, proven loss**.
+* **Indian Contract Act 1872, Section 74 (Liquidated Damages & Penal Forfeiture)**: Restricts bond penalties to **reasonable compensation for actual, proven loss**, prohibiting unconditional deposit forfeiture (`premature_exit_forfeiture.cedar`).
+* **Indian Contract Act 1872, Section 74 (Unlawful Lock-in Penalties)**: Restricts demanding remaining tenure rent upon early exit without actual proved loss (`lock_in_period_penalty.cedar`).
 * **Usurious Loans Act 1918**: Restricts exorbitant, unconscionable daily late payment penalties.
 
 ---
 
 ## 🚀 Roadmap
 
+- [x] **Full Multilingual Bharat UI**: Production localization across English, Hindi (`हिंदी`), Telugu (`తెలుగు`), and Kannada (`ಕನ್ನಡ`).
+- [x] **Direct WhatsApp Negotiation**: 1-click counter-proposal dispatch with calibrated polite, firm, and legal tones.
+- [x] **Certified Statutory Report Export**: Localized downloadable text audit certificates and high-contrast printable audit reports.
 - [ ] **State-Specific Rent Control Laws**: Add tailored Cedar policies for Maharashtra Rent Control Act 1999 and Delhi Rent Control Act.
-- [ ] **Voice-First Input**: Multi-dialect Indian voice input (Hindi, Telugu, Tamil, Kannada) for semi-literate workers and vernacular tenants.
+- [ ] **Voice-First Input**: Multi-dialect Indian voice input for semi-literate workers and vernacular tenants.
 - [ ] **Chrome Extension**: Instant on-page scanning before signing leases or accepting freelance gigs on portals like NoBroker and Upwork.
-- [ ] **Local LLM Integration via Ollama**: Enable `strands.models.ollama` for fully local, private AI contract parsing with zero cloud exposure.
 
 ---
 
