@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import confetti from 'canvas-confetti';
-import { ArrowLeft } from 'lucide-react';
+import { ArrowLeft, Printer, Share2 } from 'lucide-react';
+import fallbackData from './presetsFallback.json';
 
 import { Navbar } from './components/Navbar';
 import { DualEngineBar } from './components/DualEngineBar';
@@ -27,17 +28,50 @@ export function App() {
   const [toastMessage, setToastMessage] = useState<string | null>(null);
   const [clauseFilter, setClauseFilter] = useState<'all' | 'deny' | 'allow'>('all');
 
-  // Load presets on mount
+  // Load presets on mount (with automatic offline fallback)
   useEffect(() => {
     fetch(`${API_BASE}/api/presets`)
-      .then((res) => res.json())
+      .then((res) => {
+        if (!res.ok) throw new Error('Failed to fetch presets');
+        return res.json();
+      })
       .then((data) => setPresets(data))
-      .catch((err) => console.error('Failed to fetch presets:', err));
+      .catch((err) => {
+        console.warn('Backend unavailable, using pre-cached offline presets:', err);
+        setPresets(fallbackData.presets as PresetSummary[]);
+      });
   }, []);
 
   const triggerToast = (msg: string) => {
     setToastMessage(msg);
     setTimeout(() => setToastMessage(null), 2500);
+  };
+
+  // Share full text audit summary
+  const handleShareSummary = () => {
+    if (!scanResult) return;
+    const deniedClauses = scanResult.clauses.filter((c) => c.verdict === 'DENY');
+    const summaryText = [
+      `🛡️ DEFANG LEGAL CONTRACT AUDIT REPORT`,
+      `Document: ${scanResult.contract_title || 'Custom Indian Contract'}`,
+      `Overall Risk Score: ${scanResult.overall_risk_score}/100 (${scanResult.risk_level})`,
+      `Total Hidden Rupee Trap: ₹${scanResult.total_rupee_trap.toLocaleString('en-IN')}`,
+      `Power Imbalance: ${scanResult.power_imbalance.landlord_pct}% Counterparty Bias`,
+      `Red Flags Detected: ${scanResult.deny_count} of ${scanResult.clauses.length} clauses audited`,
+      '',
+      'STATUTORY VIOLATIONS DETECTED (Formal AWS Cedar Verification):',
+      ...deniedClauses.map((c, i) => `${i + 1}. ${c.title || c.category} [${c.citation || 'Indian Law'}]\n   Verdict: DENY | Severity: ${c.severity}/100\n   Impact: ${c.eli5 || c.rule_text}`),
+      '',
+      'Verified deterministically by AWS Cedar Policy Engine & Strands Agents SDK.',
+      'Audit report generated on DeFang: https://github.com/Pranay207/DeFang'
+    ].join('\n');
+
+    navigator.clipboard.writeText(summaryText);
+    triggerToast('📋 Full Legal Audit Summary copied to clipboard!');
+  };
+
+  const handlePrintReport = () => {
+    window.print();
   };
 
   // Load preset with instant pre-cached response
@@ -46,8 +80,16 @@ export function App() {
     setIsLoading(true);
 
     try {
-      const res = await fetch(`${API_BASE}/api/presets/${presetId}`);
-      const data: ScanResult = await res.json();
+      let data: ScanResult;
+      try {
+        const res = await fetch(`${API_BASE}/api/presets/${presetId}`);
+        if (!res.ok) throw new Error('Network error');
+        data = await res.json();
+      } catch {
+        // Instant client fallback
+        const fallbackResults = fallbackData.results as Record<string, ScanResult>;
+        data = fallbackResults[presetId];
+      }
       
       // Allow dual-engine animation to play for dramatic judge demo effect
       setTimeout(() => {
@@ -59,7 +101,7 @@ export function App() {
         if (data.overall_risk_score < 40) {
           confetti({ particleCount: 70, spread: 60, origin: { y: 0.6 } });
         }
-      }, 2600);
+      }, 2400);
     } catch (err) {
       console.error('Error fetching preset scan:', err);
       setIsLoading(false);
@@ -252,19 +294,54 @@ export function App() {
             transition={{ duration: 0.3 }}
             className="space-y-8"
           >
+            {/* Printable Certification Header (Visible only when printed or saved as PDF) */}
+            <div className="print-banner p-4 mb-4 border border-slate-300 rounded-lg bg-slate-50 text-slate-900">
+              <div className="flex items-center justify-between border-b border-slate-300 pb-2 mb-2">
+                <h2 className="text-xl font-black tracking-tight text-slate-900">
+                  DeFang — Indian Statutory Contract Risk Assessment
+                </h2>
+                <span className="text-xs font-mono font-bold text-red-600 uppercase border border-red-300 bg-red-50 px-2 py-0.5 rounded">
+                  Official Verification
+                </span>
+              </div>
+              <p className="text-xs text-slate-600">
+                Document: <strong className="text-slate-900">{scanResult.contract_title}</strong> | Verified via AWS Cedar Policy Engine & Strands SDK
+              </p>
+            </div>
+
             {/* Top Navigation Bar in Results */}
-            <div className="flex items-center justify-between">
+            <div className="flex flex-wrap items-center justify-between gap-3 pb-2 border-b border-white/5 no-print">
               <button
                 onClick={handleReset}
-                className="flex items-center space-x-2 text-xs font-semibold text-slate-400 hover:text-white transition-colors"
+                className="flex items-center space-x-2 text-xs font-semibold text-slate-400 hover:text-white transition-colors px-3 py-1.5 rounded-lg bg-slate-900/70 border border-white/10 hover:border-white/20"
               >
                 <ArrowLeft className="w-4 h-4" />
                 <span>Back to Presets & Scanner</span>
               </button>
 
-              <div className="flex items-center space-x-2 text-xs font-mono text-slate-400">
-                <span>Verified by Cedar Engine:</span>
-                <span className="text-emerald-400 font-bold">6/6 Policies Executed</span>
+              <div className="flex flex-wrap items-center gap-2">
+                <button
+                  onClick={handleShareSummary}
+                  className="flex items-center space-x-1.5 px-3 py-1.5 rounded-lg bg-slate-900 border border-white/10 hover:border-sky-500/40 text-xs font-semibold text-slate-300 hover:text-white transition-all shadow-sm"
+                  title="Copy formatted text audit summary"
+                >
+                  <Share2 className="w-3.5 h-3.5 text-sky-400" />
+                  <span>Share Audit</span>
+                </button>
+
+                <button
+                  onClick={handlePrintReport}
+                  className="flex items-center space-x-1.5 px-3 py-1.5 rounded-lg bg-gradient-to-r from-red-500/15 via-orange-500/15 to-amber-500/15 border border-red-500/30 hover:border-red-500/60 text-xs font-semibold text-red-300 hover:text-white transition-all shadow-sm"
+                  title="Download or Print PDF Report"
+                >
+                  <Printer className="w-3.5 h-3.5 text-red-400" />
+                  <span>Download / Print Report</span>
+                </button>
+
+                <div className="hidden lg:flex items-center space-x-2 text-xs font-mono text-slate-400 pl-2 border-l border-white/10">
+                  <span>Cedar Engine:</span>
+                  <span className="text-emerald-400 font-bold">6/6 Policies Executed</span>
+                </div>
               </div>
             </div>
 

@@ -176,3 +176,44 @@ body {
   font-family: 'JetBrains Mono', monospace;
   font-weight: 700;
 }
+
+/* Print Styles for Certified Legal Audit Report */
+@media print {
+  body {
+    background-color: #ffffff !important;
+    color: #0f172a !important;
+  }
+
+  .no-print,
+  header,
+  footer,
+  .no-print * {
+    display: none !important;
+  }
+
+  .glass-panel,
+  .glass-panel-interactive {
+    background: #f8fafc !important;
+    border: 1px solid #cbd5e1 !important;
+    box-shadow: none !important;
+    color: #0f172a !important;
+  }
+
+  .text-white {
+    color: #0f172a !important;
+  }
+
+  .text-slate-400,
+  .text-slate-500 {
+    color: #475569 !important;
+  }
+
+  .print-banner {
+    display: block !important;
+  }
+}
+
+.print-banner {
+  display: none;
+}
+
