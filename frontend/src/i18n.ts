@@ -94,6 +94,26 @@ export interface TranslationDictionary {
     toneLegal: string;
     copyBtn: string;
     copiedBtn: string;
+    favorsLabel: string;
+    favorsLandlord: string;
+    favorsTenant: string;
+    favorsNeutral: string;
+    statuteLabel: string;
+    severityLabel: string;
+  };
+  dualEngine: {
+    title: string;
+    subtitle: string;
+    stage1Badge: string;
+    stage2Badge: string;
+    stage1Title: string;
+    stage1Extracting: string;
+    stage1Done: string;
+    stage2Title: string;
+    stage2Verifying: string;
+    stage2Done: string;
+    modelLabel: string;
+    durationLabel: string;
   };
 }
 
@@ -192,6 +212,26 @@ export const translations: Record<Language, TranslationDictionary> = {
       toneLegal: "3. Legal Shield (Statutory Cite)",
       copyBtn: "Copy Text",
       copiedBtn: "Copied!",
+      favorsLabel: "Favors:",
+      favorsLandlord: "Landlord / Employer",
+      favorsTenant: "Tenant / Candidate",
+      favorsNeutral: "Neutral",
+      statuteLabel: "Statute:",
+      severityLabel: "Severity:",
+    },
+    dualEngine: {
+      title: "Dual-Engine Statutory Architecture",
+      subtitle: "Strands AI Agent structured extraction + AWS Cedar deterministic policy verification",
+      stage1Badge: "Stage 1: AI Agent Extraction",
+      stage2Badge: "Stage 2: Cedar Verification",
+      stage1Title: "Strands Agent",
+      stage1Extracting: "Extracting structured clauses & entity parameters...",
+      stage1Done: "Clause structuring & intent extraction complete",
+      stage2Title: "AWS Cedar Policy Engine",
+      stage2Verifying: "Verifying each clause against Indian statutory rules...",
+      stage2Done: "All 6 .cedar statutory policies executed",
+      modelLabel: "Model: gemini-2.5-flash",
+      durationLabel: "Duration: ~1.4s",
     },
   },
   hi: {
@@ -288,6 +328,26 @@ export const translations: Record<Language, TranslationDictionary> = {
       toneLegal: "3. कानूनी ढाल (अधिनियम व धारा संदर्भ)",
       copyBtn: "संदेश कॉपी करें",
       copiedBtn: "कॉपी हो गया!",
+      favorsLabel: "झुकाव:",
+      favorsLandlord: "मकान मालिक / कंपनी के पक्ष में",
+      favorsTenant: "किराएदार / उम्मीदवार के पक्ष में",
+      favorsNeutral: "तटस्थ",
+      statuteLabel: "कानूनी संदर्भ:",
+      severityLabel: "गंभीरता:",
+    },
+    dualEngine: {
+      title: "दोहरी-इंजन वैधानिक प्रणाली",
+      subtitle: "Strands AI एजेंट द्वारा क्लॉज विश्लेषण + AWS Cedar द्वारा शत-प्रतिशत कानूनी सत्यापन",
+      stage1Badge: "चरण 1: AI एजेंट निष्कर्षण",
+      stage2Badge: "चरण 2: Cedar नीति सत्यापन",
+      stage1Title: "Strands AI एजेंट",
+      stage1Extracting: "क्लॉज और कानूनी शर्तों का विश्लेषण जारी...",
+      stage1Done: "क्लॉज संरचना और कानूनी आशय का विश्लेषण पूर्ण",
+      stage2Title: "AWS Cedar नीति इंजन",
+      stage2Verifying: "भारतीय कानूनों (MTA, ICA) के विरुद्ध जांच जारी...",
+      stage2Done: "सभी 6 .cedar वैधानिक नीतियां सफलतापूर्वक निष्पादित",
+      modelLabel: "मॉडल: gemini-2.5-flash",
+      durationLabel: "समय: ~1.4s",
     },
   },
   te: {
@@ -384,6 +444,26 @@ export const translations: Record<Language, TranslationDictionary> = {
       toneLegal: "3. చట్టపరమైన హెచ్చరిక (చట్టం & సెక్షన్)",
       copyBtn: "సందేశాన్ని కాపీ చేయండి",
       copiedBtn: "కాపీ చేయబడింది!",
+      favorsLabel: "మొగ్గు:",
+      favorsLandlord: "యజమాని / కంపెనీ అనుకూలం",
+      favorsTenant: "అద్దెదారు / అభ్యర్థి అనుకూలం",
+      favorsNeutral: "సమతుల్యం",
+      statuteLabel: "చట్టం:",
+      severityLabel: "తీవ్రత:",
+    },
+    dualEngine: {
+      title: "ద్వంద్వ ఇంజిన్ చట్టబద్ధమైన వ్యవస్థ",
+      subtitle: "Strands AI ఏజెంట్ విశ్లేషణ + AWS Cedar చట్టబద్ధమైన పాలసీ ధృవీకరణ",
+      stage1Badge: "దశ 1: AI ఏజెంట్ గుర్తింపు",
+      stage2Badge: "దశ 2: Cedar పాలసీ ధృవీకరణ",
+      stage1Title: "Strands AI ఏజెంట్",
+      stage1Extracting: "నిబంధనలు మరియు పారామీటర్ల విశ్లేషణ జరుగుతోంది...",
+      stage1Done: "నిబంధనల నిర్మాణం మరియు ఉద్దేశాల గుర్తింపు పూర్తయింది",
+      stage2Title: "AWS Cedar పాలసీ ఇంజిన్",
+      stage2Verifying: "భారతీయ చట్టాల ప్రకారం ప్రతి నిబంధన ధృవీకరణ...",
+      stage2Done: "అన్ని 6 .cedar చట్టబద్ధమైన పాలసీలు అమలు చేయబడ్డాయి",
+      modelLabel: "మోడల్: gemini-2.5-flash",
+      durationLabel: "సమయం: ~1.4s",
     },
   },
 };

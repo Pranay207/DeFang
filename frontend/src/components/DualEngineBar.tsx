@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Search, ShieldCheck, CheckCircle2, Scale, Sparkles } from 'lucide-react';
-import type { DualEngineMetrics } from '../types';
+import type { DualEngineMetrics, Language } from '../types';
+import { getTranslation } from '../i18n';
 
 interface DualEngineBarProps {
   isScanning: boolean;
   metrics?: DualEngineMetrics;
   onComplete?: () => void;
+  currentLang?: Language;
 }
 
 const POLICIES_CHECKED = [
@@ -21,9 +23,11 @@ const POLICIES_CHECKED = [
 export const DualEngineBar: React.FC<DualEngineBarProps> = ({
   isScanning,
   metrics: _metrics,
-  onComplete
+  onComplete,
+  currentLang = 'en'
 }) => {
-  const [activeStage, setActiveStage] = useState<1 | 2 | 3>(isScanning ? 1 : 3);
+  const t = getTranslation(currentLang);
+  const [activeStage, setActiveStage] = useState<number>(0);
   const [checkedPolicies, setCheckedPolicies] = useState<number[]>([]);
 
   useEffect(() => {
@@ -33,21 +37,19 @@ export const DualEngineBar: React.FC<DualEngineBarProps> = ({
         setCheckedPolicies([]);
       }, 0);
 
-      // Stage 1 -> 2 transition after 1400ms
+      // Stage 1: Strands Agent extraction (0 - 1400ms)
       const t1 = setTimeout(() => {
         setActiveStage(2);
       }, 1400);
 
-      // Staggered checkmarks appearing for policies during Stage 2
-      const checkTimers: any[] = [];
-      POLICIES_CHECKED.forEach((_, idx) => {
-        const timer = setTimeout(() => {
+      // Simulate Cedar checking individual policies
+      const checkTimers = POLICIES_CHECKED.map((_, idx) => {
+        return setTimeout(() => {
           setCheckedPolicies((prev) => [...prev, idx]);
-        }, 1500 + idx * 220);
-        checkTimers.push(timer);
+        }, 1500 + idx * 250);
       });
 
-      // Stage 2 -> Completed after ~3000ms
+      // Stage 2: Cedar Verification complete (3000ms)
       const t2 = setTimeout(() => {
         setActiveStage(3);
         if (onComplete) onComplete();
@@ -79,11 +81,11 @@ export const DualEngineBar: React.FC<DualEngineBarProps> = ({
           <div className="flex items-center space-x-2">
             <span className="w-2.5 h-2.5 rounded-full bg-sky-400 animate-ping" />
             <h3 className="text-sm uppercase tracking-wider font-bold text-slate-300">
-              DeFang Dual-Engine Pipeline
+              {t.dualEngine.title}
             </h3>
           </div>
           <p className="text-xs text-slate-400 mt-0.5">
-            Sequential Hybrid AI + Formal Policy Verification Architecture
+            {t.dualEngine.subtitle}
           </p>
         </div>
 
@@ -93,7 +95,7 @@ export const DualEngineBar: React.FC<DualEngineBarProps> = ({
               ? 'bg-sky-500/20 text-sky-300 border border-sky-500/30' 
               : 'bg-slate-800 text-slate-500'
           }`}>
-            Stage 1: Strands AI Agent
+            {t.dualEngine.stage1Badge}
           </span>
           <span className="text-slate-600">→</span>
           <span className={`px-2.5 py-1 rounded-md font-mono transition-all ${
@@ -101,7 +103,7 @@ export const DualEngineBar: React.FC<DualEngineBarProps> = ({
               ? 'bg-indigo-500/20 text-indigo-300 border border-indigo-500/30' 
               : 'bg-slate-800 text-slate-500'
           }`}>
-            Stage 2: Cedar Verification
+            {t.dualEngine.stage2Badge}
           </span>
         </div>
       </div>
@@ -134,15 +136,15 @@ export const DualEngineBar: React.FC<DualEngineBarProps> = ({
               </div>
               <div>
                 <div className="flex items-center space-x-2">
-                  <h4 className="text-sm font-semibold text-white">Strands Agent</h4>
+                  <h4 className="text-sm font-semibold text-white">{t.dualEngine.stage1Title}</h4>
                   <span className="text-[10px] px-1.5 py-0.5 rounded bg-sky-500/20 text-sky-300 font-mono">
                     Gemini 2.5 Flash
                   </span>
                 </div>
                 <p className="text-xs text-slate-400 mt-0.5">
                   {activeStage === 1 
-                    ? 'Extracting structured clauses & entity parameters...' 
-                    : 'Clause structuring & intent extraction complete'}
+                    ? t.dualEngine.stage1Extracting 
+                    : t.dualEngine.stage1Done}
                 </p>
               </div>
             </div>
@@ -155,8 +157,8 @@ export const DualEngineBar: React.FC<DualEngineBarProps> = ({
           </div>
 
           <div className="mt-3 pt-3 border-t border-white/5 flex items-center justify-between text-[11px] text-slate-400 font-mono">
-            <span>Model: gemini-2.5-flash</span>
-            <span>Duration: ~1.4s</span>
+            <span>{t.dualEngine.modelLabel}</span>
+            <span>{t.dualEngine.durationLabel}</span>
           </div>
         </div>
 
@@ -186,15 +188,15 @@ export const DualEngineBar: React.FC<DualEngineBarProps> = ({
               </div>
               <div>
                 <div className="flex items-center space-x-2">
-                  <h4 className="text-sm font-semibold text-white">AWS Cedar Policy Engine</h4>
+                  <h4 className="text-sm font-semibold text-white">{t.dualEngine.stage2Title}</h4>
                   <span className="text-[10px] px-1.5 py-0.5 rounded bg-indigo-500/20 text-indigo-300 font-mono">
                     Rust / cedarpy
                   </span>
                 </div>
                 <p className="text-xs text-slate-400 mt-0.5">
                   {activeStage === 2 
-                    ? 'Verifying each clause against Indian statutory rules...' 
-                    : 'All 6 .cedar statutory policies executed'}
+                    ? t.dualEngine.stage2Verifying 
+                    : t.dualEngine.stage2Done}
                 </p>
               </div>
             </div>

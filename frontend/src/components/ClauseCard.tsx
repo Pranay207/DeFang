@@ -108,7 +108,12 @@ export const ClauseCard: React.FC<ClauseCardProps> = ({
           <span className="text-[11px] text-slate-500 font-mono">•</span>
           <span className="text-[11px] text-slate-400 font-mono flex items-center space-x-1">
             <Scale className="w-3 h-3 text-slate-400" />
-            <span>Favors: <strong className="text-slate-200 capitalize">{clause.favors}</strong></span>
+            <span>
+              {t.clauseCard.favorsLabel}{' '}
+              <strong className="text-slate-200 capitalize">
+                {clause.favors === 'landlord' ? t.clauseCard.favorsLandlord : clause.favors === 'tenant' ? t.clauseCard.favorsTenant : t.clauseCard.favorsNeutral}
+              </strong>
+            </span>
           </span>
         </div>
 
@@ -144,7 +149,7 @@ export const ClauseCard: React.FC<ClauseCardProps> = ({
               {clause.title || clause.violations[0].title}
             </span>
             <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-red-500/20 text-red-300 border border-red-500/40 ml-auto">
-              Severity: {clause.severity}/100
+              {t.clauseCard.severityLabel} {clause.severity}/100
             </span>
           </div>
 
@@ -153,7 +158,7 @@ export const ClauseCard: React.FC<ClauseCardProps> = ({
           </p>
 
           <div className="pl-6 pt-1 flex items-center space-x-2 text-[11px] font-mono text-red-400">
-            <span>Statute:</span>
+            <span>{t.clauseCard.statuteLabel}</span>
             <strong className="text-red-300 underline underline-offset-2">
               {clause.citation || clause.violations[0].citation}
             </strong>
