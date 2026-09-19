@@ -28,8 +28,10 @@ export const DualEngineBar: React.FC<DualEngineBarProps> = ({
 
   useEffect(() => {
     if (isScanning) {
-      setActiveStage(1);
-      setCheckedPolicies([]);
+      const resetTimer = setTimeout(() => {
+        setActiveStage(1);
+        setCheckedPolicies([]);
+      }, 0);
 
       // Stage 1 -> 2 transition after 1400ms
       const t1 = setTimeout(() => {
@@ -52,13 +54,17 @@ export const DualEngineBar: React.FC<DualEngineBarProps> = ({
       }, 3000);
 
       return () => {
+        clearTimeout(resetTimer);
         clearTimeout(t1);
         clearTimeout(t2);
         checkTimers.forEach(clearTimeout);
       };
     } else {
-      setActiveStage(3);
-      setCheckedPolicies([0, 1, 2, 3, 4, 5]);
+      const resetTimer = setTimeout(() => {
+        setActiveStage(3);
+        setCheckedPolicies([0, 1, 2, 3, 4, 5]);
+      }, 0);
+      return () => clearTimeout(resetTimer);
     }
   }, [isScanning, onComplete]);
 
