@@ -180,12 +180,8 @@ Every policy file in `backend/policies/` is directly anchored to active Indian j
 
 ---
 
-## Team & Hackathon Submission
 
-* **Project**: **DeFang (Bharat Edition)**
-* **Built For**: **First Commit — Bharat Builds Tour** by WeMakeDevs
-* **Track**: **Build It — Open source, on your machine** *(No AWS account, no card, no bill)*
-* **Submissions**: Target candidate for **Build It Grand Prize** & **Best UI**.
+
 
 ---
 
