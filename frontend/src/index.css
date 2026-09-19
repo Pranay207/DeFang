@@ -1,0 +1,178 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #080c14;
+  color: #f1f5f9;
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+}
+
+/* Glassmorphism Classes */
+.glass-panel {
+  background: rgba(15, 23, 42, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+}
+
+.glass-panel-interactive {
+  background: rgba(15, 23, 42, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-panel-interactive:hover {
+  background: rgba(26, 36, 61, 0.8);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.55);
+}
+
+/* Subtle Animated Background Grid */
+.bg-grid-pattern {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  mask-image: radial-gradient(ellipse 75% 65% at 50% 30%, #000 35%, transparent 85%);
+  -webkit-mask-image: radial-gradient(ellipse 75% 65% at 50% 30%, #000 35%, transparent 85%);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #080c14;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #334155;
+}
+
+/* Ambient Background Drift Animations */
+@keyframes ambient-drift-1 {
+  0%, 100% {
+    transform: translate3d(0px, 0px, 0) scale(1);
+  }
+  33% {
+    transform: translate3d(35px, -25px, 0) scale(1.06);
+  }
+  66% {
+    transform: translate3d(-30px, 20px, 0) scale(0.96);
+  }
+}
+
+@keyframes ambient-drift-2 {
+  0%, 100% {
+    transform: translate3d(0px, 0px, 0) scale(1);
+  }
+  33% {
+    transform: translate3d(-40px, 35px, 0) scale(1.05);
+  }
+  66% {
+    transform: translate3d(25px, -20px, 0) scale(1.08);
+  }
+}
+
+@keyframes slow-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes soft-pulse-scan {
+  0%, 100% {
+    box-shadow: 0 0 16px 2px rgba(239, 68, 68, 0.35), 0 0 32px 4px rgba(249, 115, 22, 0.2);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 28px 6px rgba(239, 68, 68, 0.55), 0 0 48px 10px rgba(249, 115, 22, 0.35);
+    transform: scale(1.015);
+  }
+}
+
+.animate-ambient-1 {
+  animation: ambient-drift-1 22s infinite ease-in-out;
+  will-change: transform;
+}
+
+.animate-ambient-2 {
+  animation: ambient-drift-2 28s infinite ease-in-out;
+  will-change: transform;
+}
+
+.animate-spin-slow {
+  animation: slow-spin 16s linear infinite;
+  will-change: transform;
+}
+
+.animate-scan-pulse {
+  animation: soft-pulse-scan 2.4s infinite ease-in-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-ambient-1,
+  .animate-ambient-2,
+  .animate-spin-slow,
+  .animate-scan-pulse,
+  .animate-hero-pulse {
+    animation: none !important;
+  }
+}
+
+
+/* Pulse animation for hero rupee glow */
+@keyframes hero-pulse {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.65;
+    transform: scale(1.08);
+  }
+}
+
+.animate-hero-pulse {
+  animation: hero-pulse 3s infinite ease-in-out;
+}
+
+/* Custom Circular Progressbar Override */
+.CircularProgressbar .CircularProgressbar-path {
+  stroke-linecap: round;
+  transition: stroke-dashoffset 0.8s ease 0s;
+}
+
+.CircularProgressbar .CircularProgressbar-trail {
+  stroke: rgba(255, 255, 255, 0.08);
+}
+
+.CircularProgressbar .CircularProgressbar-text {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;
+}
