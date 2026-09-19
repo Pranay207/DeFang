@@ -112,7 +112,26 @@ when {
 | 💬 **WhatsApp Counter-Offer Diplomat** | Generates 3 calibrated counter-negotiation tones (Polite, Assertive, Hardball) with statutory backing to paste into WhatsApp. |
 | 🔄 **GitHub-Style Contract PR Diff** | Visualizes side-by-side redline diffs comparing predatory original clauses with legally compliant redrafts. |
 | 📄 **Certified Legal Audit Report** | Generates official, high-contrast printable audit certificates and PDF exports at the click of a button. |
-| 🌐 **Trilingual Interface (EN / हिंदी / తెలుగు)** | Translates legal reasoning and counter-clauses across English, Hindi, and Telugu for grassroots accessibility. |
+
+---
+
+## 📸 Product Tour & Interface Walkthrough
+
+<div align="center">
+
+### 1. One-Click Presets & Dual-Engine Contract Input
+<img src="assets/landing_page.png" alt="DeFang Landing Page & Presets" width="900" style="border-radius: 10px; box-shadow: 0 12px 36px rgba(0,0,0,0.5);" />
+<br />
+<em>One-click offline presets (Bengaluru Rental, Tech Startup Bond, Freelance MSA) and drag-and-drop PDF contract parser.</em>
+
+<br /><br />
+
+### 2. Clause-by-Clause Statutory Audit & GitHub-Style Redline PR Diff
+<img src="assets/clause_audit_diff.png" alt="Clause Audit Diff & WhatsApp Diplomat" width="900" style="border-radius: 10px; box-shadow: 0 12px 36px rgba(0,0,0,0.5);" />
+<br />
+<em>Line-by-line red-flag breakdown with statutory citations, side-by-side legal redrafts, and 1-click WhatsApp counter-offers.</em>
+
+</div>
 
 ---
 
