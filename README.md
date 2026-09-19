@@ -34,15 +34,15 @@
 
 ---
 
-### ⚡ 30-Second Executive Summary for Hackathon Judges
+### ⚡ Executive Overview
 
-> **🎯 The Problem**: Over 85% of young Indians sign rental agreements, tech bonds, and freelance contracts without reading past page 1. Landlords demand extortionate **10-month deposits & painting deductions**, while startups enforce **illegal 2-year non-competes**. Hiring a lawyer is out of reach for ordinary citizens.
+> **🎯 The Problem**: Over 85% of young Indians sign rental agreements, tech bonds, and freelance contracts without reading past page 1. Landlords demand extortionate **10-month deposits & painting deductions**, while startups enforce **illegal 2-year non-competes**. Hiring an advocate is out of reach for ordinary citizens.
 > 
 > **⚙️ The Dual-Engine Solution**: Unlike generic LLMs that give hallucinated, subjective legal advice, DeFang pairs **Strands Agents SDK** (for structured clause extraction) with **AWS Cedar** (`cedarpy`), a formal mathematical policy engine evaluating contracts against real Indian law.
 > 
-> **🏆 Why It Wins the "Build It" Track**:
-> 1. **100% On-Device & Offline**: Preset scans execute with **0 network calls, 0 cloud dependencies, and 0 AWS bills**.
-> 2. **Formal Verification**: Every violation cites an exact statutory act (Model Tenancy Act 2021, Indian Contract Act 1872).
+> **🏛️ Core Architectural Differentiators**:
+> 1. **100% On-Device & Offline**: Preset scans execute with **0 network calls, 0 cloud dependencies, and 0 external bills**.
+> 2. **Formal Statutory Verification**: Every violation cites an exact legislative section (Model Tenancy Act 2021, Indian Contract Act 1872).
 > 3. **Actionable Output**: Calculates the exact **Hidden Rupee Trap (₹)** and generates **1-click WhatsApp counter-offers**.
 
 ---
@@ -226,11 +226,11 @@ Every policy file in `backend/policies/` is directly anchored to active Indian j
 
 ---
 
-## 🏆 Hackathon Submission
-
+## 🏛️ Project Specifications & Architecture
+ 
 * **Project**: **DeFang (Bharat Edition)**
-* **Track**: **Build It — Open source, on your machine** *(No AWS account, no card, no bill)*
-* **Built with**: **AWS Cedar Policy Engine** + **Strands Agents SDK**
+* **Deployment Model**: **100% On-Device & Offline** *(Zero cloud dependency, zero external API cost)*
+* **Core Engines**: **AWS Cedar Policy Engine** + **Strands Agents SDK**
 
 ---
 

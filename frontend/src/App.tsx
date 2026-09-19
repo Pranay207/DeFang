@@ -279,7 +279,7 @@ export function App() {
               DeFang Dual-Engine Scanning in Progress...
             </h3>
             <p className="text-xs text-slate-400">
-              Judges: Watch the two independent engines execute in real time below
+              Real-Time Verification: Watch the two independent engines execute below
             </p>
 
             <DualEngineBar isScanning={true} />
