@@ -1,17 +1,30 @@
-# DeFang — Stop Signing Toxic Indian Agreements. Scan, DeFang, and Negotiate.
+<div align="center">
 
-[![Build It Track](https://img.shields.io/badge/Track-Build%20It-FF9900?style=for-the-badge&logo=amazonaws&logoColor=white)](https://github.com/Pranay207/DeFang)
-[![Best UI](https://img.shields.io/badge/Category-Best%20UI%20Submission-6366F1?style=for-the-badge)](https://github.com/Pranay207/DeFang)
-[![Strands Agents SDK](https://img.shields.io/badge/AI%20Agent-Strands%20SDK-0EA5E9?style=for-the-badge)](https://github.com/Pranay207/DeFang)
-[![AWS Cedar](https://img.shields.io/badge/Policy%20Engine-AWS%20Cedar-EC4899?style=for-the-badge)](https://www.cedarpolicy.com/)
-[![FastAPI](https://img.shields.io/badge/Backend-FastAPI%20%7C%20Python-009688?style=for-the-badge&logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com/)
-[![React](https://img.shields.io/badge/Frontend-React%20%7C%20TypeScript-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://react.dev/)
+# 🛡️ DeFang
+### *Stop Signing Toxic Indian Agreements. Scan, DeFang, and Negotiate.*
 
-**DeFang scans Indian rental, employment, and freelance contracts and deterministically flags predatory clauses against actual Indian statutes — with zero legal fees and zero guesswork.**
+**Deterministic Indian Contract Red-Flag Scanner & Statutory Policy Engine**
+<br />
+*100% On-Device & Offline • Zero Cloud Dependencies • Zero AWS Bills • Mathematical Statutory Verification*
 
-[![Watch Demo Video](https://img.shields.io/badge/Demo%20Video-Watch%203--Min%20Walkthrough-red?style=for-the-badge&logo=youtube)](VIDEO_URL)
-[![Live Demo](https://img.shields.io/badge/Live%20Demo-Launch%20DeFang-10B981?style=for-the-badge)](DEPLOYED_URL)
-[![Quick Start](https://img.shields.io/badge/Quick%20Start-Run%20Locally%20in%202%20Mins-purple?style=for-the-badge)](#-quick-start)
+<br />
+
+[![Track: Build It](https://img.shields.io/badge/Track-Build_It-FF9900?style=flat-square&logo=amazonaws&logoColor=white)](https://github.com/Pranay207/DeFang)
+[![Policy Engine: AWS Cedar](https://img.shields.io/badge/Policy_Engine-AWS_Cedar-E11D48?style=flat-square)](https://www.cedarpolicy.com/)
+[![Agent: Strands SDK](https://img.shields.io/badge/Agent-Strands_SDK-0284C7?style=flat-square)](https://github.com/Pranay207/DeFang)
+[![Backend: FastAPI](https://img.shields.io/badge/Backend-FastAPI-0D9488?style=flat-square&logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com/)
+[![Frontend: React 19](https://img.shields.io/badge/Frontend-React_19-2563EB?style=flat-square&logo=react&logoColor=white)](https://react.dev/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-10B981?style=flat-square)](LICENSE)
+
+<br />
+
+[**Watch 3-Min Demo**](VIDEO_URL) &nbsp;•&nbsp; [**Quick Start (2 Mins)**](#-quick-start) &nbsp;•&nbsp; [**Demo Presets**](#demo-presets) &nbsp;•&nbsp; [**Architecture**](#architecture) &nbsp;•&nbsp; [**Cedar Policies**](#legal-frameworks-referenced)
+
+</div>
+
+<br />
+
+> **DeFang** scans Indian rental, employment, and freelance contracts and deterministically flags predatory clauses against actual Indian statutes — with zero legal fees and zero guesswork.
 
 ---
 
