@@ -288,7 +288,7 @@
       "dual_engine_metrics": {
         "stage_1_agent": {
           "name": "Strands AI Agent",
-          "model": "Google Gemini 2.5 Flash API",
+          "model": "Strands Agents SDK (Local Parser)",
           "status": "COMPLETED",
           "duration_ms": 1420,
           "clauses_extracted": 5
@@ -461,7 +461,7 @@
       "dual_engine_metrics": {
         "stage_1_agent": {
           "name": "Strands AI Agent",
-          "model": "Google Gemini 2.5 Flash API",
+          "model": "Strands Agents SDK (Local Parser)",
           "status": "COMPLETED",
           "duration_ms": 1420,
           "clauses_extracted": 3
@@ -599,7 +599,7 @@
       "dual_engine_metrics": {
         "stage_1_agent": {
           "name": "Strands AI Agent",
-          "model": "Google Gemini 2.5 Flash API",
+          "model": "Strands Agents SDK (Local Parser)",
           "status": "COMPLETED",
           "duration_ms": 1420,
           "clauses_extracted": 2

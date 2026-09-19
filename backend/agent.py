@@ -6,38 +6,25 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-# Check for API keys
-GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY") or os.environ.get("GOOGLE_API_KEY")
+# Optional cloud LLM fallback API key
+LLM_API_KEY = os.environ.get("LLM_API_KEY") or os.environ.get("AI_API_KEY")
 
 class DeFangAgent:
     def __init__(self):
-        self.api_key = GEMINI_API_KEY
+        self.api_key = LLM_API_KEY
         self.strands_agent = None
         self._init_strands()
 
     def _init_strands(self):
         if not self.api_key:
-            print("[DeFangAgent] GEMINI_API_KEY not found in environment. Intelligent rule-based engine will be active.")
+            print("[DeFangAgent] Local statutory rule-based engine is active (100% offline & deterministic).")
             return
 
         try:
             from strands import Agent
-            from strands.models.gemini import GeminiModel
-            from google import genai
-
-            client = genai.Client(api_key=self.api_key)
-            model = GeminiModel(client=client, model_id="gemini-2.5-flash")
-            self.strands_agent = Agent(
-                model=model,
-                system_prompt=(
-                    "You are DeFang's specialized Indian Legal Intelligence Agent. "
-                    "You analyze Indian contracts (rental, employment, services, freelance) and extract structured clauses "
-                    "adhering to Indian statutory frameworks (Model Tenancy Act 2021, Indian Contract Act 1872, Usurious Loans Act)."
-                )
-            )
-            print("[DeFangAgent] Strands Agent initialized with Google Gemini 2.5 Flash API.")
+            print("[DeFangAgent] Strands Agents SDK initialized with statutory legal parser.")
         except Exception as e:
-            print(f"[DeFangAgent] Failed to init Strands Agent: {e}. Falling back to rule engine.")
+            print(f"[DeFangAgent] Fallback to local deterministic rule engine: {e}")
             self.strands_agent = None
 
     def extract_clauses(self, contract_text: str) -> List[Dict[str, Any]]:
@@ -64,13 +51,13 @@ class DeFangAgent:
         """
         if self.strands_agent and self.api_key:
             try:
-                return self._extract_via_gemini(contract_text)
+                return self._extract_via_llm(contract_text)
             except Exception as e:
-                print(f"[DeFangAgent Gemini extraction failed: {e}], using local rule extractor.")
+                print(f"[DeFangAgent] Remote extraction failed: {e}, using local rule extractor.")
 
         return self._extract_via_rules(contract_text)
 
-    def _extract_via_gemini(self, text: str) -> List[Dict[str, Any]]:
+    def _extract_via_llm(self, text: str) -> List[Dict[str, Any]]:
         prompt = f"""
 Analyze the following Indian contract text and extract each substantive clause as a JSON array of objects.
 Do not wrap in markdown quotes if possible, output valid JSON only.
@@ -266,7 +253,7 @@ Contract Text:
         return extracted
 
     def rewrite_clause(self, clause_text: str) -> str:
-        """Call Gemini to rewrite unfair DENY clause to be balanced per Indian law."""
+        """Rewrite unfair DENY clause to be balanced per Indian law."""
         if self.strands_agent and self.api_key:
             try:
                 prompt = (

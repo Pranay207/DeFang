@@ -632,7 +632,7 @@ export function App() {
             <span>•</span>
             <span>AWS Cedar Policy Engine</span>
             <span>•</span>
-            <span>Google Gemini 2.5 Flash</span>
+            <span>Deterministic Statutory Engine</span>
           </div>
         </div>
       </footer>
