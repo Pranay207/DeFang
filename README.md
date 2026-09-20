@@ -19,7 +19,7 @@
 
 <br />
 
-[**Watch 3-Min Demo**](VIDEO_URL) &nbsp;•&nbsp; [**Quick Start (2 Mins)**](#-quick-start) &nbsp;•&nbsp; [**Demo Presets**](#-demo-presets) &nbsp;•&nbsp; [**Architecture**](#-architecture) &nbsp;•&nbsp; [**8 Cedar Policies**](#-legal-frameworks-referenced)
+[**Watch 3-Min Demo**](#-3-minute-video-walkthrough) &nbsp;•&nbsp; [**Quick Start (2 Mins)**](#-quick-start) &nbsp;•&nbsp; [**Demo Presets**](#-demo-presets) &nbsp;•&nbsp; [**Architecture**](#-architecture) &nbsp;•&nbsp; [**8 Cedar Policies**](#-legal-frameworks-referenced)
 
 <br />
 <br />
@@ -55,6 +55,27 @@
 | **Bengaluru 2BHK Rental** | Tenant pays ₹3,50,000 (10-mo deposit). Landlord arbitrarily deducts ₹35,000 for repainting and forfeits the entire deposit upon early job relocation. | **Cedar flags Sec 9 & 15 violations in 4ms**. Identifies ₹7,36,050 trapped liability. Generates a polite WhatsApp counter-offer. **Saves ₹3,85,000+**. |
 | **Startup Fresher Offer Letter** | Engineering fresher signs an offer containing a void 24-month post-exit non-compete and a ₹2,50,000 training bond. | **Cedar executes Section 27 policy** (*restraint of trade void ab initio*). Renders GitHub-style PR diff striking down illegal liquidated damages under Sec 74. |
 | **Freelance Dev Agreement** | Independent contractor agrees to a one-sided contract with 4% daily late penalties (>1,400% APR) and 90-day vs. 15-day notice asymmetry. | **Power Imbalance Meter flags 95% Counterparty Bias**. Cedar flags predatory interest under the Usurious Loans Act 1918. |
+
+---
+
+## 📹 3-Minute Video Walkthrough
+
+<div align="center">
+
+[![Watch 3-Minute Video Walkthrough](https://img.shields.io/badge/YouTube-Watch_Full_3--Minute_Walkthrough-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](VIDEO_URL)
+
+<br />
+
+> 📺 **[▶️ Click Here to Watch the Live Product Demonstration on YouTube](VIDEO_URL)**
+*(Recorded for the First Commit | Bharat Builds Tour Hackathon submission)*
+
+</div>
+
+| Timestamp | Video Chapter & Proof Point | What Evaluators Will See |
+| :--- | :--- | :--- |
+| **`0:00 - 1:00`** | **The Crisis & Cedar Deterministic Core** | Why probabilistic LLMs fail Indian legal scrutiny; formal mathematical policy execution in Rust (`cedarpy`) with 0 hallucinations. |
+| **`1:00 - 2:00`** | **Live Indiranagar Lease Audit** | Real-time audit of standard rental agreement; instant calculation of the **₹7,36,050 Hidden Rupee Trap** and 95% Power Imbalance. |
+| **`2:00 - 3:00`** | **Ground-Reality Bharat Workflow** | Mobile camera capture of physical ₹100 stamp papers, regional vernacular voice readouts (`kn`, `te`, `hi`), and 1-click WhatsApp counter-offers. |
 
 ---
 
@@ -266,18 +287,6 @@ During the design and implementation of DeFang (Bharat Edition), our core archit
 3. **Designing for Real-World Bharat Accessibility**:
    - Engineered for physical reality: supporting physical stamp paper camera capture, vernacular voice audio (Kannada/Telugu/Hindi), and WhatsApp communication workflows.
 
----
-
-## 📹 Product Demonstration Video
-
-[![Watch Video Walkthrough](https://img.shields.io/badge/YouTube-Watch_Video_Walkthrough-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](VIDEO_URL)
-
-> 📺 **[Click here to watch the product demonstration on YouTube](VIDEO_URL)**
-
-A comprehensive walkthrough demonstrating DeFang's end-to-end statutory verification workflow:
-* **Dual-Engine Core in Action**: Decoupling Strands Agentic clause structuring from AWS Cedar deterministic policy compilation in native Rust.
-* **Live Statutory Audit**: Real-time evaluation of an Indiranagar 11-month agreement, detecting Section 9 & 15 violations in milliseconds.
-* **Ground-Reality Bharat Workflow**: Physical stamp paper camera capture, regional voice synthesis (Kannada, Telugu, Hindi), and 1-click WhatsApp counter-amendments.
 ---
 
 ## 🏛️ Project Specifications & Architecture

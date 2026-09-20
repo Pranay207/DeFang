@@ -289,7 +289,7 @@ export function App() {
       </div>
 
       {/* Main Container */}
-      <main className="flex-1 max-w-7xl w-full mx-auto px-3.5 sm:px-6 pt-4 pb-32 sm:pb-36 relative z-10 space-y-8">
+      <main className="flex-1 max-w-7xl w-full mx-auto px-3.5 sm:px-6 pt-6 pb-32 sm:pb-36 relative z-10 space-y-8">
         {/* LANDING / INPUT VIEW */}
         {!scanResult && !isLoading && (
           <div className="space-y-8">
