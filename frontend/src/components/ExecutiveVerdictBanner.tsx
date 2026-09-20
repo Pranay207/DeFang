@@ -149,8 +149,8 @@ export const ExecutiveVerdictBanner: React.FC<ExecutiveVerdictBannerProps> = ({
           </div>
 
           {/* Quick Stats Pill */}
-          <div className="flex items-center gap-3 shrink-0">
-            <div className="px-4 py-2.5 rounded-xl bg-slate-900/90 border border-white/10 text-center">
+          <div className="flex items-center gap-3 w-full sm:w-auto justify-between sm:justify-end">
+            <div className="flex-1 sm:flex-initial px-4 py-2.5 rounded-xl bg-slate-900/90 border border-white/10 text-center min-w-[100px]">
               <div className="text-[10px] uppercase font-mono text-slate-400">Risk Score</div>
               <div className={`text-xl font-black font-mono ${
                 isCritical ? 'text-red-400' : isModerate ? 'text-amber-400' : 'text-emerald-400'
@@ -159,7 +159,7 @@ export const ExecutiveVerdictBanner: React.FC<ExecutiveVerdictBannerProps> = ({
               </div>
             </div>
 
-            <div className="px-4 py-2.5 rounded-xl bg-red-950/60 border border-red-500/40 text-center">
+            <div className="flex-1 sm:flex-initial px-4 py-2.5 rounded-xl bg-red-950/60 border border-red-500/40 text-center min-w-[120px]">
               <div className="text-[10px] uppercase font-mono text-red-300">Money At Risk</div>
               <div className="text-xl font-black font-mono text-red-400">
                 ₹{result.total_rupee_trap.toLocaleString('en-IN')}
@@ -243,7 +243,7 @@ export const ExecutiveVerdictBanner: React.FC<ExecutiveVerdictBannerProps> = ({
           <button
             type="button"
             onClick={onOpenWhatsApp}
-            className="flex items-center space-x-2 px-4 py-2 rounded-xl bg-gradient-to-r from-emerald-600 via-emerald-500 to-teal-500 hover:from-emerald-500 hover:to-teal-400 text-slate-950 font-black text-xs sm:text-sm tracking-wide shadow-lg shadow-emerald-500/30 hover:scale-[1.02] transition-all cursor-pointer"
+            className="flex items-center justify-center space-x-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-emerald-600 via-emerald-500 to-teal-500 hover:from-emerald-500 hover:to-teal-400 text-slate-950 font-black text-xs sm:text-sm tracking-wide shadow-lg shadow-emerald-500/30 hover:scale-[1.02] transition-all cursor-pointer w-full sm:w-auto"
           >
             <MessageCircle className="w-4 h-4 fill-slate-950" />
             <span>Negotiate via WhatsApp</span>

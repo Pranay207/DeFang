@@ -313,7 +313,7 @@ export const ClauseCard: React.FC<ClauseCardProps> = ({
             <ReactDiffViewer
               oldValue={clause.clause_text}
               newValue={clause.rewritten_fair_text}
-              splitView={true}
+              splitView={typeof window !== 'undefined' ? window.innerWidth >= 768 : true}
               useDarkTheme={true}
               styles={diffViewerStyles}
               leftTitle={t.clauseCard.diffOriginal}
