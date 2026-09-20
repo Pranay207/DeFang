@@ -8,6 +8,7 @@ interface NavbarProps {
   onLanguageChange: (lang: Language) => void;
   onReset?: () => void;
   onOpenWhatsAppBot?: () => void;
+  onOpenCedarArchitecture?: () => void;
   hasResult: boolean;
 }
 
@@ -16,6 +17,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   onLanguageChange,
   onReset,
   onOpenWhatsAppBot,
+  onOpenCedarArchitecture,
   hasResult
 }) => {
   const t = getTranslation(currentLang);
@@ -54,14 +56,22 @@ export const Navbar: React.FC<NavbarProps> = ({
           </div>
         </div>
 
-        {/* Dual Engine Badge */}
+        {/* Dual Engine Badge / Architecture Trigger */}
         <div className="hidden lg:flex items-center space-x-3">
-          <div className="flex items-center space-x-2 px-3 py-1.5 rounded-lg bg-slate-900/90 border border-white/10 text-xs">
-            <span className="flex items-center text-red-400 font-medium space-x-1.5">
-              <Scale className="w-3.5 h-3.5" />
-              <span className="text-slate-200 font-semibold">{t.navbar.engineBadge}</span>
+          <button
+            type="button"
+            onClick={onOpenCedarArchitecture}
+            className="flex items-center space-x-2 px-3 py-1.5 rounded-lg bg-slate-900/90 border border-emerald-500/30 hover:border-emerald-500/70 hover:bg-slate-800/90 text-xs transition-all cursor-pointer group shadow-sm"
+            title="Inspect AWS Cedar Policy Engine & Architecture"
+          >
+            <span className="flex items-center text-emerald-400 font-medium space-x-1.5">
+              <Scale className="w-3.5 h-3.5 group-hover:rotate-12 transition-transform" />
+              <span className="text-slate-200 font-semibold group-hover:text-white">{t.navbar.engineBadge}</span>
             </span>
-          </div>
+            <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/40">
+              Inspect
+            </span>
+          </button>
         </div>
 
         {/* Actions & Language Switcher */}

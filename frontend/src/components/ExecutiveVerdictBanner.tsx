@@ -174,11 +174,17 @@ export const ExecutiveVerdictBanner: React.FC<ExecutiveVerdictBannerProps> = ({
                   className="p-2.5 rounded-lg bg-red-950/30 border border-red-500/20 text-slate-200 flex items-start space-x-2"
                 >
                   <span className="text-red-400 font-bold shrink-0">❌</span>
-                  <div className="leading-snug">
-                    <div className="font-bold text-red-300 text-[11px] truncate">
+                  <div className="leading-snug min-w-0 flex-1">
+                    <div 
+                      className="font-bold text-red-300 text-[11px] truncate" 
+                      title={c.title || c.category}
+                    >
                       {c.title || c.category}
                     </div>
-                    <div className="text-[10px] text-slate-400 font-mono mt-0.5 truncate">
+                    <div 
+                      className="text-[10px] text-slate-400 font-mono mt-0.5 truncate" 
+                      title={c.citation || 'Indian Contract Law'}
+                    >
                       {c.citation || 'Indian Contract Law'}
                     </div>
                   </div>

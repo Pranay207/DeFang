@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import confetti from 'canvas-confetti';
-import { ArrowLeft, Printer, Share2, Download, History, MessageCircle } from 'lucide-react';
+import { ArrowLeft, Printer, Share2, Download, History, MessageCircle, ShieldCheck } from 'lucide-react';
 import fallbackData from './presetsFallback.json';
 
 import { Navbar } from './components/Navbar';
@@ -16,6 +16,7 @@ import { Toast } from './components/Toast';
 import { WhatsAppBotModal } from './components/WhatsAppBotModal';
 import { ExecutiveVerdictBanner } from './components/ExecutiveVerdictBanner';
 import { FloatingActionBar } from './components/FloatingActionBar';
+import { CedarArchitectureModal } from './components/CedarArchitectureModal';
 
 import type { ScanResult, PresetSummary, Language } from './types';
 import { getTranslation } from './i18n';
@@ -42,6 +43,7 @@ export function App() {
   const [toastMessage, setToastMessage] = useState<string | null>(null);
   const [clauseFilter, setClauseFilter] = useState<'all' | 'deny' | 'allow'>('all');
   const [showWhatsAppBot, setShowWhatsAppBot] = useState<boolean>(false);
+  const [showCedarModal, setShowCedarModal] = useState<boolean>(false);
   const [recentAudits, setRecentAudits] = useState<ScanResult[]>(() => {
     try {
       const saved = localStorage.getItem('defang_recent_audits');
@@ -270,6 +272,7 @@ export function App() {
         onLanguageChange={handleLanguageChange}
         onReset={handleReset}
         onOpenWhatsAppBot={() => setShowWhatsAppBot(true)}
+        onOpenCedarArchitecture={() => setShowCedarModal(true)}
         hasResult={!!scanResult}
       />
 
@@ -514,8 +517,8 @@ export function App() {
                   <span>{t.results.printBtn}</span>
                 </button>
 
-                <div className="hidden lg:flex items-center space-x-2 text-xs font-mono text-slate-400 pl-2 border-l border-white/10">
-                  <span>Cedar Engine:</span>
+                <div className="hidden lg:flex items-center space-x-1.5 text-xs font-mono text-slate-400 pl-2 border-l border-white/10">
+                  <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
                   <span className="text-emerald-400 font-bold">{t.results.cedarExecuted}</span>
                 </div>
               </div>
@@ -666,6 +669,12 @@ export function App() {
         onClose={() => setShowWhatsAppBot(false)}
         scanResult={scanResult}
         currentLang={currentLang}
+      />
+
+      {/* AWS Cedar Policy Engine & Architecture Modal (For Judges & Deep Dive) */}
+      <CedarArchitectureModal
+        isOpen={showCedarModal}
+        onClose={() => setShowCedarModal(false)}
       />
 
       {/* Floating Action Bar (Sticky Action Pill for Easy Interaction) */}

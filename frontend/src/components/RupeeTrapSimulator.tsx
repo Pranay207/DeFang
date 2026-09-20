@@ -103,7 +103,7 @@ export const RupeeTrapSimulator: React.FC<RupeeTrapSimulatorProps> = ({
                   animate={{ opacity: 1, height: 'auto' }}
                   exit={{ opacity: 0, height: 0 }}
                   transition={{ duration: 0.3 }}
-                  className="space-y-2.5 mt-3"
+                  className="space-y-2.5 mt-3 max-h-80 overflow-y-auto pr-1 custom-scrollbar"
                 >
                   {breakdown.map((item, idx) => (
                     <div
