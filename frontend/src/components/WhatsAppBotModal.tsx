@@ -31,7 +31,7 @@ export const WhatsAppBotModal: React.FC<WhatsAppBotModalProps> = ({
   scanResult,
   currentLang
 }) => {
-  const [activeTab, setActiveTab] = useState<'dispatcher' | 'simulator' | 'webhook'>('dispatcher');
+  const [activeTab, setActiveTab] = useState<'dispatcher' | 'simulator'>('dispatcher');
   const [targetPhone, setTargetPhone] = useState<string>('');
   const [selectedTone, setSelectedTone] = useState<'polite' | 'firm' | 'audit'>('polite');
   const [copied, setCopied] = useState(false);
@@ -214,18 +214,6 @@ export const WhatsAppBotModal: React.FC<WhatsAppBotModalProps> = ({
           >
             <Sparkles className="w-3.5 h-3.5" />
             <span>Bot Chat Preview</span>
-          </button>
-
-          <button
-            onClick={() => setActiveTab('webhook')}
-            className={`flex-1 py-2 text-xs font-bold border-b-2 transition-all flex items-center justify-center space-x-1.5 ${
-              activeTab === 'webhook'
-                ? 'border-emerald-400 text-emerald-400'
-                : 'border-transparent text-slate-400 hover:text-slate-200'
-            }`}
-          >
-            <QrCode className="w-3.5 h-3.5" />
-            <span>Live Webhook API</span>
           </button>
         </div>
 
@@ -429,42 +417,6 @@ export const WhatsAppBotModal: React.FC<WhatsAppBotModalProps> = ({
                   <span>Send Negotiation Message on WhatsApp</span>
                 </button>
               </div>
-            </div>
-          </div>
-        )}
-
-        {/* TAB 3: PRODUCTION WEBHOOK API */}
-        {activeTab === 'webhook' && (
-          <div className="p-4 space-y-4 overflow-y-auto flex-1 text-xs text-slate-200">
-            <div className="p-3 rounded-xl bg-slate-900 border border-white/10 space-y-2">
-              <div className="flex items-center space-x-2 text-emerald-400 font-bold text-xs">
-                <ShieldCheck className="w-4 h-4" />
-                <span>Production WhatsApp Business API Webhook</span>
-              </div>
-              <p className="text-[11px] text-slate-300 leading-relaxed">
-                Connect your official Twilio or Meta WhatsApp Business number directly to DeFang. When anyone sends an agreement photo or text to your WhatsApp number, our FastAPI webhook evaluates the 8 AWS Cedar policies and auto-replies!
-              </p>
-            </div>
-
-            <div className="space-y-1.5">
-              <label className="text-[11px] font-bold text-slate-300">Live Webhook URL (FastAPI):</label>
-              <div className="p-2.5 bg-[#111b21] rounded-xl border border-white/10 font-mono text-[11px] text-emerald-300 select-all">
-                POST http://localhost:8000/api/whatsapp/webhook
-              </div>
-            </div>
-
-            <div className="space-y-1.5">
-              <label className="text-[11px] font-bold text-slate-300">Meta Webhook Verification Token:</label>
-              <div className="p-2.5 bg-[#111b21] rounded-xl border border-white/10 font-mono text-[11px] text-sky-300 select-all">
-                defang_secret_token_2026
-              </div>
-            </div>
-
-            <div className="p-3 bg-emerald-950/40 rounded-xl border border-emerald-500/30 text-[11px] text-emerald-200 space-y-1">
-              <div className="font-bold text-emerald-300">✅ Supported Webhook Providers:</div>
-              <div>• Meta WhatsApp Cloud API (Graph API v18.0)</div>
-              <div>• Twilio for WhatsApp Sandbox (TwiML automatic responses)</div>
-              <div>• Gupshup / Infobip Enterprise WhatsApp Gateways</div>
             </div>
           </div>
         )}
