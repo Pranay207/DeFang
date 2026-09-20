@@ -271,7 +271,6 @@ export function App() {
         currentLang={currentLang}
         onLanguageChange={handleLanguageChange}
         onReset={handleReset}
-        onOpenWhatsAppBot={() => setShowWhatsAppBot(true)}
         onOpenCedarArchitecture={() => setShowCedarModal(true)}
         hasResult={!!scanResult}
       />
