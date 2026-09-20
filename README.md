@@ -1,6 +1,8 @@
 <div align="center">
 
-# 🛡️ DeFang (Bharat Edition)
+<img src="assets/logo.svg" alt="DeFang Cyber Shield Logo" width="88" height="88" />
+
+# DeFang (Bharat Edition)
 ### *Stop Signing Toxic Indian Agreements. Scan, DeFang, and Negotiate.*
 
 **Deterministic Indian Contract Red-Flag Scanner & Statutory Policy Engine**
