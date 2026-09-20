@@ -34,6 +34,7 @@ export const ClauseCard: React.FC<ClauseCardProps> = ({
   const [activeTab, setActiveTab] = useState<'polite' | 'firm' | 'legal'>('polite');
   const [copiedTab, setCopiedTab] = useState<string | null>(null);
   const [isPlayingAudio, setIsPlayingAudio] = useState(false);
+  const [isExpanded, setIsExpanded] = useState<boolean>(clause.clause_id === 1);
 
   const isDeny = clause.verdict === 'DENY';
 
@@ -58,18 +59,19 @@ export const ClauseCard: React.FC<ClauseCardProps> = ({
     }
 
     window.speechSynthesis.cancel();
-    const textToSpeak = getEli5();
-    if (!textToSpeak) return;
+    const text = getEli5();
+    if (!text) return;
 
-    const utterance = new SpeechSynthesisUtterance(textToSpeak);
-    const langMap: Record<Language, string> = {
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.rate = 0.95;
+
+    const langCodeMap: Record<Language, string> = {
       en: 'en-IN',
       hi: 'hi-IN',
-      te: 'te-IN',
       kn: 'kn-IN',
+      te: 'te-IN'
     };
-    utterance.lang = langMap[currentLang] || 'en-IN';
-    utterance.rate = 0.92;
+    utterance.lang = langCodeMap[currentLang] || 'en-IN';
 
     utterance.onend = () => setIsPlayingAudio(false);
     utterance.onerror = () => setIsPlayingAudio(false);
@@ -81,16 +83,13 @@ export const ClauseCard: React.FC<ClauseCardProps> = ({
   const handleCopyWhatsApp = (text: string, toneName: string) => {
     navigator.clipboard.writeText(text);
     setCopiedTab(toneName);
-    onCopyToast(`Copied ${toneName} message to clipboard!`);
-    setTimeout(() => {
-      setCopiedTab(null);
-    }, 2000);
+    onCopyToast(`Copied ${toneName} negotiation counter-clause to clipboard!`);
+    setTimeout(() => setCopiedTab(null), 2500);
   };
 
   const handleSendWhatsApp = (text: string) => {
-    const url = `https://api.whatsapp.com/send?text=${encodeURIComponent(text)}`;
-    window.open(url, '_blank', 'noopener,noreferrer');
-    onCopyToast('Opening WhatsApp...');
+    const encoded = encodeURIComponent(text);
+    window.open(`https://wa.me/?text=${encoded}`, '_blank');
   };
 
   // Custom dark theme styles for react-diff-viewer to mirror GitHub PR diff
@@ -135,88 +134,97 @@ export const ClauseCard: React.FC<ClauseCardProps> = ({
   const localizedWhatsApp = getLocalizedWhatsApp(policyId, currentLang, clause.whatsapp);
 
   return (
-    <div className={`glass-panel rounded-2xl p-5 border transition-all duration-200 relative overflow-hidden ${
+    <div className={`glass-panel rounded-2xl p-4 sm:p-5 border transition-all duration-200 relative overflow-hidden ${
       isDeny 
         ? 'border-red-500/30 hover:border-red-500/50 bg-slate-950/90 shadow-[0_4px_20px_-4px_rgba(239,68,68,0.15)]' 
         : 'border-emerald-500/20 hover:border-emerald-500/40 bg-slate-950/70'
     }`}>
-      {/* Top Header: Badge, Category, Verdict */}
-      <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
-        <div className="flex items-center space-x-2.5">
+      {/* Clickable Header: Summary & Toggle */}
+      <div 
+        onClick={() => setIsExpanded(!isExpanded)}
+        className="flex flex-wrap items-center justify-between gap-3 cursor-pointer select-none group"
+      >
+        <div className="flex items-center space-x-2 sm:space-x-2.5 flex-wrap gap-y-1">
           <span className="text-xs font-mono font-bold text-slate-400 bg-slate-900 px-2 py-0.5 rounded border border-white/10">
             Clause #{clause.clause_id}
           </span>
-          <span className="text-xs font-semibold text-slate-300 capitalize">
-            {clause.category.replace('_', ' ')}
+          <span className="text-xs sm:text-sm font-bold text-white group-hover:text-sky-300 transition-colors">
+            {clause.title || clause.category.replace('_', ' ')}
           </span>
-          <span className="text-[11px] text-slate-500 font-mono">•</span>
-          <span className="text-[11px] text-slate-400 font-mono flex items-center space-x-1">
+          {clause.extracted_value?.amount_inr ? (
+            <span className="text-[10px] sm:text-[11px] font-mono font-bold text-amber-300 bg-amber-500/15 border border-amber-500/30 px-2 py-0.5 rounded-full">
+              ₹{clause.extracted_value.amount_inr.toLocaleString('en-IN')} Trap
+            </span>
+          ) : null}
+          <span className="text-[11px] text-slate-400 font-mono hidden sm:inline-flex items-center space-x-1">
             <Scale className="w-3 h-3 text-slate-400" />
             <span>
-              {t.clauseCard.favorsLabel}{' '}
-              <strong className="text-slate-200 capitalize">
-                {clause.favors === 'landlord' ? t.clauseCard.favorsLandlord : clause.favors === 'tenant' ? t.clauseCard.favorsTenant : t.clauseCard.favorsNeutral}
-              </strong>
+              {clause.favors === 'landlord' ? t.clauseCard.favorsLandlord : clause.favors === 'tenant' ? t.clauseCard.favorsTenant : t.clauseCard.favorsNeutral}
             </span>
           </span>
         </div>
 
-        {/* Verdict Badge */}
+        {/* Verdict Badge & Expand Trigger */}
         <div className="flex items-center space-x-2">
           {isDeny ? (
-            <span className="flex items-center space-x-1.5 px-3 py-1 rounded-full text-xs font-bold font-mono tracking-wider bg-red-500/20 text-red-400 border border-red-500/40 shadow-sm shadow-red-500/20">
+            <span className="flex items-center space-x-1.5 px-2.5 sm:px-3 py-1 rounded-full text-[11px] sm:text-xs font-bold font-mono tracking-wider bg-red-500/20 text-red-400 border border-red-500/40 shadow-sm shadow-red-500/20">
               <AlertOctagon className="w-3.5 h-3.5" />
               <span>CEDAR DENY</span>
             </span>
           ) : (
-            <span className="flex items-center space-x-1.5 px-3 py-1 rounded-full text-xs font-bold font-mono tracking-wider bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 shadow-sm shadow-emerald-500/20">
+            <span className="flex items-center space-x-1.5 px-2.5 sm:px-3 py-1 rounded-full text-[11px] sm:text-xs font-bold font-mono tracking-wider bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 shadow-sm shadow-emerald-500/20">
               <CheckCircle2 className="w-3.5 h-3.5" />
               <span>CEDAR ALLOW</span>
             </span>
+          <div className="p-1 rounded-lg bg-slate-900 border border-white/10 text-slate-400 group-hover:text-white group-hover:border-white/30 transition-all">
+            {isExpanded ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+          </div>
+        </div>
+      </div>
+
+      {/* Expandable Clause Details (Progressive Disclosure) */}
+      {isExpanded && (
+        <div className="mt-4 pt-3 border-t border-white/10 space-y-4">
+          {/* Raw Clause Quote Box */}
+          <div className="p-3.5 rounded-xl bg-slate-900/90 border border-white/10 text-xs font-mono text-slate-200 leading-relaxed relative">
+            <p className="italic select-all">
+              "{clause.clause_text}"
+            </p>
+          </div>
+
+          {/* Violation Box (If DENY) */}
+          {isDeny && clause.violations && clause.violations.length > 0 && (
+            <div className="p-3.5 rounded-xl bg-red-950/40 border border-red-500/30 space-y-1.5">
+              <div className="flex items-center space-x-2">
+                <AlertOctagon className="w-4 h-4 text-red-400 shrink-0" />
+                <span className="text-xs font-bold text-red-300">
+                  {clause.title || clause.violations[0].title}
+                </span>
+                <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-red-500/20 text-red-300 border border-red-500/40 ml-auto">
+                  {t.clauseCard.severityLabel} {clause.severity}/100
+                </span>
+              </div>
+
+              <p className="text-xs text-slate-300 leading-relaxed pl-6">
+                {clause.violations[0].description}
+              </p>
+
+              <div className="pl-6 pt-1 flex items-center space-x-2 text-[11px] font-mono text-red-400">
+                <span>{t.clauseCard.statuteLabel}</span>
+                <strong className="text-red-300 underline underline-offset-2">
+                  {clause.citation || clause.violations[0].citation}
+                </strong>
+              </div>
+
+              {/* Cedar Policy Rule */}
+              <div className="pl-6 pt-1 text-[11px] font-mono text-slate-400">
+                <span>{t.clauseCard.ruleLabel} </span>
+                <code className="text-amber-300 bg-slate-900/80 px-1.5 py-0.5 rounded text-[10px]">
+                  {clause.rule_text || clause.violations[0].rule_text}
+                </code>
+              </div>
+            </div>
           )}
-        </div>
-      </div>
-
-      {/* Raw Clause Quote Box */}
-      <div className="p-3.5 rounded-xl bg-slate-900/90 border border-white/10 text-xs font-mono text-slate-200 mb-4 leading-relaxed relative">
-        <p className="italic select-all">
-          "{clause.clause_text}"
-        </p>
-      </div>
-
-      {/* Violation Box (If DENY) */}
-      {isDeny && clause.violations && clause.violations.length > 0 && (
-        <div className="p-3.5 rounded-xl bg-red-950/40 border border-red-500/30 mb-4 space-y-1.5">
-          <div className="flex items-center space-x-2">
-            <AlertOctagon className="w-4 h-4 text-red-400 shrink-0" />
-            <span className="text-xs font-bold text-red-300">
-              {clause.title || clause.violations[0].title}
-            </span>
-            <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-red-500/20 text-red-300 border border-red-500/40 ml-auto">
-              {t.clauseCard.severityLabel} {clause.severity}/100
-            </span>
-          </div>
-
-          <p className="text-xs text-slate-300 leading-relaxed pl-6">
-            {clause.violations[0].description}
-          </p>
-
-          <div className="pl-6 pt-1 flex items-center space-x-2 text-[11px] font-mono text-red-400">
-            <span>{t.clauseCard.statuteLabel}</span>
-            <strong className="text-red-300 underline underline-offset-2">
-              {clause.citation || clause.violations[0].citation}
-            </strong>
-          </div>
-
-          {/* Cedar Policy Rule */}
-          <div className="pl-6 pt-1 text-[11px] font-mono text-slate-400">
-            <span>{t.clauseCard.ruleLabel} </span>
-            <code className="text-amber-300 bg-slate-900/80 px-1.5 py-0.5 rounded text-[10px]">
-              {clause.rule_text || clause.violations[0].rule_text}
-            </code>
-          </div>
-        </div>
-      )}
 
       {/* ELI5 Plain Explanation (Multilingual + Audio Voice Readout) */}
       <div className="p-3.5 rounded-xl bg-slate-900/70 border border-sky-500/25 flex items-start justify-between gap-3 mb-4">
@@ -419,6 +427,8 @@ export const ClauseCard: React.FC<ClauseCardProps> = ({
               </button>
             </div>
           </div>
+        </div>
+      )}
         </div>
       )}
     </div>

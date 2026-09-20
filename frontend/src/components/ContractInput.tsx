@@ -99,7 +99,7 @@ export const ContractInput: React.FC<ContractInputProps> = ({
           {!selectedFile ? (
             <div className="relative">
               <textarea
-                rows={8}
+                rows={4}
                 value={inputText}
                 onChange={(e) => onTextChange(e.target.value)}
                 placeholder={t.input.placeholder}
