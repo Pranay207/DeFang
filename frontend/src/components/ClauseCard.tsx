@@ -176,6 +176,8 @@ export const ClauseCard: React.FC<ClauseCardProps> = ({
               <CheckCircle2 className="w-3.5 h-3.5" />
               <span>CEDAR ALLOW</span>
             </span>
+          )}
+
           <div className="p-1 rounded-lg bg-slate-900 border border-white/10 text-slate-400 group-hover:text-white group-hover:border-white/30 transition-all">
             {isExpanded ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
           </div>

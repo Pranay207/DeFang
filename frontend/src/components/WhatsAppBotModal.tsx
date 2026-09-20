@@ -7,13 +7,11 @@ import {
   CheckCheck, 
   FileText, 
   ExternalLink, 
-  ShieldCheck, 
   AlertTriangle,
   MessageCircle,
   Phone,
   Copy,
   Check,
-  QrCode,
   Sparkles
 } from 'lucide-react';
 import type { ScanResult, Language } from '../types';

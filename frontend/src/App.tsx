@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import confetti from 'canvas-confetti';
-import { ArrowLeft, Printer, Share2, Download, History, MessageCircle, ShieldCheck } from 'lucide-react';
+import { ArrowLeft, Printer, Share2, Download, History, MessageCircle } from 'lucide-react';
 import fallbackData from './presetsFallback.json';
 
 import { Navbar } from './components/Navbar';
