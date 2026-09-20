@@ -17,13 +17,15 @@ interface ExecutiveVerdictBannerProps {
   currentLang: Language;
   onOpenWhatsApp: () => void;
   onDownloadReport: () => void;
+  onOpenCedarArchitecture?: () => void;
 }
 
 export const ExecutiveVerdictBanner: React.FC<ExecutiveVerdictBannerProps> = ({
   result,
   currentLang,
   onOpenWhatsApp,
-  onDownloadReport
+  onDownloadReport,
+  onOpenCedarArchitecture
 }) => {
   const [isPlayingAudio, setIsPlayingAudio] = useState(false);
 
@@ -120,11 +122,17 @@ export const ExecutiveVerdictBanner: React.FC<ExecutiveVerdictBannerProps> = ({
             </span>
           </div>
 
-          {/* Formal Verification Badge */}
-          <div className="flex items-center space-x-1.5 px-3 py-1 rounded-full bg-slate-900/90 border border-emerald-500/30 text-[11px] font-mono text-emerald-300">
-            <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
+          {/* Formal Verification Badge / Click to inspect */}
+          <button
+            type="button"
+            onClick={onOpenCedarArchitecture}
+            className="flex items-center space-x-1.5 px-3 py-1 rounded-full bg-slate-900/90 border border-emerald-500/30 hover:border-emerald-500/70 text-[11px] font-mono text-emerald-300 hover:text-white transition-all cursor-pointer group shadow-sm"
+            title="Inspect AWS Cedar policies and architecture"
+          >
+            <ShieldCheck className="w-3.5 h-3.5 text-emerald-400 group-hover:scale-110 transition-transform" />
             <span>AWS Cedar: 8/8 Policies Executed (Zero Hallucinations)</span>
-          </div>
+            <span className="text-[10px] text-emerald-400 underline ml-1">Inspect ↗</span>
+          </button>
         </div>
 
         {/* Big Verdict Headline & Money Callout */}

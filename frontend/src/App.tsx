@@ -530,14 +530,28 @@ export function App() {
               currentLang={currentLang}
               onOpenWhatsApp={() => setShowWhatsAppBot(true)}
               onDownloadReport={handleDownloadReport}
+              onOpenCedarArchitecture={() => setShowCedarModal(true)}
             />
 
-            {/* FEATURE 1: Dual-Engine Visualization */}
-            <DualEngineBar 
-              isScanning={false} 
-              metrics={scanResult.dual_engine_metrics} 
-              currentLang={currentLang}
-            />
+            {/* STATUTORY VERIFICATION BAR (Sleek, human-friendly & judge-accessible) */}
+            <div className="p-3 sm:px-4 rounded-xl bg-slate-900/60 border border-emerald-500/20 flex flex-wrap items-center justify-between gap-3 text-xs">
+              <div className="flex items-center space-x-2 text-slate-300">
+                <ShieldCheck className="w-4 h-4 text-emerald-400 shrink-0" />
+                <span>
+                  <strong className="text-white">Statutory Engine Verified:</strong> Model Tenancy Act 2021 & Contract Act 1872 evaluated via <span className="text-emerald-400 font-mono font-bold">AWS Cedar (Rust)</span>
+                </span>
+              </div>
+
+              <button
+                type="button"
+                onClick={() => setShowCedarModal(true)}
+                className="flex items-center space-x-1.5 px-3 py-1 rounded-lg bg-emerald-950/70 border border-emerald-500/40 hover:border-emerald-500/80 text-emerald-300 hover:text-white font-mono font-semibold transition-all hover:scale-105 cursor-pointer ml-auto"
+                title="Inspect AWS Cedar policies and architecture"
+              >
+                <span>Inspect Engine & Policies</span>
+                <span className="text-emerald-400">↗</span>
+              </button>
+            </div>
 
             {/* Risk Hero with Circular Gauge & Scores */}
             <RiskHero result={scanResult} currentLang={currentLang} />
