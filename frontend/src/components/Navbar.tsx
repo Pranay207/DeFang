@@ -1,4 +1,4 @@
-import { ShieldAlert, Scale, RefreshCw } from 'lucide-react';
+import { Scale, RefreshCw } from 'lucide-react';
 import { LanguageToggle } from './LanguageToggle';
 import type { Language } from '../types';
 import { getTranslation } from '../i18n';
