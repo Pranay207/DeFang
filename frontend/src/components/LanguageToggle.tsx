@@ -20,19 +20,19 @@ export const LanguageToggle: React.FC<LanguageToggleProps> = ({
   ];
 
   return (
-    <div className="flex items-center space-x-1.5 p-1 rounded-xl bg-slate-900/90 border border-white/10 shadow-inner">
-      <div className="pl-2 pr-1 text-slate-400">
+    <div className="flex items-center space-x-1 p-0.5 sm:p-1 rounded-xl bg-slate-900/90 border border-white/10 shadow-inner">
+      <div className="hidden sm:block pl-2 pr-1 text-slate-400">
         <Globe className="w-3.5 h-3.5" />
       </div>
 
-      <div className="flex items-center space-x-1">
+      <div className="flex items-center space-x-0.5 sm:space-x-1">
         {languages.map((lang) => {
           const isActive = currentLang === lang.code;
           return (
             <button
               key={lang.code}
               onClick={() => onLanguageChange(lang.code)}
-              className="relative px-2.5 py-1 text-xs font-semibold rounded-lg transition-colors duration-150 text-slate-400 hover:text-slate-200"
+              className="relative px-1.5 sm:px-2.5 py-1 text-[11px] sm:text-xs font-semibold rounded-lg transition-colors duration-150 text-slate-400 hover:text-slate-200"
             >
               {isActive && (
                 <motion.div
@@ -41,7 +41,7 @@ export const LanguageToggle: React.FC<LanguageToggleProps> = ({
                   transition={{ type: 'spring', stiffness: 420, damping: 30 }}
                 />
               )}
-              <span className={`relative z-10 transition-colors duration-150 ${isActive ? 'text-white' : ''}`}>
+              <span className={`relative z-10 transition-colors duration-150 ${isActive ? 'text-white font-bold' : ''}`}>
                 {lang.native}
               </span>
             </button>

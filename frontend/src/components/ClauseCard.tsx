@@ -298,13 +298,13 @@ export const ClauseCard: React.FC<ClauseCardProps> = ({
       {showDiff && (
         <div className="mt-4 rounded-xl border border-white/15 overflow-hidden bg-[#0d1117] shadow-2xl">
           {/* GitHub PR Diff Header */}
-          <div className="px-4 py-2 bg-[#161b22] border-b border-white/10 flex items-center justify-between text-xs font-mono">
+          <div className="px-3 sm:px-4 py-2 bg-[#161b22] border-b border-white/10 flex flex-wrap items-center justify-between gap-2 text-xs font-mono">
             <div className="flex items-center space-x-2">
               <span className="text-emerald-400 font-bold">+fair_clause.legal</span>
               <span className="text-slate-500">vs</span>
               <span className="text-red-400 font-bold">-unfair_clause.legal</span>
             </div>
-            <span className="text-[11px] text-slate-400">
+            <span className="text-[10px] sm:text-[11px] text-slate-400">
               Aligned with {clause.citation}
             </span>
           </div>
@@ -325,7 +325,7 @@ export const ClauseCard: React.FC<ClauseCardProps> = ({
 
       {/* FEATURE 5 RENDER: 3-Tone WhatsApp Diplomat */}
       {showWhatsApp && (
-        <div className="mt-4 p-4 rounded-xl bg-slate-950/90 border border-emerald-500/30 shadow-2xl">
+        <div className="mt-4 p-3 sm:p-4 rounded-xl bg-slate-950/90 border border-emerald-500/30 shadow-2xl">
           <div className="flex items-center justify-between mb-3">
             <div className="flex items-center space-x-2">
               <div className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
@@ -339,10 +339,10 @@ export const ClauseCard: React.FC<ClauseCardProps> = ({
           </div>
 
           {/* 3 Tone Tabs */}
-          <div className="flex space-x-1.5 p-1 rounded-xl bg-slate-900 border border-white/10 mb-4">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-1.5 p-1 rounded-xl bg-slate-900 border border-white/10 mb-4">
             <button
               onClick={() => setActiveTab('polite')}
-              className={`flex-1 py-1.5 text-xs font-semibold rounded-lg transition-all ${
+              className={`py-2 sm:py-1.5 px-3 text-xs font-semibold rounded-lg transition-all text-center ${
                 activeTab === 'polite'
                   ? 'bg-emerald-600 text-white shadow'
                   : 'text-slate-400 hover:text-white'
@@ -352,7 +352,7 @@ export const ClauseCard: React.FC<ClauseCardProps> = ({
             </button>
             <button
               onClick={() => setActiveTab('firm')}
-              className={`flex-1 py-1.5 text-xs font-semibold rounded-lg transition-all ${
+              className={`py-2 sm:py-1.5 px-3 text-xs font-semibold rounded-lg transition-all text-center ${
                 activeTab === 'firm'
                   ? 'bg-emerald-600 text-white shadow'
                   : 'text-slate-400 hover:text-white'
@@ -362,7 +362,7 @@ export const ClauseCard: React.FC<ClauseCardProps> = ({
             </button>
             <button
               onClick={() => setActiveTab('legal')}
-              className={`flex-1 py-1.5 text-xs font-semibold rounded-lg transition-all ${
+              className={`py-2 sm:py-1.5 px-3 text-xs font-semibold rounded-lg transition-all text-center ${
                 activeTab === 'legal'
                   ? 'bg-emerald-600 text-white shadow'
                   : 'text-slate-400 hover:text-white'

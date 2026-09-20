@@ -99,41 +99,41 @@ export const RiskHero: React.FC<RiskHeroProps> = ({ result, currentLang = 'en' }
         </div>
 
         {/* Right: Breakdown Pill Stats */}
-        <div className="grid grid-cols-3 gap-3 w-full lg:w-auto">
+        <div className="grid grid-cols-3 gap-2 sm:gap-3 w-full lg:w-auto">
           {/* DENY Card */}
-          <div className="p-3.5 rounded-xl bg-red-950/30 border border-red-500/20 flex flex-col items-center justify-center text-center">
-            <div className="flex items-center space-x-1 text-red-400 mb-1">
-              <AlertOctagon className="w-4 h-4" />
-              <span className="text-[11px] font-bold uppercase">{t.riskHero.redFlags}</span>
+          <div className="p-2 sm:p-3.5 rounded-xl bg-red-950/30 border border-red-500/20 flex flex-col items-center justify-center text-center">
+            <div className="flex items-center space-x-1 text-red-400 mb-0.5 sm:mb-1">
+              <AlertOctagon className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+              <span className="text-[9px] xs:text-[10px] sm:text-[11px] font-bold uppercase">{t.riskHero.redFlags}</span>
             </div>
-            <span className="text-2xl font-extrabold text-red-400 font-mono">
+            <span className="text-xl sm:text-2xl font-extrabold text-red-400 font-mono">
               {result.deny_count}
             </span>
-            <span className="text-[10px] text-slate-400">{t.riskHero.cedarDeny}</span>
+            <span className="text-[9px] sm:text-[10px] text-slate-400 truncate max-w-full">{t.riskHero.cedarDeny}</span>
           </div>
 
           {/* ALLOW Card */}
-          <div className="p-3.5 rounded-xl bg-emerald-950/30 border border-emerald-500/20 flex flex-col items-center justify-center text-center">
-            <div className="flex items-center space-x-1 text-emerald-400 mb-1">
-              <CheckCircle2 className="w-4 h-4" />
-              <span className="text-[11px] font-bold uppercase">{t.riskHero.compliant}</span>
+          <div className="p-2 sm:p-3.5 rounded-xl bg-emerald-950/30 border border-emerald-500/20 flex flex-col items-center justify-center text-center">
+            <div className="flex items-center space-x-1 text-emerald-400 mb-0.5 sm:mb-1">
+              <CheckCircle2 className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+              <span className="text-[9px] xs:text-[10px] sm:text-[11px] font-bold uppercase">{t.riskHero.compliant}</span>
             </div>
-            <span className="text-2xl font-extrabold text-emerald-400 font-mono">
+            <span className="text-xl sm:text-2xl font-extrabold text-emerald-400 font-mono">
               {result.allow_count}
             </span>
-            <span className="text-[10px] text-slate-400">{t.riskHero.cedarAllow}</span>
+            <span className="text-[9px] sm:text-[10px] text-slate-400 truncate max-w-full">{t.riskHero.cedarAllow}</span>
           </div>
 
           {/* Total Clauses */}
-          <div className="p-3.5 rounded-xl bg-slate-900/60 border border-white/10 flex flex-col items-center justify-center text-center">
-            <div className="flex items-center space-x-1 text-slate-400 mb-1">
-              <ShieldAlert className="w-4 h-4 text-sky-400" />
-              <span className="text-[11px] font-bold uppercase">{t.riskHero.totalClauses}</span>
+          <div className="p-2 sm:p-3.5 rounded-xl bg-slate-900/60 border border-white/10 flex flex-col items-center justify-center text-center">
+            <div className="flex items-center space-x-1 text-slate-400 mb-0.5 sm:mb-1">
+              <ShieldAlert className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-sky-400" />
+              <span className="text-[9px] xs:text-[10px] sm:text-[11px] font-bold uppercase">{t.riskHero.totalClauses}</span>
             </div>
-            <span className="text-2xl font-extrabold text-white font-mono">
+            <span className="text-xl sm:text-2xl font-extrabold text-white font-mono">
               {result.total_clauses}
             </span>
-            <span className="text-[10px] text-slate-400">{t.riskHero.totalClauses}</span>
+            <span className="text-[9px] sm:text-[10px] text-slate-400 truncate max-w-full">{t.riskHero.totalClauses}</span>
           </div>
         </div>
       </div>

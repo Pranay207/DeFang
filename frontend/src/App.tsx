@@ -187,7 +187,7 @@ export function App() {
         const fallbackResults = fallbackData.results as Record<string, ScanResult>;
         data = fallbackResults[presetId];
       }
-      
+
       // Allow dual-engine animation to play for seamless visual progress
       setTimeout(() => {
         setScanResult(data);
@@ -195,7 +195,7 @@ export function App() {
         if (data.raw_text) setInputText(data.raw_text);
         setIsLoading(false);
         triggerToast(`Loaded preset: ${data.contract_title}`);
-        
+
         if (data.overall_risk_score < 40) {
           confetti({ particleCount: 70, spread: 60, origin: { y: 0.6 } });
         }
@@ -278,7 +278,7 @@ export function App() {
 
       {/* Background Ambient Mesh & Grid Overlay */}
       <div className="fixed inset-0 pointer-events-none bg-grid-pattern opacity-25 z-0" />
-      
+
       {/* Ambient Animated Gradient Orbs (low opacity, slow drift, brand red/orange/purple tones) */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
         {/* Orb 1: Red / Orange drift */}
@@ -290,7 +290,7 @@ export function App() {
       </div>
 
       {/* Main Container */}
-      <main className="flex-1 max-w-7xl w-full mx-auto px-6 py-8 relative z-10 space-y-8">
+      <main className="flex-1 max-w-7xl w-full mx-auto px-3.5 sm:px-6 pt-4 pb-32 sm:pb-36 relative z-10 space-y-8">
         {/* LANDING / INPUT VIEW */}
         {!scanResult && !isLoading && (
           <div className="space-y-8">
@@ -386,13 +386,12 @@ export function App() {
                           {item.deny_count} red flags • ₹{item.total_rupee_trap.toLocaleString('en-IN')}
                         </div>
                       </div>
-                      <span className={`text-[11px] font-mono font-bold px-2 py-0.5 rounded border ${
-                        item.overall_risk_score >= 70
+                      <span className={`text-[11px] font-mono font-bold px-2 py-0.5 rounded border ${item.overall_risk_score >= 70
                           ? 'text-red-400 bg-red-500/10 border-red-500/30'
                           : item.overall_risk_score >= 40
-                          ? 'text-amber-400 bg-amber-500/10 border-amber-500/30'
-                          : 'text-emerald-400 bg-emerald-500/10 border-emerald-500/30'
-                      }`}>
+                            ? 'text-amber-400 bg-amber-500/10 border-amber-500/30'
+                            : 'text-emerald-400 bg-emerald-500/10 border-emerald-500/30'
+                        }`}>
                         {item.overall_risk_score}
                       </span>
                     </button>
@@ -470,19 +469,19 @@ export function App() {
             </div>
 
             {/* Top Navigation Bar in Results */}
-            <div className="flex flex-wrap items-center justify-between gap-3 pb-2 border-b border-white/5 no-print">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 pb-2 border-b border-white/5 no-print">
               <button
                 onClick={handleReset}
-                className="flex items-center space-x-2 text-xs font-semibold text-slate-400 hover:text-white transition-colors px-3 py-1.5 rounded-lg bg-slate-900/70 border border-white/10 hover:border-white/20"
+                className="self-start flex items-center space-x-2 text-xs font-semibold text-slate-300 hover:text-white transition-colors px-3 py-1.5 rounded-lg bg-slate-900/90 border border-white/10 hover:border-white/20 shadow-sm"
               >
                 <ArrowLeft className="w-4 h-4" />
                 <span>{t.results.backBtn}</span>
               </button>
 
-              <div className="flex flex-wrap items-center gap-2">
+              <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
                 <button
                   onClick={handleShareSummary}
-                  className="flex items-center space-x-1.5 px-3 py-1.5 rounded-lg bg-slate-900 border border-white/10 hover:border-sky-500/40 text-xs font-semibold text-slate-300 hover:text-white transition-all shadow-sm"
+                  className="flex items-center space-x-1.5 px-2.5 sm:px-3 py-1.5 rounded-lg bg-slate-900 border border-white/10 hover:border-sky-500/40 text-xs font-semibold text-slate-300 hover:text-white transition-all shadow-sm"
                   title="Copy formatted text audit summary"
                 >
                   <Share2 className="w-3.5 h-3.5 text-sky-400" />
@@ -491,7 +490,7 @@ export function App() {
 
                 <button
                   onClick={handleDownloadReport}
-                  className="flex items-center space-x-1.5 px-3 py-1.5 rounded-lg bg-slate-900 border border-white/10 hover:border-emerald-500/40 text-xs font-semibold text-emerald-300 hover:text-white transition-all shadow-sm"
+                  className="flex items-center space-x-1.5 px-2.5 sm:px-3 py-1.5 rounded-lg bg-slate-900 border border-white/10 hover:border-emerald-500/40 text-xs font-semibold text-emerald-300 hover:text-white transition-all shadow-sm"
                   title="Download clean statutory text audit report"
                 >
                   <Download className="w-3.5 h-3.5 text-emerald-400" />
@@ -501,7 +500,7 @@ export function App() {
                 {/* WhatsApp Bot Assistant Button */}
                 <button
                   onClick={() => setShowWhatsAppBot(true)}
-                  className="flex items-center space-x-1.5 px-3 py-1.5 rounded-lg bg-emerald-950/70 border border-emerald-500/40 hover:border-emerald-500/80 text-xs font-semibold text-emerald-300 hover:text-white transition-all shadow-sm shadow-emerald-500/20 hover:scale-105"
+                  className="flex items-center space-x-1.5 px-2.5 sm:px-3 py-1.5 rounded-lg bg-emerald-950/70 border border-emerald-500/40 hover:border-emerald-500/80 text-xs font-semibold text-emerald-300 hover:text-white transition-all shadow-sm shadow-emerald-500/20"
                   title="Open WhatsApp Legal Bot Assistant"
                 >
                   <MessageCircle className="w-3.5 h-3.5 text-emerald-400" />
@@ -510,7 +509,7 @@ export function App() {
 
                 <button
                   onClick={handlePrintReport}
-                  className="flex items-center space-x-1.5 px-3 py-1.5 rounded-lg bg-gradient-to-r from-red-500/15 via-orange-500/15 to-amber-500/15 border border-red-500/30 hover:border-red-500/60 text-xs font-semibold text-red-300 hover:text-white transition-all shadow-sm"
+                  className="flex items-center space-x-1.5 px-2.5 sm:px-3 py-1.5 rounded-lg bg-gradient-to-r from-red-500/15 via-orange-500/15 to-amber-500/15 border border-red-500/30 hover:border-red-500/60 text-xs font-semibold text-red-300 hover:text-white transition-all shadow-sm"
                   title="Download or Print PDF Report"
                 >
                   <Printer className="w-3.5 h-3.5 text-red-400" />
@@ -586,31 +585,28 @@ export function App() {
               <div className="flex items-center space-x-1.5 p-1 rounded-xl bg-slate-900 border border-white/10">
                 <button
                   onClick={() => setClauseFilter('all')}
-                  className={`px-3 py-1.5 text-xs font-semibold rounded-lg transition-all ${
-                    clauseFilter === 'all'
+                  className={`px-3 py-1.5 text-xs font-semibold rounded-lg transition-all ${clauseFilter === 'all'
                       ? 'bg-slate-800 text-white shadow'
                       : 'text-slate-400 hover:text-white'
-                  }`}
+                    }`}
                 >
                   {t.results.filterAll} ({scanResult.clauses.length})
                 </button>
                 <button
                   onClick={() => setClauseFilter('deny')}
-                  className={`px-3 py-1.5 text-xs font-semibold rounded-lg transition-all flex items-center space-x-1 ${
-                    clauseFilter === 'deny'
+                  className={`px-3 py-1.5 text-xs font-semibold rounded-lg transition-all flex items-center space-x-1 ${clauseFilter === 'deny'
                       ? 'bg-red-500/30 text-red-300 border border-red-500/40'
                       : 'text-red-400/80 hover:text-red-300'
-                  }`}
+                    }`}
                 >
                   <span>{t.results.filterDeny} ({scanResult.deny_count})</span>
                 </button>
                 <button
                   onClick={() => setClauseFilter('allow')}
-                  className={`px-3 py-1.5 text-xs font-semibold rounded-lg transition-all flex items-center space-x-1 ${
-                    clauseFilter === 'allow'
+                  className={`px-3 py-1.5 text-xs font-semibold rounded-lg transition-all flex items-center space-x-1 ${clauseFilter === 'allow'
                       ? 'bg-emerald-500/30 text-emerald-300 border border-emerald-500/40'
                       : 'text-emerald-400/80 hover:text-emerald-300'
-                  }`}
+                    }`}
                 >
                   <span>{t.results.filterAllow} ({scanResult.allow_count})</span>
                 </button>
@@ -618,7 +614,7 @@ export function App() {
             </div>
 
             {/* Staggered Clause Cards (Features 4, 5, 6) */}
-            <motion.div 
+            <motion.div
               className="space-y-4"
               initial="hidden"
               animate="show"
