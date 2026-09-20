@@ -23,6 +23,7 @@ export interface TranslationDictionary {
     freelanceDesc: string;
   };
   input: {
+    divider: string;
     title: string;
     subtitle: string;
     placeholder: string;
@@ -147,7 +148,8 @@ export const translations: Record<Language, TranslationDictionary> = {
       freelanceDesc: "Unlimited indemnity, 0% client late fee penalty, 180-day non-solicit, IP forfeiture before payment.",
     },
     input: {
-      title: "Or Paste Custom Contract Text",
+      divider: "OR SCAN YOUR OWN AGREEMENT",
+      title: "Upload Document or Paste Agreement",
       subtitle: "Full audit for Indian rental agreements, offer letters, employment bonds, and freelance MSAs",
       placeholder: "Paste your rental agreement, employment contract, or freelance MSA here... (e.g. 11-month Bangalore rental contract with 10-month deposit, or offer letter with lock-in bond)",
       chars: "characters",
@@ -269,7 +271,8 @@ export const translations: Record<Language, TranslationDictionary> = {
       freelanceDesc: "असीमित क्षतिपूर्ति (Indemnity), क्लाइंट के लिए शून्य ब्याज, 180 दिन का गैर-प्रतिस्पर्धा प्रतिबंध।",
     },
     input: {
-      title: "या अपना अनुबंध पेस्ट / अपलोड करें",
+      divider: "या अपना स्वयं का अनुबंध स्कैन करें",
+      title: "दस्तावेज़ अपलोड करें या टेक्स्ट पेस्ट करें",
       subtitle: "भारतीय रेंटल एग्रीमेंट, ऑफर लेटर, एम्प्लॉयमेंट बॉन्ड और फ्रीलांस अनुबंधों की संपूर्ण जांच",
       placeholder: "अपना रेंटल एग्रीमेंट या नौकरी का अनुबंध यहां पेस्ट करें... (उदा. 11 महीने का रेंट एग्रीमेंट, 10 महीने का डिपॉजिट, या अत्यधिक पेनल्टी वाले क्लॉज)",
       chars: "अक्षर",
@@ -391,7 +394,8 @@ export const translations: Record<Language, TranslationDictionary> = {
       freelanceDesc: "అపరిమిత నష్టపరిహారం (Indemnity), క్లయింట్‌కు సున్నా జరిమానా, చెల్లింపుల కంటే ముందే IP హక్కుల జప్తు.",
     },
     input: {
-      title: "కాంట్రాక్ట్ టెక్స్ట్ పేస్ట్ చేయండి లేదా PDF అప్‌లోడ్ చేయండి",
+      divider: "లేదా మీ స్వంత ఒప్పందాన్ని స్కాన్ చేయండి",
+      title: "పత్రం అప్‌లోడ్ చేయండి లేదా కాంట్రాక్ట్ పేస్ట్ చేయండి",
       subtitle: "ఇంటి అద్దె ఒప్పందాలు, ఆఫర్ లెటర్లు, ఎంప్లాయ్‌మెంట్ బాండ్లు మరియు ఫ్రీలాన్స్ ఒప్పందాల పూర్తి తనిఖీ",
       placeholder: "మీ అద్దె ఒప్పందం లేదా ఉద్యోగ కాంట్రాక్ట్‌ను ఇక్కడ పేస్ట్ చేయండి... (ఉదా: 11 నెలల అద్దె అగ్రిమెంట్, 2 ఏళ్ల జాబ్ బాండ్, లేదా అధిక జరిమానా నిబంధనలు)",
       chars: "అక్షరాలు",
@@ -513,7 +517,8 @@ export const translations: Record<Language, TranslationDictionary> = {
       freelanceDesc: "ಅನಿಯಮಿತ ನಷ್ಟ ಪರಿಹಾರ, ಪಾವತಿ ವಿಳಂಬಕ್ಕೆ ಶೂನ್ಯ ದಂಡ, ಕೆಲಸಗಾರನಿಗೆ 180 ದಿನಗಳ ನಿರ್ಬಂಧ.",
     },
     input: {
-      title: "ಅಥವಾ ನಿಮ್ಮ ಸ್ವಂತ ಒಪ್ಪಂದವನ್ನು ಪರೀಕ್ಷಿಸಿ",
+      divider: "ಅಥವಾ ನಿಮ್ಮ ಸ್ವಂತ ಒಪ್ಪಂದವನ್ನು ಸ್ಕ್ಯಾನ್ ಮಾಡಿ",
+      title: "ದಾಖಲೆಯನ್ನು ಅಪ್‌ಲೋಡ್ ಮಾಡಿ ಅಥವಾ ಪಠ್ಯ ಅಂಟಿಸಿ",
       subtitle: "ಕಾನೂನು ಪಠ್ಯವನ್ನು ಅಂಟಿಸಿ ಅಥವಾ PDF ಒಪ್ಪಂದವನ್ನು ಅಪ್‌ಲೋಡ್ ಮಾಡಿ",
       placeholder: "ಬಾಡಿಗೆ ಒಪ್ಪಂದ, ಉದ್ಯೋಗ ಆಫರ್ ಅಥವಾ ಫ್ರೀಲ್ಯಾನ್ಸ್ ಒಪ್ಪಂದದ ಪಠ್ಯವನ್ನು ಇಲ್ಲಿ ಅಂಟಿಸಿ... (ಉದಾ: 11 ತಿಂಗಳ ಬೆಂಗಳೂರು ಬಾಡಿಗೆ ಒಪ್ಪಂದ, 10 ತಿಂಗಳ ಠೇವಣಿ, ಅಥವಾ ಕಠಿಣ ಉದ್ಯೋಗ ನಿಯಮಗಳು)",
       chars: "ಅಕ್ಷರಗಳು",

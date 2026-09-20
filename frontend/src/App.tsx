@@ -407,8 +407,8 @@ export function App() {
               className="flex items-center space-x-4 my-4"
             >
               <div className="flex-1 h-px bg-white/10" />
-              <span className="text-xs uppercase font-mono tracking-widest text-slate-500">
-                {t.input.title}
+              <span className="text-xs uppercase font-mono tracking-widest text-slate-400">
+                {t.input.divider}
               </span>
               <div className="flex-1 h-px bg-white/10" />
             </motion.div>
@@ -514,11 +514,6 @@ export function App() {
                   <Printer className="w-3.5 h-3.5 text-red-400" />
                   <span>{t.results.printBtn}</span>
                 </button>
-
-                <div className="hidden lg:flex items-center space-x-1.5 text-xs font-mono text-slate-400 pl-2 border-l border-white/10">
-                  <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
-                  <span className="text-emerald-400 font-bold">{t.results.cedarExecuted}</span>
-                </div>
               </div>
             </div>
 
@@ -530,26 +525,6 @@ export function App() {
               onDownloadReport={handleDownloadReport}
               onOpenCedarArchitecture={() => setShowCedarModal(true)}
             />
-
-            {/* STATUTORY VERIFICATION BAR (Sleek, Accessible & Auditable) */}
-            <div className="p-3 sm:px-4 rounded-xl bg-slate-900/60 border border-emerald-500/20 flex flex-wrap items-center justify-between gap-3 text-xs">
-              <div className="flex items-center space-x-2 text-slate-300">
-                <ShieldCheck className="w-4 h-4 text-emerald-400 shrink-0" />
-                <span>
-                  <strong className="text-white">Statutory Engine Verified:</strong> Model Tenancy Act 2021 & Contract Act 1872 evaluated via <span className="text-emerald-400 font-mono font-bold">AWS Cedar (Rust)</span>
-                </span>
-              </div>
-
-              <button
-                type="button"
-                onClick={() => setShowCedarModal(true)}
-                className="flex items-center space-x-1.5 px-3 py-1 rounded-lg bg-emerald-950/70 border border-emerald-500/40 hover:border-emerald-500/80 text-emerald-300 hover:text-white font-mono font-semibold transition-all hover:scale-105 cursor-pointer ml-auto"
-                title="Inspect AWS Cedar policies and architecture"
-              >
-                <span>Inspect Engine & Policies</span>
-                <span className="text-emerald-400">↗</span>
-              </button>
-            </div>
 
             {/* Risk Hero with Circular Gauge & Scores */}
             <RiskHero result={scanResult} currentLang={currentLang} />
