@@ -266,24 +266,6 @@ During this 4-day **First Commit | Bharat Builds Tour** hackathon, our biggest t
 
 ---
 
-## 📹 3-Minute Hackathon Demo Script (Follow This Flow)
-
-1. **Minute 0:00 - 0:30 (The Problem)**:
-   - *"Every year in India, over ₹15,000 Crores of tenant and worker money is trapped in illegal contracts printed on ₹100 stamp papers. Tenants are pressured to sign 10-month deposits and illegal deductions."*
-2. **Minute 0:30 - 1:15 (The Solution & Dual Engine)**:
-   - Click **"Bengaluru Rental Trap"** preset.
-   - Point out the **Executive Verdict Banner**: `🔴 DO NOT SIGN AS-IS`, `Risk Score: 100/100`, and `Money at Risk: ₹7,36,050`.
-   - Explain the **Dual Engine**: Strands Agents SDK parses the variables, and AWS Cedar evaluates 8 formal `.cedar` statutory policies in Rust.
-3. **Minute 1:15 - 1:45 (Inspect AWS Cedar Code)**:
-   - Click **`[Inspect Engine & Policies ↗]`** in the navbar or banner.
-   - Show the judges the live `.cedar` code (`deposit_cap.cedar`, `painting_deduction.cedar`).
-4. **Minute 1:45 - 2:30 (Bharat Ground-Reality Features)**:
-   - Point out **`[📷 Camera]`** for snapping physical stamp paper on mobile.
-   - Click **`🔊 Listen Voice Summary`** in Hindi / Kannada to play the audio warning.
-   - Click **`💬 Negotiate via WhatsApp`** to show the 1-click counter-offer to the landlord.
-5. **Minute 2:30 - 3:00 (What We Learned & Conclusion)**:
-   - Highlight mastering AWS Cedar and Strands SDK to eliminate legal hallucinations.
-   - *"DeFang turns every Indian citizen with a phone into their own statutory legal protector before they put pen to paper."*
 
 ---
 
