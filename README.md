@@ -104,7 +104,7 @@ when {
 
 | Feature | What It Delivers |
 | :--- | :--- |
-| 🔴 **Executive Verdict Banner** | 5-second judge clarity: Instant `DO NOT SIGN` statutory warning, Risk Score (100/100), and top 3 fatal traps. |
+| 🔴 **Executive Verdict Banner** | Instant Executive Clarity: Immediate `DO NOT SIGN` statutory warning, Risk Score (100/100), and top 3 fatal traps. |
 | 🛡️ **Dual-Engine Scanning** | Pairs Strands agentic extraction with the AWS Cedar Policy Engine for deterministic statutory verdicts. |
 | ⚖️ **8 Formal Cedar Statutory Policies** | Formally validates agreements against Model Tenancy Act 2021, Indian Contract Act 1872, and Usurious Loans Act 1918. |
 | 💻 **Interactive Cedar Policy Inspector** | Live browser modal inspecting the exact Rust `.cedar` syntax and statutory citations with one click. |
@@ -244,7 +244,7 @@ Every policy file in `backend/policies/` is directly anchored to active Indian j
 
 - [x] **Formal AWS Cedar Verification Engine**: 8 real `.cedar` statutory policies compiled and executed via `cedarpy` in native Rust with 0 hallucinations.
 - [x] **Interactive AWS Cedar Policy Inspector**: Live browser modal to inspect the exact Rust `.cedar` syntax and statutory citations.
-- [x] **Executive Verdict Banner**: 5-second judge clarity with instant `DO NOT SIGN` badge, `₹7,36,050` Rupee Trap, and Top 3 fatal traps.
+- [x] **Executive Verdict Banner**: Instant executive decision support with `DO NOT SIGN` warning, `₹7,36,050` Rupee Trap, and Top 3 fatal traps.
 - [x] **📷 Physical Stamp Paper Camera Scanner**: Direct `capture="environment"` mobile camera photo snap for physical ₹100 e-stamp papers at the broker's desk.
 - [x] **🔊 Multilingual Vernacular Voice Readout**: Native Web Speech API audio in Kannada (`kn-IN`), Telugu (`te-IN`), Hindi (`hi-IN`), and English (`en-IN`) for low-literacy users.
 - [x] **💬 1-Click WhatsApp Landlord Diplomat**: Deep-link dispatch to WhatsApp with pre-drafted polite, firm, and statutory counter-clauses.
@@ -255,21 +255,32 @@ Every policy file in `backend/policies/` is directly anchored to active Indian j
 
 ---
 
-## 💡 What We Learned (AWS Hackathon Journey)
+## 💡 Engineering Insights & Architecture Decisions
 
-During this 4-day **First Commit | Bharat Builds Tour** hackathon, our biggest technical takeaways were:
+During the design and implementation of DeFang (Bharat Edition), our core architectural takeaways were:
 1. **Separation of Reasoning vs. Policy Enforcement**:
-   - We initially thought of using LLMs for the entire legal audit. We quickly realized that LLMs are non-deterministic and can hallucinate legal rulings—which is unacceptable in law.
-   - We learned to separate the architecture: **Strands Agents SDK** handles unstructured clause parsing, while **AWS Cedar Policy Engine** provides mathematical, deterministic statutory verification.
+   - Probabilistic LLMs are unsuited for direct legal certification due to the risk of hallucinations.
+   - We decoupled the architecture: **Strands Agents SDK** handles unstructured natural language extraction, while **AWS Cedar Policy Engine** executes deterministic, mathematical statutory verification.
 2. **Authoring Formal AWS Cedar Policies**:
-   - We learned the Cedar policy language syntax: writing `@id`, `@cite`, and `forbid(principal, action, resource) when { ... }` rules.
-   - We successfully mapped Indian legislative statutes (*Model Tenancy Act 2021*, *Indian Contract Act 1872*, and *Usurious Loans Act 1918*) into formal, machine-verifiable `.cedar` policy definitions.
-3. **Optimizing for Bharat's Ground Reality**:
-   - We learned that building for real Indian users means supporting physical paper (camera capture), vernacular speech (voice audio in Kannada/Telugu/Hindi), and WhatsApp workflows—not just desktop PDFs.
+   - Formally encoded Indian legislative statutes (*Model Tenancy Act 2021*, *Indian Contract Act 1872*, and *Usurious Loans Act 1918*) into declarative, machine-evaluable `.cedar` policy definitions.
+3. **Designing for Real-World Bharat Accessibility**:
+   - Engineered for physical reality: supporting physical stamp paper camera capture, vernacular voice audio (Kannada/Telugu/Hindi), and WhatsApp communication workflows.
 
 ---
 
+## 📹 3-Minute Product Demonstration Walkthrough
 
+1. **Minute 0:00 - 0:30 (The Problem & Context)**:
+   - Highlighting the real-world friction of Indian tenancy and gig contracts where ₹15,000+ Crores are locked in unlawful deposits and arbitrary deductions.
+2. **Minute 0:30 - 1:15 (Instant Statutory Audit)**:
+   - Selecting the **"Bengaluru Rental Trap"** preset.
+   - Revealing the **Executive Verdict Banner**: `🔴 DO NOT SIGN AS-IS`, `Risk Score: 100/100`, and `Money at Risk: ₹7,36,050`.
+3. **Minute 1:15 - 1:45 (AWS Cedar Policy Verification)**:
+   - Demonstrating the **`[Inspect Engine & Policies ↗]`** inspector showing compiled Rust `.cedar` policies executing deterministically.
+4. **Minute 1:45 - 2:30 (Ground-Reality Workflow)**:
+   - Demonstrating the mobile camera scanner, vernacular voice readout in local languages, and 1-click WhatsApp counter-amendment generation.
+5. **Minute 2:30 - 3:00 (Summary & Scalability)**:
+   - Highlighting how DeFang democratizes legal protection for every citizen with a smartphone.
 ---
 
 ## 🏛️ Project Specifications & Architecture

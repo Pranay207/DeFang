@@ -168,7 +168,7 @@ export const ExecutiveVerdictBanner: React.FC<ExecutiveVerdictBannerProps> = ({
           </div>
         </div>
 
-        {/* 3 Fatal Traps Quick Takeaways (Judges read in 5 seconds) */}
+        {/* 3 Fatal Traps Quick Takeaways (Executive Summary) */}
         {denyClauses.length > 0 && (
           <div className="p-3.5 rounded-xl bg-slate-950/80 border border-white/10 space-y-2">
             <div className="text-[11px] font-bold uppercase tracking-wider text-slate-400 font-mono flex items-center space-x-1.5">

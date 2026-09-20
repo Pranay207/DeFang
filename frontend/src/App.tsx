@@ -188,7 +188,7 @@ export function App() {
         data = fallbackResults[presetId];
       }
       
-      // Allow dual-engine animation to play for dramatic judge demo effect
+      // Allow dual-engine animation to play for seamless visual progress
       setTimeout(() => {
         setScanResult(data);
         saveToRecentAudits(data);
@@ -524,7 +524,7 @@ export function App() {
               </div>
             </div>
 
-            {/* EXECUTIVE VERDICT BANNER: 5-Second Judge Clarity & TL;DR */}
+            {/* EXECUTIVE VERDICT BANNER: Executive Clarity & TL;DR */}
             <ExecutiveVerdictBanner
               result={scanResult}
               currentLang={currentLang}
@@ -533,7 +533,7 @@ export function App() {
               onOpenCedarArchitecture={() => setShowCedarModal(true)}
             />
 
-            {/* STATUTORY VERIFICATION BAR (Sleek, human-friendly & judge-accessible) */}
+            {/* STATUTORY VERIFICATION BAR (Sleek, Accessible & Auditable) */}
             <div className="p-3 sm:px-4 rounded-xl bg-slate-900/60 border border-emerald-500/20 flex flex-wrap items-center justify-between gap-3 text-xs">
               <div className="flex items-center space-x-2 text-slate-300">
                 <ShieldCheck className="w-4 h-4 text-emerald-400 shrink-0" />
@@ -685,7 +685,7 @@ export function App() {
         currentLang={currentLang}
       />
 
-      {/* AWS Cedar Policy Engine & Architecture Modal (For Judges & Deep Dive) */}
+      {/* AWS Cedar Policy Engine & Architecture Modal (Technical Deep Dive & Policy Audit) */}
       <CedarArchitectureModal
         isOpen={showCedarModal}
         onClose={() => setShowCedarModal(false)}
