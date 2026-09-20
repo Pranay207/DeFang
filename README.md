@@ -268,19 +268,16 @@ During the design and implementation of DeFang (Bharat Edition), our core archit
 
 ---
 
-## 📹 3-Minute Product Demonstration Walkthrough
+## 📹 Product Demonstration Video
 
-1. **Minute 0:00 - 0:30 (The Problem & Context)**:
-   - Highlighting the real-world friction of Indian tenancy and gig contracts where ₹15,000+ Crores are locked in unlawful deposits and arbitrary deductions.
-2. **Minute 0:30 - 1:15 (Instant Statutory Audit)**:
-   - Selecting the **"Bengaluru Rental Trap"** preset.
-   - Revealing the **Executive Verdict Banner**: `🔴 DO NOT SIGN AS-IS`, `Risk Score: 100/100`, and `Money at Risk: ₹7,36,050`.
-3. **Minute 1:15 - 1:45 (AWS Cedar Policy Verification)**:
-   - Demonstrating the **`[Inspect Engine & Policies ↗]`** inspector showing compiled Rust `.cedar` policies executing deterministically.
-4. **Minute 1:45 - 2:30 (Ground-Reality Workflow)**:
-   - Demonstrating the mobile camera scanner, vernacular voice readout in local languages, and 1-click WhatsApp counter-amendment generation.
-5. **Minute 2:30 - 3:00 (Summary & Scalability)**:
-   - Highlighting how DeFang democratizes legal protection for every citizen with a smartphone.
+[![Watch Video Walkthrough](https://img.shields.io/badge/YouTube-Watch_Video_Walkthrough-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](VIDEO_URL)
+
+> 📺 **[Click here to watch the product demonstration on YouTube](VIDEO_URL)**
+
+A comprehensive walkthrough demonstrating DeFang's end-to-end statutory verification workflow:
+* **Dual-Engine Core in Action**: Decoupling Strands Agentic clause structuring from AWS Cedar deterministic policy compilation in native Rust.
+* **Live Statutory Audit**: Real-time evaluation of an Indiranagar 11-month agreement, detecting Section 9 & 15 violations in milliseconds.
+* **Ground-Reality Bharat Workflow**: Physical stamp paper camera capture, regional voice synthesis (Kannada, Telugu, Hindi), and 1-click WhatsApp counter-amendments.
 ---
 
 ## 🏛️ Project Specifications & Architecture
