@@ -1,4 +1,4 @@
-import { ShieldAlert, Scale, RefreshCw } from 'lucide-react';
+import { ShieldAlert, Scale, RefreshCw, MessageCircle } from 'lucide-react';
 import { LanguageToggle } from './LanguageToggle';
 import type { Language } from '../types';
 import { getTranslation } from '../i18n';
@@ -7,6 +7,7 @@ interface NavbarProps {
   currentLang: Language;
   onLanguageChange: (lang: Language) => void;
   onReset?: () => void;
+  onOpenWhatsAppBot?: () => void;
   hasResult: boolean;
 }
 
@@ -14,6 +15,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   currentLang,
   onLanguageChange,
   onReset,
+  onOpenWhatsAppBot,
   hasResult
 }) => {
   const t = getTranslation(currentLang);
@@ -63,7 +65,17 @@ export const Navbar: React.FC<NavbarProps> = ({
         </div>
 
         {/* Actions & Language Switcher */}
-        <div className="flex items-center space-x-4">
+        <div className="flex items-center space-x-3">
+          {/* WhatsApp Legal Bot Simulator Button */}
+          <button
+            onClick={onOpenWhatsAppBot}
+            className="flex items-center space-x-1.5 px-3 py-1.5 text-xs font-semibold text-emerald-300 bg-emerald-950/60 hover:bg-emerald-900/80 border border-emerald-500/40 rounded-lg transition-all hover:scale-105 shadow-sm shadow-emerald-500/20 cursor-pointer"
+            title="Open DeFang WhatsApp Bot Assistant"
+          >
+            <MessageCircle className="w-3.5 h-3.5 text-emerald-400" />
+            <span className="hidden sm:inline">WhatsApp Bot</span>
+          </button>
+
           <LanguageToggle currentLang={currentLang} onLanguageChange={onLanguageChange} />
 
           {hasResult && (

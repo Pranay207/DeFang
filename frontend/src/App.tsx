@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import confetti from 'canvas-confetti';
-import { ArrowLeft, Printer, Share2, Download, History } from 'lucide-react';
+import { ArrowLeft, Printer, Share2, Download, History, MessageCircle } from 'lucide-react';
 import fallbackData from './presetsFallback.json';
 
 import { Navbar } from './components/Navbar';
@@ -13,6 +13,7 @@ import { ClauseCard } from './components/ClauseCard';
 import { PresetSelector } from './components/PresetSelector';
 import { ContractInput } from './components/ContractInput';
 import { Toast } from './components/Toast';
+import { WhatsAppBotModal } from './components/WhatsAppBotModal';
 
 import type { ScanResult, PresetSummary, Language } from './types';
 import { getTranslation } from './i18n';
@@ -38,6 +39,7 @@ export function App() {
   });
   const [toastMessage, setToastMessage] = useState<string | null>(null);
   const [clauseFilter, setClauseFilter] = useState<'all' | 'deny' | 'allow'>('all');
+  const [showWhatsAppBot, setShowWhatsAppBot] = useState<boolean>(false);
   const [recentAudits, setRecentAudits] = useState<ScanResult[]>(() => {
     try {
       const saved = localStorage.getItem('defang_recent_audits');
@@ -265,6 +267,7 @@ export function App() {
         currentLang={currentLang}
         onLanguageChange={handleLanguageChange}
         onReset={handleReset}
+        onOpenWhatsAppBot={() => setShowWhatsAppBot(true)}
         hasResult={!!scanResult}
       />
 
@@ -490,6 +493,16 @@ export function App() {
                   <span>{t.results.downloadBtn}</span>
                 </button>
 
+                {/* WhatsApp Bot Assistant Button */}
+                <button
+                  onClick={() => setShowWhatsAppBot(true)}
+                  className="flex items-center space-x-1.5 px-3 py-1.5 rounded-lg bg-emerald-950/70 border border-emerald-500/40 hover:border-emerald-500/80 text-xs font-semibold text-emerald-300 hover:text-white transition-all shadow-sm shadow-emerald-500/20 hover:scale-105"
+                  title="Open WhatsApp Legal Bot Assistant"
+                >
+                  <MessageCircle className="w-3.5 h-3.5 text-emerald-400" />
+                  <span>WhatsApp Bot</span>
+                </button>
+
                 <button
                   onClick={handlePrintReport}
                   className="flex items-center space-x-1.5 px-3 py-1.5 rounded-lg bg-gradient-to-r from-red-500/15 via-orange-500/15 to-amber-500/15 border border-red-500/30 hover:border-red-500/60 text-xs font-semibold text-red-300 hover:text-white transition-all shadow-sm"
@@ -636,6 +649,14 @@ export function App() {
           </div>
         </div>
       </footer>
+
+      {/* WhatsApp Bot Modal (Feature 4: WhatsApp-First Assistant) */}
+      <WhatsAppBotModal
+        isOpen={showWhatsAppBot}
+        onClose={() => setShowWhatsAppBot(false)}
+        scanResult={scanResult}
+        currentLang={currentLang}
+      />
     </div>
   );
 }
