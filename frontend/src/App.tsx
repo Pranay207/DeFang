@@ -14,6 +14,8 @@ import { PresetSelector } from './components/PresetSelector';
 import { ContractInput } from './components/ContractInput';
 import { Toast } from './components/Toast';
 import { WhatsAppBotModal } from './components/WhatsAppBotModal';
+import { ExecutiveVerdictBanner } from './components/ExecutiveVerdictBanner';
+import { FloatingActionBar } from './components/FloatingActionBar';
 
 import type { ScanResult, PresetSummary, Language } from './types';
 import { getTranslation } from './i18n';
@@ -519,7 +521,15 @@ export function App() {
               </div>
             </div>
 
-            {/* FEATURE 1: Dual-Engine Visualization at Top */}
+            {/* EXECUTIVE VERDICT BANNER: 5-Second Judge Clarity & TL;DR */}
+            <ExecutiveVerdictBanner
+              result={scanResult}
+              currentLang={currentLang}
+              onOpenWhatsApp={() => setShowWhatsAppBot(true)}
+              onDownloadReport={handleDownloadReport}
+            />
+
+            {/* FEATURE 1: Dual-Engine Visualization */}
             <DualEngineBar 
               isScanning={false} 
               metrics={scanResult.dual_engine_metrics} 
@@ -657,6 +667,16 @@ export function App() {
         scanResult={scanResult}
         currentLang={currentLang}
       />
+
+      {/* Floating Action Bar (Sticky Action Pill for Easy Interaction) */}
+      {scanResult && !isLoading && (
+        <FloatingActionBar
+          result={scanResult}
+          currentLang={currentLang}
+          onOpenWhatsApp={() => setShowWhatsAppBot(true)}
+          onDownloadReport={handleDownloadReport}
+        />
+      )}
     </div>
   );
 }
