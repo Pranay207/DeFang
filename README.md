@@ -104,14 +104,17 @@ when {
 
 | Feature | What It Delivers |
 | :--- | :--- |
+| 🔴 **Executive Verdict Banner** | 5-second judge clarity: Instant `DO NOT SIGN` statutory warning, Risk Score (100/100), and top 3 fatal traps. |
 | 🛡️ **Dual-Engine Scanning** | Pairs Strands agentic extraction with the AWS Cedar Policy Engine for deterministic statutory verdicts. |
 | ⚖️ **8 Formal Cedar Statutory Policies** | Formally validates agreements against Model Tenancy Act 2021, Indian Contract Act 1872, and Usurious Loans Act 1918. |
+| 💻 **Interactive Cedar Policy Inspector** | Live browser modal inspecting the exact Rust `.cedar` syntax and statutory citations with one click. |
+| 📷 **Physical Stamp Paper Camera** | Direct `capture="environment"` mobile camera photo snap for physical ₹100 e-stamp papers at the broker's desk. |
+| 🔊 **Multilingual Voice Readout** | Native Web Speech API audio in Kannada (`kn-IN`), Telugu (`te-IN`), Hindi (`hi-IN`), and English (`en-IN`) for low-literacy users. |
 | 🌐 **Multilingual Bharat UI** | Native support for English, Hindi (`हिंदी`), Telugu (`తెలుగు`), and Kannada (`ಕನ್ನಡ`) across all metrics, badges, and negotiations. |
 | 💸 **Hidden Rupee Trap Simulator** | Dynamically calculates the exact financial liability (excess deposits, illegal exit deductions, penal interest) buried in clauses. |
 | ⚖️ **Power Imbalance Meter** | Measures contractual asymmetry (such as 90-day tenant notice vs. 15-day landlord notice) with an actionable imbalance index. |
-| 🔍 **Clause-by-Clause Policy Audit** | Explains each violation with plain-language ELI5 summaries, exact legislative citations, and severity scoring. |
-| ⚡ **One-Click Instant Demo Presets** | Zero-latency instant offline cache evaluating 3 notorious real-world Indian contracts in under 5 milliseconds. |
-| 💬 **1-Click WhatsApp Negotiation** | Generates 3 calibrated counter-negotiation tones (Polite, Assertive, Hardball) with direct 1-click dispatch into WhatsApp Web/App. |
+| 💬 **1-Click WhatsApp Negotiation** | Generates calibrated counter-negotiation tones (Polite, Assertive, Hardball) with direct 1-click dispatch into WhatsApp Web/App. |
+| ⚡ **Live WhatsApp Cloud Webhook** | Production FastAPI endpoint (`/api/whatsapp/webhook`) for scanning contracts directly inside WhatsApp. |
 | 🔄 **GitHub-Style Contract PR Diff** | Visualizes side-by-side redline diffs comparing predatory original clauses with legally compliant redrafts. |
 | 📥 **Downloadable Audit Report** | Generates certified statutory text/markdown audit reports and high-contrast printable audit certificates. |
 | 💾 **Offline Recent Audits History** | Persists audit history in browser storage to compare and reload previous scans with zero network latency. |
