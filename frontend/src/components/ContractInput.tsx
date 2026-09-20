@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { UploadCloud, FileText, Sparkles, ArrowRight } from 'lucide-react';
+import { UploadCloud, FileText, Sparkles, ArrowRight, Camera } from 'lucide-react';
 import type { Language } from '../types';
 import { getTranslation } from '../i18n';
 
@@ -23,13 +23,18 @@ export const ContractInput: React.FC<ContractInputProps> = ({
   const [selectedFileName, setSelectedFileName] = useState<string | null>(null);
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const cameraInputRef = useRef<HTMLInputElement>(null);
 
   const handleFile = (file: File) => {
-    if (file.type === 'application/pdf' || file.name.endsWith('.pdf') || file.type.includes('text')) {
+    const isPdf = file.type === 'application/pdf' || file.name.endsWith('.pdf');
+    const isText = file.type.includes('text') || file.name.endsWith('.txt');
+    const isImage = file.type.startsWith('image/') || /\.(jpg|jpeg|png|webp|heic)$/i.test(file.name);
+
+    if (isPdf || isText || isImage) {
       setSelectedFile(file);
       setSelectedFileName(file.name);
     } else {
-      alert('Please upload a PDF or plain text document.');
+      alert('Please upload a PDF, document, or photo of your stamp paper.');
     }
   };
 
@@ -114,28 +119,49 @@ export const ContractInput: React.FC<ContractInputProps> = ({
             </div>
           )}
 
-          {/* Drag & drop helper / File input trigger */}
+          {/* File & Camera Upload Triggers */}
           <div className="flex flex-wrap items-center justify-between gap-3 pt-2">
-            <div 
-              onDragOver={(e) => { e.preventDefault(); setDragActive(true); }}
-              onDragLeave={() => setDragActive(false)}
-              onDrop={handleDrop}
-              onClick={() => fileInputRef.current?.click()}
-              className={`cursor-pointer px-4 py-2.5 rounded-xl border border-dashed transition-all flex items-center space-x-2 text-xs ${
-                dragActive 
-                  ? 'border-sky-400 bg-sky-500/10 text-sky-300' 
-                  : 'border-white/15 hover:border-white/30 text-slate-400 hover:text-slate-200 bg-slate-900/40'
-              }`}
-            >
-              <UploadCloud className="w-4 h-4 text-sky-400" />
-              <span>{t.input.uploadBtn}</span>
-              <input 
-                type="file" 
-                ref={fileInputRef} 
-                accept=".pdf,.txt,.doc,.docx" 
-                onChange={(e) => e.target.files && handleFile(e.target.files[0])} 
-                className="hidden" 
-              />
+            <div className="flex flex-wrap items-center gap-2">
+              {/* Document upload trigger */}
+              <div 
+                onDragOver={(e) => { e.preventDefault(); setDragActive(true); }}
+                onDragLeave={() => setDragActive(false)}
+                onDrop={handleDrop}
+                onClick={() => fileInputRef.current?.click()}
+                className={`cursor-pointer px-3.5 py-2.5 rounded-xl border border-dashed transition-all flex items-center space-x-2 text-xs ${
+                  dragActive 
+                    ? 'border-sky-400 bg-sky-500/10 text-sky-300' 
+                    : 'border-white/15 hover:border-white/30 text-slate-300 hover:text-white bg-slate-900/60'
+                }`}
+              >
+                <UploadCloud className="w-4 h-4 text-sky-400" />
+                <span>{t.input.uploadBtn}</span>
+                <input 
+                  type="file" 
+                  ref={fileInputRef} 
+                  accept=".pdf,.txt,.doc,.docx,image/*,.png,.jpg,.jpeg,.webp" 
+                  onChange={(e) => e.target.files && handleFile(e.target.files[0])} 
+                  className="hidden" 
+                />
+              </div>
+
+              {/* Camera Snap for Physical Stamp Paper Photo */}
+              <button
+                type="button"
+                onClick={() => cameraInputRef.current?.click()}
+                className="px-3.5 py-2.5 rounded-xl border border-emerald-500/30 hover:border-emerald-500/60 bg-emerald-950/40 hover:bg-emerald-900/50 text-emerald-300 hover:text-emerald-200 transition-all flex items-center space-x-2 text-xs font-semibold hover:scale-105"
+              >
+                <Camera className="w-4 h-4 text-emerald-400" />
+                <span>{t.input.cameraBtn}</span>
+                <input 
+                  type="file" 
+                  ref={cameraInputRef} 
+                  accept="image/*" 
+                  capture="environment" 
+                  onChange={(e) => e.target.files && handleFile(e.target.files[0])} 
+                  className="hidden" 
+                />
+              </button>
             </div>
 
             {/* Run Scan Button */}

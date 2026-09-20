@@ -28,6 +28,7 @@ export interface TranslationDictionary {
     placeholder: string;
     chars: string;
     uploadBtn: string;
+    cameraBtn: string;
     readyPdf: string;
     scanBtn: string;
     scanningBtn: string;
@@ -83,6 +84,8 @@ export interface TranslationDictionary {
   clauseCard: {
     plainLabel: string;
     ruleLabel: string;
+    audioListen: string;
+    audioStop: string;
     diffOpen: string;
     diffClose: string;
     diffOriginal: string;
@@ -149,6 +152,7 @@ export const translations: Record<Language, TranslationDictionary> = {
       placeholder: "Paste your rental agreement, employment contract, or freelance MSA here... (e.g. 11-month Bangalore rental contract with 10-month deposit, or offer letter with lock-in bond)",
       chars: "characters",
       uploadBtn: "Upload PDF or Document",
+      cameraBtn: "Camera / Stamp Paper Photo",
       readyPdf: "PDF loaded via pdfplumber ready for clause extraction",
       scanBtn: "Scan with DeFang Cedar Engine",
       scanningBtn: "Verifying with Strands + Cedar...",
@@ -204,6 +208,8 @@ export const translations: Record<Language, TranslationDictionary> = {
     clauseCard: {
       plainLabel: "Plain English Breakdown:",
       ruleLabel: "Formal Cedar Statutory Rule:",
+      audioListen: "Listen Aloud",
+      audioStop: "Stop Audio",
       diffOpen: "View Balanced Redline Diff",
       diffClose: "Hide Redline Diff",
       diffOriginal: "Original Unfair Clause (DENY)",
@@ -268,6 +274,7 @@ export const translations: Record<Language, TranslationDictionary> = {
       placeholder: "अपना रेंटल एग्रीमेंट या नौकरी का अनुबंध यहां पेस्ट करें... (उदा. 11 महीने का रेंट एग्रीमेंट, 10 महीने का डिपॉजिट, या अत्यधिक पेनल्टी वाले क्लॉज)",
       chars: "अक्षर",
       uploadBtn: "PDF या टेक्स्ट दस्तावेज़ अपलोड करें",
+      cameraBtn: "कैमरा / स्टांप पेपर फोटो",
       readyPdf: "pdfplumber द्वारा PDF से क्लॉज निकालने के लिए तैयार",
       scanBtn: "DeFang Cedar इंजन से स्कैन करें",
       scanningBtn: "Strands + Cedar द्वारा जांच जारी...",
@@ -323,6 +330,8 @@ export const translations: Record<Language, TranslationDictionary> = {
     clauseCard: {
       plainLabel: "सरल भाषा में व्याख्या:",
       ruleLabel: "औपचारिक वैधानिक Cedar नियम:",
+      audioListen: "बोलकर सुनें",
+      audioStop: "आवाज़ रोकें",
       diffOpen: "कानून सम्मत संशोधित रूप देखें",
       diffClose: "संशोधित रूप छिपाएं",
       diffOriginal: "मूल अनुचित क्लॉज (DENY)",
@@ -387,6 +396,7 @@ export const translations: Record<Language, TranslationDictionary> = {
       placeholder: "మీ అద్దె ఒప్పందం లేదా ఉద్యోగ కాంట్రాక్ట్‌ను ఇక్కడ పేస్ట్ చేయండి... (ఉదా: 11 నెలల అద్దె అగ్రిమెంట్, 2 ఏళ్ల జాబ్ బాండ్, లేదా అధిక జరిమానా నిబంధనలు)",
       chars: "అక్షరాలు",
       uploadBtn: "PDF లేదా టెక్స్ట్ ఫైల్ అప్‌లోడ్ చేయండి",
+      cameraBtn: "కెమెరా / స్టాంప్ పేపర్ ఫోటో",
       readyPdf: "pdfplumber ద్వారా PDF క్లాజ్ వెలికితీతకు సిద్ధంగా ఉంది",
       scanBtn: "DeFang Cedar ఇంజిన్‌తో స్కాన్ చేయండి",
       scanningBtn: "Strands + Cedar ద్వారా తనిఖీ జరుగుతోంది...",
@@ -442,6 +452,8 @@ export const translations: Record<Language, TranslationDictionary> = {
     clauseCard: {
       plainLabel: "సరళ వివరణ:",
       ruleLabel: "అధికారిక చట్టబద్ధమైన Cedar నియమం:",
+      audioListen: "వినండి (ఆడియో)",
+      audioStop: "ఆపండి",
       diffOpen: "న్యాయబద్ధమైన సవరణ చూడండి",
       diffClose: "సవరణను దాచండి",
       diffOriginal: "అసలు అన్యాయమైన నిబంధన (DENY)",
@@ -506,6 +518,7 @@ export const translations: Record<Language, TranslationDictionary> = {
       placeholder: "ಬಾಡಿಗೆ ಒಪ್ಪಂದ, ಉದ್ಯೋಗ ಆಫರ್ ಅಥವಾ ಫ್ರೀಲ್ಯಾನ್ಸ್ ಒಪ್ಪಂದದ ಪಠ್ಯವನ್ನು ಇಲ್ಲಿ ಅಂಟಿಸಿ... (ಉದಾ: 11 ತಿಂಗಳ ಬೆಂಗಳೂರು ಬಾಡಿಗೆ ಒಪ್ಪಂದ, 10 ತಿಂಗಳ ಠೇವಣಿ, ಅಥವಾ ಕಠಿಣ ಉದ್ಯೋಗ ನಿಯಮಗಳು)",
       chars: "ಅಕ್ಷರಗಳು",
       uploadBtn: "PDF ಅಥವಾ ಪಠ್ಯ ಫೈಲ್ ಅಪ್‌ಲೋಡ್ ಮಾಡಿ",
+      cameraBtn: "ಕ್ಯಾಮೆರಾ / ಸ್ಟ್ಯಾಂಪ್ ಪೇಪರ್ ಫೋಟೋ",
       readyPdf: "pdfplumber ಮೂಲಕ PDF ಪರಿಶೀಲನೆಗೆ ಸಿದ್ಧವಾಗಿದೆ",
       scanBtn: "DeFang Cedar ಎಂಜಿನ್‌ನೊಂದಿಗೆ ಸ್ಕ್ಯಾನ್ ಮಾಡಿ",
       scanningBtn: "Strands + Cedar ಮೂಲಕ ಪರಿಶೀಲನೆ ಪ್ರಕ್ರಿಯೆಯಲ್ಲಿದೆ...",
@@ -561,6 +574,8 @@ export const translations: Record<Language, TranslationDictionary> = {
     clauseCard: {
       plainLabel: "ಸರಳ ವಿವರಣೆ:",
       ruleLabel: "ಔಪಚಾರಿಕ Cedar ಶಾಸನಬದ್ಧ ನಿಯಮ:",
+      audioListen: "ಕೇಳಿ (ಆಡಿಯೋ)",
+      audioStop: "ನಿಲ್ಲಿಸಿ",
       diffOpen: "ನ್ಯಾಯಯುತ ತಿದ್ದುಪಡಿ ಹೋಲಿಕೆ",
       diffClose: "ಹೋಲಿಕೆ ಮುಚ್ಚಿ",
       diffOriginal: "ಮೂಲ ಅನ್ಯಾಯದ ಕಲಂ (DENY)",

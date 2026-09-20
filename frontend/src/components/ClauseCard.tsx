@@ -11,7 +11,9 @@ import {
   ChevronUp, 
   Scale, 
   Info,
-  Send
+  Send,
+  Volume2,
+  VolumeX
 } from 'lucide-react';
 import type { Clause, Language } from '../types';
 import { getTranslation, getLocalizedWhatsApp } from '../i18n';
@@ -31,6 +33,7 @@ export const ClauseCard: React.FC<ClauseCardProps> = ({
   const [showWhatsApp, setShowWhatsApp] = useState(false);
   const [activeTab, setActiveTab] = useState<'polite' | 'firm' | 'legal'>('polite');
   const [copiedTab, setCopiedTab] = useState<string | null>(null);
+  const [isPlayingAudio, setIsPlayingAudio] = useState(false);
 
   const isDeny = clause.verdict === 'DENY';
 
@@ -40,6 +43,39 @@ export const ClauseCard: React.FC<ClauseCardProps> = ({
     if (currentLang === 'te' && clause.eli5_te) return clause.eli5_te;
     if (currentLang === 'kn' && (clause as any).eli5_kn) return (clause as any).eli5_kn;
     return clause.eli5;
+  };
+
+  const handleToggleAudio = () => {
+    if (!('speechSynthesis' in window)) {
+      onCopyToast('Speech synthesis not supported in this browser.');
+      return;
+    }
+
+    if (isPlayingAudio) {
+      window.speechSynthesis.cancel();
+      setIsPlayingAudio(false);
+      return;
+    }
+
+    window.speechSynthesis.cancel();
+    const textToSpeak = getEli5();
+    if (!textToSpeak) return;
+
+    const utterance = new SpeechSynthesisUtterance(textToSpeak);
+    const langMap: Record<Language, string> = {
+      en: 'en-IN',
+      hi: 'hi-IN',
+      te: 'te-IN',
+      kn: 'kn-IN',
+    };
+    utterance.lang = langMap[currentLang] || 'en-IN';
+    utterance.rate = 0.92;
+
+    utterance.onend = () => setIsPlayingAudio(false);
+    utterance.onerror = () => setIsPlayingAudio(false);
+
+    setIsPlayingAudio(true);
+    window.speechSynthesis.speak(utterance);
   };
 
   const handleCopyWhatsApp = (text: string, toneName: string) => {
@@ -182,15 +218,41 @@ export const ClauseCard: React.FC<ClauseCardProps> = ({
         </div>
       )}
 
-      {/* ELI5 Plain Explanation (Multilingual) */}
-      <div className="p-3 rounded-xl bg-slate-900/60 border border-sky-500/20 flex items-start space-x-2.5 mb-4">
-        <Info className="w-4 h-4 text-sky-400 shrink-0 mt-0.5" />
-        <div className="text-xs text-slate-300 leading-relaxed">
-          <span className="font-bold text-sky-400 mr-1.5 uppercase text-[10px] tracking-wider">
-            {t.clauseCard.plainLabel}
-          </span>
-          {getEli5()}
+      {/* ELI5 Plain Explanation (Multilingual + Audio Voice Readout) */}
+      <div className="p-3.5 rounded-xl bg-slate-900/70 border border-sky-500/25 flex items-start justify-between gap-3 mb-4">
+        <div className="flex items-start space-x-2.5 flex-1">
+          <Info className="w-4 h-4 text-sky-400 shrink-0 mt-0.5" />
+          <div className="text-xs text-slate-300 leading-relaxed">
+            <span className="font-bold text-sky-400 mr-1.5 uppercase text-[10px] tracking-wider">
+              {t.clauseCard.plainLabel}
+            </span>
+            {getEli5()}
+          </div>
         </div>
+
+        {/* Voice Readout Button (Web Speech API - 100% Offline & Free) */}
+        <button
+          type="button"
+          onClick={handleToggleAudio}
+          title={isPlayingAudio ? t.clauseCard.audioStop : t.clauseCard.audioListen}
+          className={`shrink-0 flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-[11px] font-bold transition-all border ${
+            isPlayingAudio 
+              ? 'bg-amber-500/20 text-amber-300 border-amber-500/40 animate-pulse shadow-md shadow-amber-500/20' 
+              : 'bg-sky-500/15 text-sky-300 hover:bg-sky-500/25 border-sky-500/30 hover:scale-105'
+          }`}
+        >
+          {isPlayingAudio ? (
+            <>
+              <VolumeX className="w-3.5 h-3.5 text-amber-400" />
+              <span>{t.clauseCard.audioStop}</span>
+            </>
+          ) : (
+            <>
+              <Volume2 className="w-3.5 h-3.5 text-sky-400" />
+              <span>{t.clauseCard.audioListen}</span>
+            </>
+          )}
+        </button>
       </div>
 
       {/* Action Buttons for DENY clauses: Diff Mode & WhatsApp Diplomat */}
