@@ -44,8 +44,8 @@ export const Navbar: React.FC<NavbarProps> = ({
               <span className="text-xl sm:text-2xl font-black tracking-tight text-white">
                 De<span className="text-red-400">Fang</span>
               </span>
-              <span className="hidden xs:inline-block text-[10px] uppercase tracking-wider px-1.5 py-0.5 rounded-full bg-red-500/10 text-red-400 border border-red-500/30 font-semibold">
-                Bharat
+              <span className="inline-flex items-center text-[10px] uppercase tracking-wider px-2 py-0.5 rounded-full bg-red-500/15 text-red-400 border border-red-500/30 font-bold shadow-sm whitespace-nowrap">
+                Bharat Edition
               </span>
             </div>
             <p className="hidden md:block text-[11px] text-slate-400 font-medium">
