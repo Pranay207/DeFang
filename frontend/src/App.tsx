@@ -21,7 +21,7 @@ import { CedarArchitectureModal } from './components/CedarArchitectureModal';
 import type { ScanResult, PresetSummary, Language } from './types';
 import { getTranslation } from './i18n';
 
-const API_BASE = 'http://127.0.0.1:8000';
+const API_BASE = typeof window !== 'undefined' ? `http://${window.location.hostname}:8000` : 'http://127.0.0.1:8000';
 
 export function App() {
   const [presets, setPresets] = useState<PresetSummary[]>([]);
