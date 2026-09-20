@@ -127,7 +127,7 @@ export interface TranslationDictionary {
 export const translations: Record<Language, TranslationDictionary> = {
   en: {
     navbar: {
-      brandSubtitle: "AI Indian Contract Red-Flag Scanner & Policy Verifier",
+      brandSubtitle: "Deterministic Indian Contract Red-Flag Scanner & Statutory Policy Engine",
       engineBadge: "Strands + Cedar Policy Engine",
       newScan: "New Scan",
     },
@@ -250,7 +250,7 @@ export const translations: Record<Language, TranslationDictionary> = {
   },
   hi: {
     navbar: {
-      brandSubtitle: "भारतीय अनुबंध रेड-फ्लैग स्कैनर एवं वैधानिक नीति सत्यापनकर्ता",
+      brandSubtitle: "निर्धारक भारतीय अनुबंध रेड-फ्लैग स्कैनर एवं वैधानिक नीति इंजन",
       engineBadge: "Strands AI + AWS Cedar इंजन",
       newScan: "नया स्कैन",
     },
@@ -373,7 +373,7 @@ export const translations: Record<Language, TranslationDictionary> = {
   },
   te: {
     navbar: {
-      brandSubtitle: "భారతీయ చట్టబద్ధమైన కాంట్రాక్ట్ రెడ్-ఫ్లాగ్ స్కానర్ & పాలసీ వెరిఫైయర్",
+      brandSubtitle: "నిర్ధారక భారతీయ కాంట్రాక్ట్ రెడ్-ఫ్లాగ్ స్కానర్ & చట్టబద్ధమైన పాలసీ ఇంజిన్",
       engineBadge: "Strands AI + AWS Cedar ఇంజిన్",
       newScan: "కొత్త స్కానింగ్",
     },
@@ -496,7 +496,7 @@ export const translations: Record<Language, TranslationDictionary> = {
   },
   kn: {
     navbar: {
-      brandSubtitle: "AI ಭಾರತೀಯ ಒಪ್ಪಂದಗಳ ಅಪಾಯ ಶೋಧಕ ಮತ್ತು ಪಾಲಿಸಿ ಪರೀಕ್ಷಕ",
+      brandSubtitle: "ಖಚಿತ ಭಾರತೀಯ ಒಪ್ಪಂದಗಳ ರೆಡ್-ಫ್ಲ್ಯಾಗ್ ಸ್ಕ್ಯಾನರ್ ಮತ್ತು ಶಾಸನಬದ್ಧ ಪಾಲಿಸಿ ಎಂಜಿನ್",
       engineBadge: "Strands + Cedar ಪಾಲಿಸಿ ಎಂಜಿನ್",
       newScan: "ಹೊಸ ಸ್ಕ್ಯಾನ್",
     },
