@@ -24,7 +24,7 @@ export const Navbar: React.FC<NavbarProps> = ({
     <header className="sticky top-0 z-50 border-b border-white/10 bg-slate-950/80 backdrop-blur-xl">
       <div className="max-w-7xl mx-auto px-3 sm:px-6 h-16 sm:h-18 flex items-center justify-between gap-2">
         {/* Brand */}
-        <div 
+        <div
           onClick={onReset}
           className="flex items-center space-x-2 sm:space-x-3 cursor-pointer group shrink-0"
         >
