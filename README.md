@@ -64,11 +64,17 @@
 
 <div align="center">
 
-[![Watch 3-Minute Video Walkthrough](https://img.shields.io/badge/YouTube-Watch_Full_3--Minute_Walkthrough-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](VIDEO_URL)
+[![Watch 3-Minute Video Walkthrough](https://img.shields.io/badge/YouTube-Watch_Full_3--Minute_Walkthrough-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](https://www.youtube.com/watch?v=0hFP19oEUL8)
+
+<br /><br />
+
+<a href="https://www.youtube.com/watch?v=0hFP19oEUL8" target="_blank">
+  <img src="https://img.youtube.com/vi/0hFP19oEUL8/maxresdefault.jpg" alt="DeFang 3-Minute Video Walkthrough" width="720" style="border-radius: 12px; box-shadow: 0 12px 36px rgba(0,0,0,0.5);" />
+</a>
 
 <br />
 
-> 📺 **[▶️ Click Here to Watch the Live Product Demonstration on YouTube](VIDEO_URL)**
+> 📺 **[▶️ Click Here to Watch the Live Product Demonstration on YouTube](https://www.youtube.com/watch?v=0hFP19oEUL8)**
 *(Recorded for the First Commit | Bharat Builds Tour Hackathon submission)*
 
 </div>
