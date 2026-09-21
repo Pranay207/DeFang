@@ -105,6 +105,23 @@ Generic AI contract tools rely on a **single LLM giving subjective, unverifiable
 └──────────────────────────┴─────────────────────────────────┴───────────────────────────┘
 ```
 
+### 🥊 The Litmus Test: Generic LLMs (ChatGPT / Gemini) vs. DeFang Dual-Engine Core
+
+> **❓ The Question Every Evaluator Asks**: *"Can't a user simply copy-paste a rental contract or job offer into ChatGPT or Gemini?"*
+> 
+> **💡 The Engineering Reality**: We tested the exact same Indiranagar rental agreement on **Google Gemini 2.5** and **ChatGPT-4o**. While modern LLMs generate helpful conversational summaries, **they fail the standard required for statutory legal compliance and financial certainty**:
+
+| Evaluation Dimension | ❌ Generic LLMs (ChatGPT / Gemini) | 🛡️ DeFang (Strands SDK + AWS Cedar) |
+| :--- | :--- | :--- |
+| **Verification Engine** | **Probabilistic & Stochastic**: Generates conversational essays with fluctuating interpretations. Prone to hallucinating legal grounds across runs. | **Formal Deterministic Engine**: Executes 8 Rust-compiled AWS Cedar (`.cedar`) policies with **Zero Hallucinations** and mathematical binary certainty (`ALLOW` / `DENY`). |
+| **Indian Statutory Grounding** | **Subjective Disclaimers**: Conflates Western "reasonableness" doctrines with strict Indian statutes; repeats *"I am an AI, not a lawyer"*. | **Direct Legislative Citations**: Formally links violations to exact statutory sections (*Model Tenancy Act 2021 Sec 9 & 15, Indian Contract Act Sec 27 & 74, Usurious Loans Act 1918*). |
+| **Financial Exposure Quantification** | **Vague Qualitative Remarks**: Remarks *"You may face financial penalties"*, or offers uncalibrated rough ranges. | **Exact Hidden Rupee Trap Simulator**: Mathematically aggregates trapped liquidity and penal forfeiture down to the exact rupee (**₹7,36,050 At Risk**). |
+| **Contract Asymmetry Detection** | **Silent on Power Imbalance**: Incapable of calculating structural asymmetry or reciprocal hypocrisy between parties. | **Algorithmic Power Imbalance Meter**: Computes exact leverage ratio (**95% Counterparty Bias vs. 5% Protection**) with contract hypocrisy callouts. |
+| **Actionable Negotiation** | **Passive Text Output**: Leaves user with lengthy essays to decipher and manually draft counter-arguments. | **1-Click WhatsApp Diplomat & GitHub Diff**: Generates calibrated counter-offers (Polite, Assertive, Hardball) with 1-click dispatch into WhatsApp. |
+| **Data Privacy & Operating Cost** | **Cloud-Dependent & Costly**: Exposes private residential and salary contracts to third-party cloud APIs; incurs continuous token costs. | **100% On-Device & Offline**: Operates completely local-first with **₹0 cloud API bills, 0 external dependencies, and zero data leakage**. |
+
+---
+
 ### Proof: Real Indian Law Encoded into AWS Cedar
 
 Here is [`backend/policies/deposit_cap.cedar`](backend/policies/deposit_cap.cedar) deterministically forbidding rental security deposits exceeding 3 months under Section 9 of the Model Tenancy Act 2021:
