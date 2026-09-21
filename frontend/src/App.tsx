@@ -24,7 +24,7 @@ import { getTranslation } from './i18n';
 const API_BASE = import.meta.env.VITE_API_URL || (typeof window !== 'undefined' ? `http://${window.location.hostname}:8000` : 'http://127.0.0.1:8000');
 
 export function App() {
-  const [presets, setPresets] = useState<PresetSummary[]>([]);
+  const [presets, setPresets] = useState<PresetSummary[]>(() => (fallbackData.presets as PresetSummary[]) || []);
   const [selectedPresetId, setSelectedPresetId] = useState<string | null>(null);
   const [inputText, setInputText] = useState<string>('');
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -64,18 +64,29 @@ export function App() {
     }
   };
 
-  // Load presets on mount (with automatic offline fallback)
+  // Load presets on mount (instant pre-cached + background sync with quick 1.5s timeout)
   useEffect(() => {
-    fetch(`${API_BASE}/api/presets`)
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 1500);
+
+    fetch(`${API_BASE}/api/presets`, { signal: controller.signal })
       .then((res) => {
         if (!res.ok) throw new Error('Failed to fetch presets');
         return res.json();
       })
-      .then((data) => setPresets(data))
+      .then((data) => {
+        clearTimeout(timeoutId);
+        if (Array.isArray(data) && data.length > 0) {
+          setPresets(data);
+        }
+      })
       .catch((err) => {
-        console.warn('Backend unavailable, using pre-cached offline presets:', err);
-        setPresets(fallbackData.presets as PresetSummary[]);
+        clearTimeout(timeoutId);
+        // Fallback is already initialized in state, so UI is instantly rendered!
+        console.info('Using pre-cached offline presets:', err?.message || 'offline');
       });
+
+    return () => clearTimeout(timeoutId);
   }, []);
 
   const triggerToast = (msg: string) => {
@@ -177,13 +188,20 @@ export function App() {
     setIsLoading(true);
 
     try {
-      let data: ScanResult;
+      let data: ScanResult | null = null;
       try {
-        const res = await fetch(`${API_BASE}/api/presets/${presetId}`);
-        if (!res.ok) throw new Error('Network error');
-        data = await res.json();
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 1200);
+        const res = await fetch(`${API_BASE}/api/presets/${presetId}`, { signal: controller.signal });
+        clearTimeout(timeoutId);
+        if (res.ok) {
+          data = await res.json();
+        }
       } catch {
-        // Instant client fallback
+        // Fall back immediately to client pre-cached result
+      }
+
+      if (!data) {
         const fallbackResults = fallbackData.results as Record<string, ScanResult>;
         data = fallbackResults[presetId];
       }

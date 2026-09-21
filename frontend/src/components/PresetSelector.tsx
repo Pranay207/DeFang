@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Home, Briefcase, Code, Sparkles, ArrowRight } from 'lucide-react';
 import type { PresetSummary, Language } from '../types';
 import { getTranslation } from '../i18n';
+import fallbackData from '../presetsFallback.json';
 
 interface PresetSelectorProps {
   presets: PresetSummary[];
@@ -20,6 +21,7 @@ export const PresetSelector: React.FC<PresetSelectorProps> = ({
   currentLang = 'en'
 }) => {
   const t = getTranslation(currentLang);
+  const activePresets = (presets && presets.length > 0) ? presets : (fallbackData.presets as PresetSummary[]);
 
   const getIcon = (id: string) => {
     if (id.includes('rental')) return <Home className="w-5 h-5 text-red-400" />;
@@ -69,7 +71,7 @@ export const PresetSelector: React.FC<PresetSelectorProps> = ({
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-3.5">
-        {presets.map((preset, index) => {
+        {activePresets.map((preset, index) => {
           const isSelected = selectedPresetId === preset.id;
           const severity = getSeverityStyle(preset.badge);
           const localized = getLocalizedContent(preset);
