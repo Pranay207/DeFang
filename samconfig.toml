@@ -1,0 +1,25 @@
+# AWS SAM CLI Configuration for DeFang (Bharat Edition)
+version = 0.1
+
+[default]
+[default.global.parameters]
+stack_name = "defang-stack"
+
+[default.build.parameters]
+cached = true
+parallel = true
+
+[default.local_start_api.parameters]
+port = 8000
+host = "127.0.0.1"
+warm_containers = "EAGER"
+
+[localstack]
+[localstack.deploy.parameters]
+stack_name = "defang-localstack-stack"
+s3_bucket = "defang-localstack-artifacts"
+s3_prefix = "defang"
+region = "ap-south-1"
+confirm_changeset = false
+capabilities = "CAPABILITY_IAM"
+endpoint_url = "http://localhost:4566"

@@ -27,6 +27,23 @@ export interface ExtractedValue {
   full_deposit_forfeited_on_early_exit?: boolean;
 }
 
+export interface LegalPrecedent {
+  id?: string;
+  category?: string;
+  policy_id?: string;
+  case_title: string;
+  citation: string;
+  court: string;
+  bench?: string;
+  year?: number;
+  statutory_hook?: string;
+  ruling_summary?: string;
+  ratio_decidendi?: string;
+  binding_principle?: string;
+  relevance?: string;
+  keywords?: string[];
+}
+
 export interface Clause {
   clause_id: number;
   clause_text: string;
@@ -40,6 +57,7 @@ export interface Clause {
   rule_text: string;
   severity: number;
   violations: Violation[];
+  precedent?: LegalPrecedent | null;
   eli5: string;
   eli5_hi: string;
   eli5_te: string;

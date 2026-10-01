@@ -1,0 +1,97 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  DeFang (Bharat Edition) - AWS SAM Serverless Application Template
+  AWS Serverless Track: AWS SAM CLI, AWS Lambda, API Gateway HTTP API, Amazon S3, & LocalStack ₹0 emulation.
+
+Globals:
+  Function:
+    Timeout: 30
+    MemorySize: 512
+    Runtime: python3.11
+    Architectures:
+      - x86_64
+    Environment:
+      Variables:
+        ENVIRONMENT: production
+        AWS_SAM_LOCAL: 'true'
+        POWERTOOLS_SERVICE_NAME: defang-service
+        LOG_LEVEL: INFO
+        OPENSEARCH_URL: !Ref OpenSearchEndpoint
+
+Parameters:
+  OpenSearchEndpoint:
+    Type: String
+    Default: 'http://localhost:9200'
+    Description: Endpoint URL for AWS OpenSearch precedent index (or LocalStack OpenSearch)
+
+Resources:
+  # ============================================================================
+  # HTTP API Gateway (Fast, lightweight, sub-millisecond routing)
+  # ============================================================================
+  DeFangHttpApi:
+    Type: AWS::Serverless::HttpApi
+    Properties:
+      CorsConfiguration:
+        AllowMethods:
+          - GET
+          - POST
+          - OPTIONS
+        AllowHeaders:
+          - Content-Type
+          - Authorization
+          - X-Requested-With
+        AllowOrigins:
+          - '*'
+
+  # ============================================================================
+  # DeFang Core API Lambda Function (FastAPI + Cedar Engine + OpenSearch)
+  # ============================================================================
+  DeFangApiFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: backend/
+      Handler: lambda_handler.handler
+      Description: DeFang deterministic legal policy evaluator powered by Cedar Rust core and OpenSearch
+      Policies:
+        - S3CrudPolicy:
+            BucketName: !Ref AuditCacheBucket
+      Events:
+        ApiRoot:
+          Type: HttpApi
+          Properties:
+            ApiId: !Ref DeFangHttpApi
+            Path: /
+            Method: ANY
+        ApiProxy:
+          Type: HttpApi
+          Properties:
+            ApiId: !Ref DeFangHttpApi
+            Path: /{proxy+}
+            Method: ANY
+
+  # ============================================================================
+  # Amazon S3 Bucket for Contract Storage and Precedent Cache
+  # ============================================================================
+  AuditCacheBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Sub 'defang-audit-cache-${AWS::AccountId}-${AWS::Region}'
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
+      VersioningConfiguration:
+        Status: Enabled
+
+Outputs:
+  DeFangApiUrl:
+    Description: HTTP API Gateway endpoint URL for DeFang
+    Value: !Sub 'https://${DeFangHttpApi}.execute-api.${AWS::Region}.amazonaws.com'
+  DeFangApiFunctionArn:
+    Description: DeFang Lambda Function ARN
+    Value: !GetAtt DeFangApiFunction.Arn
+  AuditCacheBucketName:
+    Description: S3 Bucket Name for Audit Cache
+    Value: !Ref AuditCacheBucket

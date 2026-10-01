@@ -1,0 +1,30 @@
+# ==============================================================================
+# AWS Finch Configuration File (finch.yaml)
+# Configures the Finch Container Engine VM & Runtime settings
+# ==============================================================================
+
+# Virtual Machine Resources
+cpus: 4
+memory: 4GiB
+disk: 25GiB
+
+# Container runtime engine settings
+rosetta: false
+
+# Network configuration
+network:
+  bridge: "finch-bridge"
+  dns:
+    - "8.8.8.8"
+    - "1.1.1.1"
+
+# Shared mounts between host and Finch VM
+shared_directories:
+  - path: "."
+    writable: true
+
+# Environment variables propagated to Finch containers
+env:
+  ENVIRONMENT: "local"
+  AWS_REGION: "ap-south-1"
+  OPENSEARCH_URL: "http://localhost:9200"

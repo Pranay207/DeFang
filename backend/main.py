@@ -9,6 +9,7 @@ import pdfplumber
 from agent import agent_service
 from cedar_engine import cedar_engine, POLICY_METADATA
 from presets import PRESETS
+from opensearch_service import opensearch_engine
 
 app = FastAPI(
     title="DeFang API",
@@ -145,6 +146,12 @@ def aggregate_scan_result(contract_text: str, raw_clauses: List[Dict[str, Any]],
                 "reason": cedar_res["violations"][0]["description"] if cedar_res["violations"] else "Financial exposure"
             })
 
+        # OpenSearch Legal Precedent Matching for statutory violation
+        precedent_match = None
+        if is_deny:
+            policy_id = cedar_res["violations"][0]["policy_id"] if cedar_res.get("violations") else None
+            precedent_match = opensearch_engine.get_precedent_for_clause(c.get("category", "other"), policy_id)
+
         analyzed_clauses.append({
             "clause_id": c.get("clause_id", idx + 1),
             "clause_text": clause_text,
@@ -158,6 +165,7 @@ def aggregate_scan_result(contract_text: str, raw_clauses: List[Dict[str, Any]],
             "rule_text": cedar_res["rule_text"],
             "severity": cedar_res["severity"],
             "violations": cedar_res["violations"],
+            "precedent": precedent_match,
             "eli5": c.get("eli5") or (cedar_res["violations"][0]["description"] if cedar_res["violations"] else "Compliant clause adhering to standard statutory norms."),
             "eli5_hi": c.get("eli5_hi") or "यह खंड भारतीय कानूनी मानकों के अनुसार जांचा गया है।",
             "eli5_te": c.get("eli5_te") or "ఈ నిబంధన భారతీయ చట్టపరమైన నిబంధనల ప్రకారం ధృవీకరించబడింది.",
@@ -226,7 +234,28 @@ def health_check():
         "app": "DeFang — Indian Contract Red-Flag Scanner",
         "cedar_engine": "active",
         "loaded_cedar_policies": list(cedar_engine.individual_policies.keys()),
-        "agent": "Strands Agents SDK (Statutory Legal Parser)"
+        "agent": "Strands Agents SDK (Statutory Legal Parser)",
+        "opensearch_precedents": f"{len(opensearch_engine.get_all())} landmark Indian case laws indexed"
+    }
+
+@app.get("/api/precedents")
+def list_precedents():
+    """List landmark Indian Supreme Court and High Court precedents indexed in OpenSearch."""
+    return {
+        "status": "online",
+        "engine": "OpenSearch Statutory Case Law Index",
+        "total": len(opensearch_engine.get_all()),
+        "precedents": opensearch_engine.get_all()
+    }
+
+@app.get("/api/precedents/search")
+def search_precedents(q: str):
+    """Search Indian case law precedents via OpenSearch BM25/keyword indexing."""
+    results = opensearch_engine.search(q, top_k=5)
+    return {
+        "query": q,
+        "results_count": len(results),
+        "results": results
     }
 
 @app.get("/api/presets")

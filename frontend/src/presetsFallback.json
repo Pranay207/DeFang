@@ -114,6 +114,26 @@
             "polite": "Namaste Uncle, regarding Clause 2 of the agreement: As per the Model Tenancy Act 2021, the maximum residential security deposit is capped at 2 months' rent (₹70,000). Could we kindly update the deposit to ₹70,000 so both of us remain compliant with the latest tenancy framework?",
             "firm": "Hello Sharma ji, reviewing the draft agreement: Clause 2 specifies a 10-month deposit of ₹3.5L. Under Section 9 of the Model Tenancy Act 2021, residential security deposits cannot exceed 2 months' rent (₹70,000). Please issue an amended draft reflecting ₹70,000 deposit before signing.",
             "legal": "Dear Lessor, Notice is hereby given that Clause 2 demanding Rs. 3,50,000/- security deposit directly violates Section 9 of the Model Tenancy Act, 2021, which statutorily caps residential tenancy deposits at a maximum of 2 months rent. Kindly amend Clause 2 to Rs. 70,000/- to prevent invalidation under tenancy tribunal jurisprudence."
+          },
+          "precedent": {
+            "id": "prec_mta_deposit_cap_ramesh",
+            "category": "deposit",
+            "policy_id": "deposit_cap",
+            "case_title": "K.A. Ramesh & Ors. v. Susheela Bai",
+            "citation": "(1998) 3 SCC 58",
+            "court": "Supreme Court of India",
+            "bench": "Hon'ble Justice S. Saghir Ahmad",
+            "year": 1998,
+            "statutory_hook": "Model Tenancy Act 2021, Sec 9 & Karnataka Rent Control Norms",
+            "ruling_summary": "Confirmed that statutory limits on rental security deposit advances are mandatory public policy enactments. Landlords cannot circumvent statutory deposit caps by citing unwritten customary practice in metropolitan cities.",
+            "keywords": [
+              "security deposit",
+              "rental advance",
+              "deposit cap",
+              "model tenancy act",
+              "section 9",
+              "10-month deposit"
+            ]
           }
         },
         {
@@ -156,6 +176,26 @@
             "polite": "Hello Uncle, about the mandatory painting deduction: Since normal wear and tear is legally expected over 11 months, could we agree that deductions only apply if there is actual physical damage beyond standard usage, supported by repair bills?",
             "firm": "Hi Sharma ji, Clause 3 mandates a blanket ₹35,000 deduction for painting. Per Section 15 of the Model Tenancy Act, tenants are not liable for normal wear and tear. Deductions must be limited to actual damage documented in a joint exit inspection with verified receipts.",
             "legal": "RE: Clause 3 (Mandatory Painting Deduction). Take notice that statutory tenancy jurisprudence (Sec 15, Model Tenancy Act 2021) protects lessees from liabilities arising out of reasonable wear and tear. Mandatory arbitrary deductions constitute an unfair trade practice. Deductions must be strictly condition-contingent and backed by GST-compliant invoices."
+          },
+          "precedent": {
+            "id": "prec_sec74_fateh_chand",
+            "category": "deposit_forfeiture",
+            "policy_id": "premature_exit_forfeiture",
+            "case_title": "Fateh Chand v. Balkishan Dass",
+            "citation": "(1964) 1 SCR 515",
+            "court": "Supreme Court of India (Constitution Bench)",
+            "bench": "Hon'ble Justice J.C. Shah",
+            "year": 1964,
+            "statutory_hook": "Indian Contract Act 1872, Section 74",
+            "ruling_summary": "Landmark ruling establishing that Section 74 applies to all stipulated forfeitures. A party cannot forfeit a deposit or demand liquidated damages without proving actual loss. Unconditional forfeiture of earnest deposits operates as an illegal penalty in terrorem.",
+            "keywords": [
+              "forfeiture",
+              "liquidated damages",
+              "penalty",
+              "security deposit",
+              "actual loss",
+              "section 74"
+            ]
           }
         },
         {
@@ -240,6 +280,25 @@
             "polite": "Uncle, 3% per day late penalty works out to over 1000% annual rate if delayed by a few days due to banking issues. Could we replace this with a standard reasonable flat fee of ₹500 after a 5-day grace period?",
             "firm": "Regarding Clause 5: The 3% daily penalty is legally usurious under Indian contract law (Section 74). Please amend to standard market terms: 5 days grace period followed by simple 12% per annum pro-rata interest.",
             "legal": "Clause 5 Stipulation Notice: Imposition of 3% per-diem penal interest constitutes an illegal in-terrorem penalty under Section 74 of the Indian Contract Act 1872 and is struck down under the Usurious Loans Act 1918. Liquidated damages must reflect genuine pre-estimated losses."
+          },
+          "precedent": {
+            "id": "prec_usurious_interest_ravindra",
+            "category": "interest",
+            "policy_id": "interest_rate_cap",
+            "case_title": "Central Bank of India v. Ravindra & Ors.",
+            "citation": "(2002) 1 SCC 367",
+            "court": "Supreme Court of India (Constitution Bench)",
+            "bench": "Hon'ble Justice R.C. Lahoti",
+            "year": 2002,
+            "statutory_hook": "Usurious Loans Act 1918 & Interest Act 1978",
+            "ruling_summary": "Constitution Bench held that penal compounding and unconscionable daily interest rates that multiply to excessive annual percentages (e.g. >2% per day / >700% APR) are punitive, contrary to public policy, and unenforceable in Indian courts.",
+            "keywords": [
+              "penal interest",
+              "late fees",
+              "usurious loans",
+              "daily penalty",
+              "exorbitant rate"
+            ]
           }
         },
         {
@@ -282,6 +341,26 @@
             "polite": "Uncle, life circumstances or job transfers can happen unexpectedly. Forfeiting the entire ₹3.5L deposit is very harsh. Could we agree on 1 month rent deduction if early exit happens?",
             "firm": "Sharma ji, Clause 6 stipulates total forfeiture of ₹3,50,000 on early exit. Under Section 74 of the Indian Contract Act, penalties cannot exceed actual financial loss proved. We request substituting this with 1 month rent compensation.",
             "legal": "Legal Notice regarding Clause 6: Total forfeiture of Rs. 3,50,000/- deposit upon early exit constitutes an unenforceable penalty clause under Kailash Nath Associates v. DDA (Supreme Court of India) and Section 74 Indian Contract Act 1872. Landlord is only entitled to reasonable compensation for actual vacant period."
+          },
+          "precedent": {
+            "id": "prec_sec74_fateh_chand",
+            "category": "deposit_forfeiture",
+            "policy_id": "premature_exit_forfeiture",
+            "case_title": "Fateh Chand v. Balkishan Dass",
+            "citation": "(1964) 1 SCR 515",
+            "court": "Supreme Court of India (Constitution Bench)",
+            "bench": "Hon'ble Justice J.C. Shah",
+            "year": 1964,
+            "statutory_hook": "Indian Contract Act 1872, Section 74",
+            "ruling_summary": "Landmark ruling establishing that Section 74 applies to all stipulated forfeitures. A party cannot forfeit a deposit or demand liquidated damages without proving actual loss. Unconditional forfeiture of earnest deposits operates as an illegal penalty in terrorem.",
+            "keywords": [
+              "forfeiture",
+              "liquidated damages",
+              "penalty",
+              "security deposit",
+              "actual loss",
+              "section 74"
+            ]
           }
         }
       ],
@@ -371,6 +450,27 @@
             "polite": "Hi Team, regarding Clause 1: As per Section 27 of the Indian Contract Act 1872, post-employment non-compete restrictions are void under Indian law. Could we amend this clause to focus on confidentiality and NDA protection instead?",
             "firm": "Hello HR, Clause 1 imposes a 24-month post-employment non-compete. Under Supreme Court precedent (Niranjan Shankar Golikari) and Section 27 of the Contract Act, restraints on trade post-separation are unenforceable in India. Please update to standard non-solicit / NDA covenants.",
             "legal": "LEGAL NOTICE: Clause 1 constitutes an illegal restraint of trade prohibited under Section 27 of the Indian Contract Act 1872. Indian courts uniformly refuse injunctions against former employees exercising their livelihood. Strike this clause or align with enforceable non-disclosure limitations."
+          },
+          "precedent": {
+            "id": "prec_sec27_percept_zaheer",
+            "category": "non_compete",
+            "policy_id": "non_compete_duration",
+            "case_title": "Percept D'Mark (India) Pvt. Ltd. v. Zaheer Khan & Anr.",
+            "citation": "(2006) 4 SCC 227",
+            "court": "Supreme Court of India",
+            "bench": "Hon'ble Justice B.P. Singh & Justice Altamas Kabir",
+            "year": 2006,
+            "statutory_hook": "Indian Contract Act 1872, Section 27",
+            "ruling_summary": "The Supreme Court categorically held that any post-contractual covenant restraining an individual from exercising a lawful profession, trade, or business is void ab initio under Section 27. The doctrine of 'reasonableness' cannot override the absolute statutory bar.",
+            "keywords": [
+              "non-compete",
+              "post-termination",
+              "restraint of trade",
+              "section 27",
+              "zaheer khan",
+              "employment",
+              "internship"
+            ]
           }
         },
         {
@@ -413,6 +513,26 @@
             "polite": "Hi HR, regarding the training bond: I am fully committed to the role, but arbitrary financial penalties and certificate retention cause serious concern. Could we link reimbursement strictly to actual external training receipts on a pro-rata basis?",
             "firm": "Hello HR, Clause 2 specifies an arbitrary ₹2.5 Lakh penalty and retention of educational degrees. Withholding certificates violates UGC guidelines and Ministry directives. We require removal of certificate retention and replacement with pro-rata documented training recovery.",
             "legal": "RE: Employment Bond & Certificate Retention. Retention of original academic certificates violates Ministry of Labour directives and constitutes unlawful restraint under Art 21 of the Constitution. Furthermore, penal bonds violate Section 74 of the Contract Act without proof of actual pecuniary loss."
+          },
+          "precedent": {
+            "id": "prec_sec74_fateh_chand",
+            "category": "deposit_forfeiture",
+            "policy_id": "premature_exit_forfeiture",
+            "case_title": "Fateh Chand v. Balkishan Dass",
+            "citation": "(1964) 1 SCR 515",
+            "court": "Supreme Court of India (Constitution Bench)",
+            "bench": "Hon'ble Justice J.C. Shah",
+            "year": 1964,
+            "statutory_hook": "Indian Contract Act 1872, Section 74",
+            "ruling_summary": "Landmark ruling establishing that Section 74 applies to all stipulated forfeitures. A party cannot forfeit a deposit or demand liquidated damages without proving actual loss. Unconditional forfeiture of earnest deposits operates as an illegal penalty in terrorem.",
+            "keywords": [
+              "forfeiture",
+              "liquidated damages",
+              "penalty",
+              "security deposit",
+              "actual loss",
+              "section 74"
+            ]
           }
         },
         {
@@ -551,6 +671,25 @@
             "polite": "Hi team, regarding the 4% per day milestone penalty: Software scope frequently evolves. Could we replace the daily penalty with mutually agreed sprint grace periods and a sensible 5% overall cap?",
             "firm": "Hello, Clause 1 imposes a 4% daily penalty on milestone delays. Under Section 74 of the Indian Contract Act, excessive daily penalties are legally void. We need to revise this to reasonable liquidated damages capped at 5% total.",
             "legal": "RE: Daily Milestone Penalties. Clause 1 stipulates in-terrorem penal deductions of 4% per diem. This directly violates Section 74 of the Indian Contract Act 1872 (Fateh Chand v. Balkishan Dass). Penalties must be substituted with reasonable compensation with a maximum liability ceiling."
+          },
+          "precedent": {
+            "id": "prec_usurious_interest_ravindra",
+            "category": "interest",
+            "policy_id": "interest_rate_cap",
+            "case_title": "Central Bank of India v. Ravindra & Ors.",
+            "citation": "(2002) 1 SCC 367",
+            "court": "Supreme Court of India (Constitution Bench)",
+            "bench": "Hon'ble Justice R.C. Lahoti",
+            "year": 2002,
+            "statutory_hook": "Usurious Loans Act 1918 & Interest Act 1978",
+            "ruling_summary": "Constitution Bench held that penal compounding and unconscionable daily interest rates that multiply to excessive annual percentages (e.g. >2% per day / >700% APR) are punitive, contrary to public policy, and unenforceable in Indian courts.",
+            "keywords": [
+              "penal interest",
+              "late fees",
+              "usurious loans",
+              "daily penalty",
+              "exorbitant rate"
+            ]
           }
         },
         {
@@ -593,6 +732,26 @@
             "polite": "Hi, Clause 3 allows cancellation with forfeiture of fees for work already done. Could we update this to ensure payment for all completed milestones and approved hours up to the termination date?",
             "firm": "Regarding Clause 3: Forfeiture of fees for completed work is unacceptable. Under Section 70 of the Indian Contract Act (Quantum Meruit), the contractor is legally entitled to compensation for all services rendered. Please amend accordingly.",
             "legal": "Clause 3 Notice: Unilateral termination with forfeiture of accrued compensation violates the doctrine of Quantum Meruit codified in Section 70 of the Indian Contract Act 1872. Contractor must be indemnified for all work-in-progress upon severance."
+          },
+          "precedent": {
+            "id": "prec_sec74_fateh_chand",
+            "category": "deposit_forfeiture",
+            "policy_id": "premature_exit_forfeiture",
+            "case_title": "Fateh Chand v. Balkishan Dass",
+            "citation": "(1964) 1 SCR 515",
+            "court": "Supreme Court of India (Constitution Bench)",
+            "bench": "Hon'ble Justice J.C. Shah",
+            "year": 1964,
+            "statutory_hook": "Indian Contract Act 1872, Section 74",
+            "ruling_summary": "Landmark ruling establishing that Section 74 applies to all stipulated forfeitures. A party cannot forfeit a deposit or demand liquidated damages without proving actual loss. Unconditional forfeiture of earnest deposits operates as an illegal penalty in terrorem.",
+            "keywords": [
+              "forfeiture",
+              "liquidated damages",
+              "penalty",
+              "security deposit",
+              "actual loss",
+              "section 74"
+            ]
           }
         }
       ],

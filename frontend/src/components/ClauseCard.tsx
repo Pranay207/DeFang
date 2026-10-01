@@ -13,7 +13,8 @@ import {
   Info,
   Send,
   Volume2,
-  VolumeX
+  VolumeX,
+  Landmark
 } from 'lucide-react';
 import type { Clause, Language } from '../types';
 import { getTranslation, getLocalizedWhatsApp } from '../i18n';
@@ -31,6 +32,7 @@ export const ClauseCard: React.FC<ClauseCardProps> = ({
 }) => {
   const [showDiff, setShowDiff] = useState(false);
   const [showWhatsApp, setShowWhatsApp] = useState(false);
+  const [showPrecedent, setShowPrecedent] = useState(false);
   const [activeTab, setActiveTab] = useState<'polite' | 'firm' | 'legal'>('polite');
   const [copiedTab, setCopiedTab] = useState<string | null>(null);
   const [isPlayingAudio, setIsPlayingAudio] = useState(false);
@@ -289,7 +291,10 @@ export const ClauseCard: React.FC<ClauseCardProps> = ({
           <button
             onClick={() => {
               setShowWhatsApp(!showWhatsApp);
-              if (!showWhatsApp) setShowDiff(false);
+              if (!showWhatsApp) {
+                setShowDiff(false);
+                setShowPrecedent(false);
+              }
             }}
             className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
               showWhatsApp 
@@ -301,6 +306,28 @@ export const ClauseCard: React.FC<ClauseCardProps> = ({
             <span>{showWhatsApp ? t.clauseCard.diplomatClose : t.clauseCard.diplomatOpen}</span>
             {showWhatsApp ? <ChevronUp className="w-3.5 h-3.5 ml-1" /> : <ChevronDown className="w-3.5 h-3.5 ml-1" />}
           </button>
+
+          {/* OpenSearch Track Feature: Landmark Indian Case Law Precedent */}
+          {clause.precedent && (
+            <button
+              onClick={() => {
+                setShowPrecedent(!showPrecedent);
+                if (!showPrecedent) {
+                  setShowDiff(false);
+                  setShowWhatsApp(false);
+                }
+              }}
+              className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
+                showPrecedent
+                  ? 'bg-amber-600 text-white shadow-md shadow-amber-500/30'
+                  : 'bg-slate-800/80 text-amber-300 hover:bg-slate-700/80 border border-amber-500/20'
+              }`}
+            >
+              <Landmark className="w-3.5 h-3.5" />
+              <span>{showPrecedent ? 'Hide Precedent' : '🏛️ Case Law (OpenSearch)'}</span>
+              {showPrecedent ? <ChevronUp className="w-3.5 h-3.5 ml-1" /> : <ChevronDown className="w-3.5 h-3.5 ml-1" />}
+            </button>
+          )}
         </div>
       )}
 
@@ -428,6 +455,82 @@ export const ClauseCard: React.FC<ClauseCardProps> = ({
                 <span>{t.clauseCard.sendWhatsAppBtn}</span>
               </button>
             </div>
+          </div>
+        </div>
+      )}
+
+      {/* FEATURE RENDER: Landmark Precedent (AWS OpenSearch Indian Law Corpus) */}
+      {showPrecedent && clause.precedent && (
+        <div className="mt-4 p-4 rounded-xl bg-gradient-to-br from-amber-950/40 via-slate-950 to-slate-900 border border-amber-500/40 shadow-2xl relative overflow-hidden">
+          {/* Subtle background glow */}
+          <div className="absolute top-0 right-0 w-48 h-48 bg-amber-500/5 rounded-full blur-2xl pointer-events-none" />
+
+          {/* Header */}
+          <div className="flex flex-wrap items-center justify-between gap-2 pb-3 mb-3 border-b border-amber-500/20">
+            <div className="flex items-center space-x-2">
+              <div className="p-1.5 rounded-lg bg-amber-500/20 text-amber-400 border border-amber-500/30">
+                <Landmark className="w-4 h-4" />
+              </div>
+              <div>
+                <span className="text-[10px] uppercase tracking-wider font-bold text-amber-400/90 font-mono block">
+                  Binding Judicial Precedent
+                </span>
+                <span className="text-xs font-semibold text-slate-300">
+                  {clause.precedent.court} {clause.precedent.bench ? `• ${clause.precedent.bench}` : ''}
+                </span>
+              </div>
+            </div>
+            <span className="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-mono font-medium bg-amber-500/10 text-amber-300 border border-amber-500/30">
+              AWS OpenSearch Indexed
+            </span>
+          </div>
+
+          {/* Case Name & Citation */}
+          <div className="mb-3">
+            <h4 className="text-sm font-bold text-white tracking-wide">
+              {clause.precedent.case_title}
+            </h4>
+            <p className="text-xs font-mono text-amber-300/80 mt-0.5">
+              {clause.precedent.citation}
+            </p>
+          </div>
+
+          {/* Ratio Decidendi Quote Box */}
+          <div className="p-3 rounded-lg bg-amber-950/30 border-l-2 border-amber-500 text-xs text-amber-100/90 italic leading-relaxed mb-3">
+            "{clause.precedent.ratio_decidendi || clause.precedent.ruling_summary}"
+          </div>
+
+          {/* Binding Principle & Relevance */}
+          <div className="space-y-1.5 text-xs text-slate-300 mb-3">
+            <div>
+              <span className="text-amber-400 font-semibold">Legal Principle: </span>
+              <span>{clause.precedent.binding_principle || clause.precedent.statutory_hook || clause.precedent.ruling_summary}</span>
+            </div>
+            {clause.precedent.relevance && (
+              <div className="text-[11px] text-slate-400">
+                <span className="text-slate-300 font-medium">Relevance: </span>
+                {clause.precedent.relevance}
+              </div>
+            )}
+          </div>
+
+          {/* Footer Actions */}
+          <div className="flex flex-wrap items-center justify-between gap-2 pt-2 border-t border-white/5">
+            <span className="text-[10px] text-slate-400 font-mono">
+              Query matched via BM25 Precedent Engine
+            </span>
+            <button
+              onClick={() => {
+                const principle = clause.precedent?.binding_principle || clause.precedent?.ruling_summary || '';
+                const text = `${clause.precedent?.case_title} [${clause.precedent?.citation}] - ${principle}`;
+                navigator.clipboard.writeText(text);
+                onCopyToast('Copied landmark case citation to clipboard!');
+              }}
+              className="flex items-center space-x-1.5 px-3 py-1 rounded-lg bg-amber-500/10 hover:bg-amber-500/20 text-amber-300 border border-amber-500/30 text-xs font-semibold transition-all"
+            >
+              <Copy className="w-3 h-3" />
+              <span>Copy Precedent Citation</span>
+            </button>
           </div>
         </div>
       )}
