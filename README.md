@@ -24,7 +24,7 @@
 
 <br />
 
-[**Watch 3-Min Demo**](#-3-minute-video-walkthrough) &nbsp;•&nbsp; [**Quick Start (2 Mins)**](#-quick-start) &nbsp;•&nbsp; [**Demo Presets**](#-demo-presets) &nbsp;•&nbsp; [**Architecture**](#-architecture) &nbsp;•&nbsp; [**8 Cedar Policies**](#-legal-frameworks-referenced)
+[**Watch 3-Min Demo**](#-3-minute-video-walkthrough) &nbsp;•&nbsp; [**Quick Start (2 Mins)**](#-quick-start) &nbsp;•&nbsp; [**BUILD IT Track (OpenSearch • Finch • SAM)**](#-aws-hackathon-build-it-track-architecture--implementation) &nbsp;•&nbsp; [**Demo Presets**](#-demo-presets) &nbsp;•&nbsp; [**8 Cedar Policies**](#-legal-frameworks-referenced)
 
 <br />
 <br />
@@ -95,17 +95,17 @@
 Generic AI contract tools rely on a **single LLM giving subjective, unverifiable advice** that frequently hallucinates, contradicts itself, and cannot be audited in a courtroom.
 
 ```
-┌────────────────────────────────────────────────────────────────────────────────────────┐
-│                                DEFANG DUAL-ENGINE FLOW                                 │
-├──────────────────────────┬─────────────────────────────────┬───────────────────────────┤
-│    1. INGESTION & OCR    │      2. STRANDS AGENT SDK       │    3. FORMAL AWS CEDAR    │
-│                          │                                 │                           │
-│  Raw Contract (PDF/Text) │  Extracts structured parameters │  Deterministic Evaluation │
-│  - Tenancy agreements    │  - amount_inr: 350000           │  - Evaluates 8 .cedar     │
-│  - Employment bonds      │  - monthly_rent_inr: 35000      │    statutory policy files │
-│  - Freelance MSAs        │  - painting_mandatory: true     │  - Verdict: ALLOW / DENY  │
-│                          │  - non_compete_months: 24       │  - Zero Hallucinations    │
-└──────────────────────────┴─────────────────────────────────┴───────────────────────────┘
+┌────────────────────────────────────────────────────────────────────────────────────────────────────────┐
+│                                   DEFANG COMPREHENSIVE ARCHITECTURE FLOW                               │
+├──────────────────────┬─────────────────────────┬─────────────────────────┬─────────────────────────────┤
+│  1. INGESTION & OCR  │  2. STRANDS AGENT SDK   │   3. FORMAL AWS CEDAR   │  4. AWS OPENSEARCH SEARCH   │
+│                      │                         │                         │                             │
+│ Raw Contract Input   │ Extracts exact params   │ Deterministic Policy    │ Landmark Case Law Precedents│
+│ - Physical Stamp OCr │ - amount_inr: 350000    │ - Evaluates 8 .cedar    │ - BM25 Judicial Corpus      │
+│ - PDF Agreement scan │ - rent_inr: 35000       │   statutory policies    │ - SC & HC Ratio Decidendi   │
+│ - Direct paste text  │ - painting_mand: true   │ - Verdict: ALLOW / DENY │ - Zaheer Khan, Fateh Chand  │
+│ - WhatsApp Webhook   │ - non_compete: 24 mos   │ - 0% Hallucinations     │ - Real Legal Authority      │
+└──────────────────────┴─────────────────────────┴─────────────────────────┴─────────────────────────────┘
 ```
 
 ### 🥊 The Litmus Test: Generic LLMs (ChatGPT / Gemini) vs. DeFang Dual-Engine Core
@@ -237,8 +237,9 @@ flowchart TD
 
 Clone the repository and run both servers locally on your machine in under 2 minutes:
 
-### 1. Backend (FastAPI + AWS Cedar)
+### Option 1: Standard Local Dev (Python + Node.js)
 
+#### 1. Backend (FastAPI + AWS Cedar + OpenSearch)
 ```powershell
 cd backend
 python -m venv .venv
@@ -248,14 +249,43 @@ uvicorn main:app --reload --port 8000
 ```
 > *Backend API initializes at `http://127.0.0.1:8000`*
 
-### 2. Frontend (React + Vite)
-
+#### 2. Frontend (React + Vite)
 ```powershell
 cd frontend
 npm install
 npm run dev
 ```
 > *Web App opens at `http://localhost:5173`*
+
+---
+
+### Option 2: 📦 AWS Finch Container Runner (One-Click)
+
+Launch the complete full-stack application inside an AWS Finch OCI container with a single command:
+
+```powershell
+# Windows
+scripts\finch-build.bat
+
+# macOS / Linux
+chmod +x scripts/finch-build.sh && ./scripts/finch-build.sh
+```
+> *Full-stack application serves at `http://localhost:8000`*
+
+---
+
+### Option 3: ⚡ AWS SAM CLI & LocalStack Serverless Runner
+
+Run the serverless Lambda function and API Gateway locally with ₹0 cost:
+
+```powershell
+# Windows
+scripts\sam-local.bat
+
+# macOS / Linux
+chmod +x scripts/sam-local.sh && ./scripts/sam-local.sh
+```
+> *AWS SAM Local HTTP API Gateway runs at `http://127.0.0.1:8000`*
 
 ### Zero-Config Offline Mode
 DeFang is engineered with an **intelligent local rule-based extractor and pre-cached client fallback powered by Strands Agents SDK and AWS Cedar**. The app operates **100% locally and offline without external cloud API dependencies or mandatory API keys**.
@@ -390,11 +420,21 @@ During the design and implementation of DeFang (Bharat Edition), our core archit
 
 ---
 
-## 🏛️ Project Specifications & Architecture
+## 🏛️ Project Specifications & Track Matrix
  
-* **Project**: **DeFang (Bharat Edition)**
-* **Deployment Model**: **100% On-Device & Offline** *(Zero cloud dependency, zero external API cost)*
-* **Core Engines**: **AWS Cedar Policy Engine** + **Strands Agents SDK**
+| Dimension | Specification | Implementation Details |
+| :--- | :--- | :--- |
+| **Hackathon Track** | **BUILD IT Track** | Containers, Serverless, Data & Search, Security & Identity |
+| **Deterministic Policy Core** | **AWS Cedar (`cedarpy`)** | 8 formal Rust-compiled `.cedar` statutory policies (*0% hallucinations*) |
+| **Judicial Search Engine** | **AWS OpenSearch Service** | BM25 landmark Indian Supreme Court & High Court case law index |
+| **Container Engine** | **AWS Finch** | Multi-stage OCI [`Containerfile`](Containerfile) & [`finch.yaml`](finch.yaml) configuration |
+| **Serverless Architecture** | **AWS SAM CLI & Lambda** | [`template.yaml`](template.yaml) Infrastructure-as-Code with Mangum ASGI adapter |
+| **₹0 Local Cloud Emulation** | **LocalStack** | [`localstack-compose.yaml`](localstack-compose.yaml) running S3, Lambda, API Gateway & OpenSearch |
+| **Language Ingestion Core** | **Strands Agents SDK** | Structured clause normalization and parameter extraction |
+| **Frontend Framework** | **React 19 + TypeScript + Vite** | TailwindCSS, Lucide icons, Web Speech API vernacular engine |
+| **Backend Framework** | **Python 3.11 + FastAPI** | 15 active REST endpoints with OpenAPI & Swagger documentation |
+| **Deployment Model** | **100% On-Device & Offline** | Instant preset fallback with zero cloud dependencies or mandatory API keys |
+| **Operating Cost** | **₹0.00** | Zero AWS charges during local evaluation and testing |
 
 ---
 
