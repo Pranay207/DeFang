@@ -13,6 +13,9 @@
 
 [![Track: Build It](https://img.shields.io/badge/Track-Build_It-FF9900?style=flat-square&logo=amazonaws&logoColor=white)](https://github.com/Pranay207/DeFang)
 [![Policy Engine: AWS Cedar (8 Policies)](https://img.shields.io/badge/Policy_Engine-AWS_Cedar_(8_Policies)-E11D48?style=flat-square)](https://www.cedarpolicy.com/)
+[![Search: AWS OpenSearch](https://img.shields.io/badge/Search-AWS_OpenSearch-0052CC?style=flat-square&logo=opensearch&logoColor=white)](backend/opensearch_service.py)
+[![Container: AWS Finch](https://img.shields.io/badge/Container-AWS_Finch-FF9900?style=flat-square&logo=linuxcontainers&logoColor=white)](Containerfile)
+[![Serverless: SAM CLI](https://img.shields.io/badge/Serverless-SAM_CLI-00A4A6?style=flat-square&logo=awslambda&logoColor=white)](template.yaml)
 [![Agent: Strands SDK](https://img.shields.io/badge/Agent-Strands_SDK-0284C7?style=flat-square)](https://github.com/Pranay207/DeFang)
 [![Languages: EN • HI • TE • KN](https://img.shields.io/badge/Languages-EN_•_HI_•_TE_•_KN-8B5CF6?style=flat-square)](frontend/src/i18n.ts)
 [![Backend: FastAPI](https://img.shields.io/badge/Backend-FastAPI-0D9488?style=flat-square&logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com/)
@@ -254,6 +257,16 @@ npm run dev
 ```
 > *Web App opens at `http://localhost:5173`*
 
+### 3. Alternative: Run with AWS Finch Container or AWS SAM CLI
+
+```powershell
+# Option A: One-command AWS Finch Container
+scripts\finch-build.bat      # Windows (or ./scripts/finch-build.sh on macOS/Linux)
+
+# Option B: One-command AWS SAM Local Serverless
+scripts\sam-local.bat        # Windows (or ./scripts/sam-local.sh on macOS/Linux)
+```
+
 ### Zero-Config Offline Mode
 DeFang is engineered with an **intelligent local rule-based extractor and pre-cached client fallback powered by Strands Agents SDK and AWS Cedar**. The app operates **100% locally and offline without external cloud API dependencies or mandatory API keys**.
 
@@ -283,6 +296,11 @@ Every policy file in `backend/policies/` is directly anchored to active Indian j
 * **Indian Contract Act 1872, Section 74 (Liquidated Damages & Penal Forfeiture)**: Restricts bond penalties to **reasonable compensation for actual, proven loss**, prohibiting unconditional deposit forfeiture (`premature_exit_forfeiture.cedar`).
 * **Indian Contract Act 1872, Section 74 (Unlawful Lock-in Penalties)**: Restricts demanding remaining tenure rent upon early exit without actual proved loss (`lock_in_period_penalty.cedar`).
 * **Usurious Loans Act 1918**: Restricts exorbitant, unconscionable daily late payment penalties.
+* **Landmark Supreme Court Precedents (AWS OpenSearch Engine)**:
+  * *Percept D'Mark (India) v. Zaheer Khan (2006)* &mdash; Post-employment covenants void under Section 27.
+  * *Fateh Chand v. Balkishan Dass (1964)* &mdash; Unreasonable deposit forfeiture void under Section 74.
+  * *Niranjan Shankar Golikari v. Century Spg. (1967)* &mdash; Post-service negative covenants invalid in Indian law.
+  * *K.A. Ramesh v. Susheela Bai (1998)* &mdash; Statutory limits on security deposits and rent escalation.
 
 ---
 
@@ -298,6 +316,9 @@ Every policy file in `backend/policies/` is directly anchored to active Indian j
 - [x] **Interactive Rupee Trap Simulator**: Quantifies hidden financial liabilities into exact Rupee losses.
 - [x] **Power Imbalance Meter**: Evaluates one-sided clauses (95% Landlord vs 5% Tenant) with contract hypocrisy alerts.
 - [x] **Certified Statutory Report Export**: Localized downloadable text audit certificates and high-contrast printable audit reports.
+- [x] **🏛️ AWS OpenSearch Landmark Precedents Engine**: Queries Supreme Court & High Court case law citations and binding *Ratio Decidendi* for every statutory denial (`/api/precedents`).
+- [x] **📦 AWS Finch Multi-Stage Containerization**: OCI [`Containerfile`](Containerfile) and [`finch.yaml`](finch.yaml) to build and run full-stack DeFang locally with a single command.
+- [x] **⚡ AWS SAM CLI & LocalStack Serverless Stack**: [`template.yaml`](template.yaml), [`samconfig.toml`](samconfig.toml), and [`localstack-compose.yaml`](localstack-compose.yaml) for ₹0 local serverless emulation.
 
 ---
 
