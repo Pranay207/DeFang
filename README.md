@@ -12,10 +12,7 @@
 <br />
 
 [![Track: Build It](https://img.shields.io/badge/Track-Build_It-FF9900?style=flat-square&logo=amazonaws&logoColor=white)](https://github.com/Pranay207/DeFang)
-[![Policy Engine: AWS Cedar](https://img.shields.io/badge/Policy_Engine-AWS_Cedar_(8_Policies)-E11D48?style=flat-square)](https://www.cedarpolicy.com/)
-[![Search: AWS OpenSearch](https://img.shields.io/badge/Search-AWS_OpenSearch_(BM25_Precedents)-0052CC?style=flat-square&logo=opensearch&logoColor=white)](backend/opensearch_service.py)
-[![Container: AWS Finch](https://img.shields.io/badge/Container-AWS_Finch_(OCI_Engine)-FF9900?style=flat-square&logo=linuxcontainers&logoColor=white)](Containerfile)
-[![Serverless: SAM CLI & LocalStack](https://img.shields.io/badge/Serverless-SAM_CLI_•_LocalStack-00A4A6?style=flat-square&logo=awslambda&logoColor=white)](template.yaml)
+[![Policy Engine: AWS Cedar (8 Policies)](https://img.shields.io/badge/Policy_Engine-AWS_Cedar_(8_Policies)-E11D48?style=flat-square)](https://www.cedarpolicy.com/)
 [![Agent: Strands SDK](https://img.shields.io/badge/Agent-Strands_SDK-0284C7?style=flat-square)](https://github.com/Pranay207/DeFang)
 [![Languages: EN • HI • TE • KN](https://img.shields.io/badge/Languages-EN_•_HI_•_TE_•_KN-8B5CF6?style=flat-square)](frontend/src/i18n.ts)
 [![Backend: FastAPI](https://img.shields.io/badge/Backend-FastAPI-0D9488?style=flat-square&logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com/)
@@ -24,7 +21,7 @@
 
 <br />
 
-[**Watch 3-Min Demo**](#-3-minute-video-walkthrough) &nbsp;•&nbsp; [**Quick Start (2 Mins)**](#-quick-start) &nbsp;•&nbsp; [**BUILD IT Track (OpenSearch • Finch • SAM)**](#-aws-hackathon-build-it-track-architecture--implementation) &nbsp;•&nbsp; [**Demo Presets**](#-demo-presets) &nbsp;•&nbsp; [**8 Cedar Policies**](#-legal-frameworks-referenced)
+[**Watch 3-Min Demo**](#-3-minute-video-walkthrough) &nbsp;•&nbsp; [**Quick Start (2 Mins)**](#-quick-start) &nbsp;•&nbsp; [**Demo Presets**](#-demo-presets) &nbsp;•&nbsp; [**Architecture**](#-architecture) &nbsp;•&nbsp; [**8 Cedar Policies**](#-legal-frameworks-referenced)
 
 <br />
 <br />
@@ -95,17 +92,17 @@
 Generic AI contract tools rely on a **single LLM giving subjective, unverifiable advice** that frequently hallucinates, contradicts itself, and cannot be audited in a courtroom.
 
 ```
-┌────────────────────────────────────────────────────────────────────────────────────────────────────────┐
-│                                   DEFANG COMPREHENSIVE ARCHITECTURE FLOW                               │
-├──────────────────────┬─────────────────────────┬─────────────────────────┬─────────────────────────────┤
-│  1. INGESTION & OCR  │  2. STRANDS AGENT SDK   │   3. FORMAL AWS CEDAR   │  4. AWS OPENSEARCH SEARCH   │
-│                      │                         │                         │                             │
-│ Raw Contract Input   │ Extracts exact params   │ Deterministic Policy    │ Landmark Case Law Precedents│
-│ - Physical Stamp OCr │ - amount_inr: 350000    │ - Evaluates 8 .cedar    │ - BM25 Judicial Corpus      │
-│ - PDF Agreement scan │ - rent_inr: 35000       │   statutory policies    │ - SC & HC Ratio Decidendi   │
-│ - Direct paste text  │ - painting_mand: true   │ - Verdict: ALLOW / DENY │ - Zaheer Khan, Fateh Chand  │
-│ - WhatsApp Webhook   │ - non_compete: 24 mos   │ - 0% Hallucinations     │ - Real Legal Authority      │
-└──────────────────────┴─────────────────────────┴─────────────────────────┴─────────────────────────────┘
+┌────────────────────────────────────────────────────────────────────────────────────────┐
+│                                DEFANG DUAL-ENGINE FLOW                                 │
+├──────────────────────────┬─────────────────────────────────┬───────────────────────────┤
+│    1. INGESTION & OCR    │      2. STRANDS AGENT SDK       │    3. FORMAL AWS CEDAR    │
+│                          │                                 │                           │
+│  Raw Contract (PDF/Text) │  Extracts structured parameters │  Deterministic Evaluation │
+│  - Tenancy agreements    │  - amount_inr: 350000           │  - Evaluates 8 .cedar     │
+│  - Employment bonds      │  - monthly_rent_inr: 35000      │    statutory policy files │
+│  - Freelance MSAs        │  - painting_mandatory: true     │  - Verdict: ALLOW / DENY  │
+│                          │  - non_compete_months: 24       │  - Zero Hallucinations    │
+└──────────────────────────┴─────────────────────────────────┴───────────────────────────┘
 ```
 
 ### 🥊 The Litmus Test: Generic LLMs (ChatGPT / Gemini) vs. DeFang Dual-Engine Core
@@ -237,9 +234,8 @@ flowchart TD
 
 Clone the repository and run both servers locally on your machine in under 2 minutes:
 
-### Option 1: Standard Local Dev (Python + Node.js)
+### 1. Backend (FastAPI + AWS Cedar)
 
-#### 1. Backend (FastAPI + AWS Cedar + OpenSearch)
 ```powershell
 cd backend
 python -m venv .venv
@@ -249,43 +245,14 @@ uvicorn main:app --reload --port 8000
 ```
 > *Backend API initializes at `http://127.0.0.1:8000`*
 
-#### 2. Frontend (React + Vite)
+### 2. Frontend (React + Vite)
+
 ```powershell
 cd frontend
 npm install
 npm run dev
 ```
 > *Web App opens at `http://localhost:5173`*
-
----
-
-### Option 2: 📦 AWS Finch Container Runner (One-Click)
-
-Launch the complete full-stack application inside an AWS Finch OCI container with a single command:
-
-```powershell
-# Windows
-scripts\finch-build.bat
-
-# macOS / Linux
-chmod +x scripts/finch-build.sh && ./scripts/finch-build.sh
-```
-> *Full-stack application serves at `http://localhost:8000`*
-
----
-
-### Option 3: ⚡ AWS SAM CLI & LocalStack Serverless Runner
-
-Run the serverless Lambda function and API Gateway locally with ₹0 cost:
-
-```powershell
-# Windows
-scripts\sam-local.bat
-
-# macOS / Linux
-chmod +x scripts/sam-local.sh && ./scripts/sam-local.sh
-```
-> *AWS SAM Local HTTP API Gateway runs at `http://127.0.0.1:8000`*
 
 ### Zero-Config Offline Mode
 DeFang is engineered with an **intelligent local rule-based extractor and pre-cached client fallback powered by Strands Agents SDK and AWS Cedar**. The app operates **100% locally and offline without external cloud API dependencies or mandatory API keys**.
@@ -331,79 +298,6 @@ Every policy file in `backend/policies/` is directly anchored to active Indian j
 - [x] **Interactive Rupee Trap Simulator**: Quantifies hidden financial liabilities into exact Rupee losses.
 - [x] **Power Imbalance Meter**: Evaluates one-sided clauses (95% Landlord vs 5% Tenant) with contract hypocrisy alerts.
 - [x] **Certified Statutory Report Export**: Localized downloadable text audit certificates and high-contrast printable audit reports.
-- [x] **🏛️ AWS OpenSearch Landmark Precedents Engine**: Live BM25 search over Supreme Court case law citations for every statutory denial.
-- [x] **📦 AWS Finch Multi-Stage Containerization**: Native `Containerfile` and `finch.yaml` for building and executing OCI images locally.
-- [x] **⚡ AWS SAM CLI & LocalStack Serverless Stack**: Production `template.yaml`, `samconfig.toml`, and `localstack-compose.yaml` for ₹0 serverless emulation.
-
----
-
-## 🏆 AWS Hackathon: "BUILD IT" Track Architecture & Implementation
-
-DeFang is purpose-engineered to demonstrate end-to-end mastery across all pillars of the **BUILD IT Track**:
-
-```
-┌────────────────────────────────────────────────────────────────────────────────────────┐
-│                        AWS HACKATHON "BUILD IT" TRACK SUITE                            │
-├──────────────────────────┬─────────────────────────────────┬───────────────────────────┤
-│    1. DATA & SEARCH      │    2. CONTAINERS & RUNTIMES     │       3. SERVERLESS       │
-│                          │                                 │                           │
-│  AWS OpenSearch Service  │         AWS Finch Engine        │    AWS SAM & LocalStack   │
-│  • Landmark Precedent DB │  • Multi-Stage Containerfile    │  • SAM Template (IaC)     │
-│  • BM25 Judicial Search  │  • finch.yaml Configuration     │  • Mangum Lambda Adapter  │
-│  • Supreme Court Corpus  │  • scripts/finch-build.bat/sh   │  • localstack-compose.yaml│
-│  • Sub-10ms In-Memory Fallback • Native OCI Container Image│  • ₹0 Local Emulation     │
-└──────────────────────────┴─────────────────────────────────┴───────────────────────────┘
-```
-
-### 1. 🔍 Data and Search: AWS OpenSearch Service (Landmark Case Law Engine)
-* **Precedent Retrieval**: When AWS Cedar renders a `DENY` decision on an illegal clause, DeFang queries the **AWS OpenSearch Precedent Index** (`backend/opensearch_service.py`).
-* **BM25 Search Algorithm**: Indexes binding Supreme Court and High Court cases with exact *Ratio Decidendi*:
-  - *Percept D'Mark v. Zaheer Khan (2006)* &mdash; Post-employment covenants void under Section 27.
-  - *Fateh Chand v. Balkishan Dass (1963)* &mdash; Unreasonable forfeiture void under Section 74.
-  - *Niranjan Shankar Golikari v. Century Spg. (1967)* &mdash; Distinguishing during vs. post-employment covenants.
-  - *K.A. Ramesh v. Susheela Bai (1998)* &mdash; Excessive rent escalation limits.
-* **Zero-Failure Dual Architecture**: Connects to an active AWS OpenSearch / LocalStack endpoint at `http://localhost:9200`. If offline, it automatically executes its embedded in-memory BM25 engine.
-* **Precedents API**:
-  - `GET /api/precedents` &mdash; Returns the full Indian case law corpus.
-  - `GET /api/precedents/search?q=deposit+forfeiture` &mdash; Live BM25 search.
-
-### 2. 📦 Containers and Kubernetes: AWS Finch Container Engine
-* **AWS Finch**: AWS's open-source container engine and CLI for macOS, Windows, and Linux.
-* **Multi-Stage OCI Image**: [`Containerfile`](Containerfile) encapsulates:
-  - **Stage 1 (Node 20)**: Compiles the React 19 + TypeScript frontend with zero errors.
-  - **Stage 2 (Python 3.11)**: Packages FastAPI, Rust `cedarpy`, and the OpenSearch engine.
-* **Configuration**: [`finch.yaml`](finch.yaml) manages VM CPU/memory allocation and port forwarding.
-* **One-Command Build & Run**:
-  ```bash
-  # Windows
-  scripts\finch-build.bat
-
-  # macOS / Linux
-  chmod +x scripts/finch-build.sh && ./scripts/finch-build.sh
-
-  # Or directly via Finch CLI
-  finch build -t defang:bharat-v1 -f Containerfile .
-  finch run -d --name defang -p 8000:8000 defang:bharat-v1
-  ```
-
-### 3. ⚡ Serverless: AWS SAM CLI & LocalStack (₹0 Local Emulation)
-* **AWS SAM CLI**: Production Infrastructure-as-Code template [`template.yaml`](template.yaml) declaring:
-  - `DeFangApiFunction` (`AWS::Serverless::Function` on Python 3.11 with `Mangum` ASGI handler).
-  - `DeFangHttpApi` (`AWS::Serverless::HttpApi` with global CORS).
-  - `AuditCacheBucket` (`AWS::S3::Bucket` for encrypted audit report archiving).
-* **LocalStack ₹0 Emulation**: [`localstack-compose.yaml`](localstack-compose.yaml) provides a local AWS cloud environment without incurring any AWS billing.
-* **One-Command SAM Run**:
-  ```bash
-  # Windows
-  scripts\sam-local.bat
-
-  # macOS / Linux
-  chmod +x scripts/sam-local.sh && ./scripts/sam-local.sh
-
-  # Or directly via SAM CLI
-  sam build
-  sam local start-api --port 8000
-  ```
 
 ---
 
@@ -420,21 +314,11 @@ During the design and implementation of DeFang (Bharat Edition), our core archit
 
 ---
 
-## 🏛️ Project Specifications & Track Matrix
+## 🏛️ Project Specifications & Architecture
  
-| Dimension | Specification | Implementation Details |
-| :--- | :--- | :--- |
-| **Hackathon Track** | **BUILD IT Track** | Containers, Serverless, Data & Search, Security & Identity |
-| **Deterministic Policy Core** | **AWS Cedar (`cedarpy`)** | 8 formal Rust-compiled `.cedar` statutory policies (*0% hallucinations*) |
-| **Judicial Search Engine** | **AWS OpenSearch Service** | BM25 landmark Indian Supreme Court & High Court case law index |
-| **Container Engine** | **AWS Finch** | Multi-stage OCI [`Containerfile`](Containerfile) & [`finch.yaml`](finch.yaml) configuration |
-| **Serverless Architecture** | **AWS SAM CLI & Lambda** | [`template.yaml`](template.yaml) Infrastructure-as-Code with Mangum ASGI adapter |
-| **₹0 Local Cloud Emulation** | **LocalStack** | [`localstack-compose.yaml`](localstack-compose.yaml) running S3, Lambda, API Gateway & OpenSearch |
-| **Language Ingestion Core** | **Strands Agents SDK** | Structured clause normalization and parameter extraction |
-| **Frontend Framework** | **React 19 + TypeScript + Vite** | TailwindCSS, Lucide icons, Web Speech API vernacular engine |
-| **Backend Framework** | **Python 3.11 + FastAPI** | 15 active REST endpoints with OpenAPI & Swagger documentation |
-| **Deployment Model** | **100% On-Device & Offline** | Instant preset fallback with zero cloud dependencies or mandatory API keys |
-| **Operating Cost** | **₹0.00** | Zero AWS charges during local evaluation and testing |
+* **Project**: **DeFang (Bharat Edition)**
+* **Deployment Model**: **100% On-Device & Offline** *(Zero cloud dependency, zero external API cost)*
+* **Core Engines**: **AWS Cedar Policy Engine** + **Strands Agents SDK**
 
 ---
 
